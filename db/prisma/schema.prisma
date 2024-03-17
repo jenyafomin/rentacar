@@ -1,0 +1,121 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+/// //// //// //// //// //// //// //// //// //// //// //// ////
+/// //// //// //// //// //// //// //// //// //// //// //// ////
+/// //// //// //// //// //// //// //// //// //// //// //// ////
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  hashedPassword String? 
+  role String @default("ADMIN")
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+}
+
+/// //// //// //// //// //// //// //// //// //// //// //// ////
+/// //// //// //// //// //// //// //// //// //// //// //// ////
+/// //// //// //// //// //// //// //// //// //// //// //// ////
+
+model Car {
+  id String @id @default(cuid())
+  mamaCarId String? @unique
+  nodeId String? @unique
+  vin String?
+  plateNumber String?
+
+  make String
+  model String
+  option String?
+  year String
+  color String
+
+  type String 
+  categories String[] @default([])
+  features String[] @default([])
+
+	status String? @default("Active")
+	isFeatured Boolean? @default(false)
+	useExcelStatus Boolean? @default(false)
+
+	availableFrom DateTime?
+
+	amountOfDoors Int? @default(4)
+	amountOfSeats Int? @default(5)
+	amountOfLaguage Int? @default(2)
+
+	priceDaily Int?
+	priceMonthly Int?
+
+	extraMiles Int?
+	extraMilesPrice Int?
+	engine String?
+	horsePower Int?
+	fuelConsumption Float?
+}
+
+model CarExcel {
+  id String @id
+  mamaCarId String? @unique
+  nodeId String? @unique
+
+  make String?
+	model String?
+	option String?
+	year String?
+	color String?
+
+	vin String?
+	plate String?
+	
+	status String?
+	availableFrom String?
+}
