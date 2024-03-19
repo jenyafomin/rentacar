@@ -137,7 +137,7 @@ export default function RootLayout({children, session, ...pageProps}: any) {
           <body>
             <div id="__dsn_content" className={colorPage}>
                 <SessionProvider session={session}>
-                    <LoadingPage/>
+                    {/* <LoadingPage/> */}
                     <EremiaMenu hamburger={true}/>
                     {children}
                     <OptionTheme lineTheme={[creativeLine, setCreativeLine]} pageColor={[colorPage, setColorPage]}/>
