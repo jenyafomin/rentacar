@@ -20,7 +20,11 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "@front-ecom/*": ["./src/front-ecom/*"]
+      "@front-ecom/*": ["./src/front-ecom/*"],
+      "@front/*": ["./src/front/*"],
+      "@core/*": ["./src/front/@core/*"],
+      "@layout/*": ["./src/front-ecom/@layout/*"],
+      "@menu/*": ["./src/front-ecom/@menu/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -1,6 +1,6 @@
 import  {useRef, useState, useEffect} from 'react';
 import PortfolioItem from './PortfolioItem';
-import {getPortfolioData} from "../../../back/data/portfolio";
+import {getPortfolioData} from "../../../data/(ecom)/portfolio";
 
 
 import {dsnCN} from "../../hooks/helper";

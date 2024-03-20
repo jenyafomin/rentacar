@@ -1,6 +1,6 @@
 import DsnGrid, {DsnGridProps} from "../../layout/DsnGrid";
 import {dsnCN} from "../../hooks/helper";
-import {getTeamData} from "../../../back/data/team";
+import {getTeamData} from "../../../data/(ecom)/team";
 import TeamItem from "./TeamItem";
 
 interface TeamProps extends DsnGridProps {

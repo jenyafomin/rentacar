@@ -2,7 +2,7 @@
 import {memo, useEffect, useRef} from 'react'
 
 
-import {getBlogLink} from "../../../back/data/blog";
+import {getBlogLink} from "../../../data/(ecom)/blog";
 import {dsnCN} from "../../hooks/helper";
 import BgImage from "../Image/BgImage";
 import MetaPost from "../meta/MetaPost";

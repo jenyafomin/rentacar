@@ -1,6 +1,6 @@
 import MetaPost from "../meta/MetaPost";
 import {dsnCN} from "../../hooks/helper";
-import {getPortfolioLink} from '../../../back/data/portfolio';
+import {getPortfolioLink} from '../../../data/(ecom)/portfolio';
 import Button from "../button/Button";
 import {forwardRef} from "react";
 import DsnLink from "../../hooks/DsnLink";

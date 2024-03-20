@@ -1,5 +1,5 @@
 import ServiceSwiper from "../ServiceSwiper";
-import {getServiceData} from "../../../../back/data/service";
+import {getServiceData} from "../../../../data/(ecom)/service";
 import SwiperPagination from "../../swiper-pagination/SwiperPagination";
 
 function ServiceSwiperOne({className , ...restProps}) {

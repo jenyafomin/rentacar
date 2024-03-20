@@ -6,7 +6,7 @@ import ParallaxImage from "../../components/Image/ParallaxImage";
 import DsnGrid from "../../layout/DsnGrid";
 import Layout from "../../layout/Layout";
 import NextProject from "../../components/next/NextProject";
-import {getPortfolioItem} from "../../../back/data/portfolio";
+import {getPortfolioItem} from "../../../data/(ecom)/portfolio";
 import HeaderFull from "../../components/header/HeaderFull";
 import Image from "next/legacy/image";
 

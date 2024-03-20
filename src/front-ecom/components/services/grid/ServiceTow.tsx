@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Service from "../Service";
-import {getServiceData} from "../../../../back/data/service";
+import {getServiceData} from "../../../../data/(ecom)/service";
 
 
 const ServiceTow  = ({className , ...restProps}) => {

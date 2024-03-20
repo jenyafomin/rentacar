@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import SwiperPagination from "../components/swiper-pagination/SwiperPagination";
 import HeaderFull from "../components/header/HeaderFull";
 import Button from "../components/button/Button";
-import {getServiceData} from "../../back/data/service";
+import {getServiceData} from "../../data/(ecom)/service";
 import ServiceSwiper from "../components/services/ServiceSwiper";
 import DsnGrid from "../layout/DsnGrid";
 import List, {ListItem} from "../components/list/List";

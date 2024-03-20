@@ -1,5 +1,5 @@
 import AwardsItem from "./AwardsItem";
-import { getAwardsData } from "../../../back/data/awards";
+import { getAwardsData } from "../../../data/(ecom)/awards";
 
 function Awards() {
   return (

@@ -5,7 +5,7 @@ import {Pagination, Parallax, SwiperOptions} from "swiper";
 
 
 import BlogItem from './BlogItem';
-import {getBlogData} from "../../../back/data/blog";
+import {getBlogData} from "../../../data/(ecom)/blog";
 import {dsnCN} from "../../hooks/helper";
 import {ParallaxOption} from "../../../../types/DsnSwiper";
 import {MetaData} from "../../hooks/EremiaType";

@@ -7,7 +7,7 @@ import {Controller, Pagination, Parallax, SwiperOptions, Thumbs} from "swiper";
 import {dsnCN} from "../../hooks/helper";
 import Image from "next/legacy/image";
 import {ParallaxOption} from "../../../../types/DsnSwiper";
-import {getTestimonialData} from '../../../back/data/testimonial';
+import {getTestimonialData} from '../../../data/(ecom)/testimonial';
 import {backgroundColor, styleBox} from "../../hooks/EremiaType";
 
 

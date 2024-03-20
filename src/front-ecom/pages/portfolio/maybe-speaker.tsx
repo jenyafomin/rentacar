@@ -9,7 +9,7 @@ import ParallaxImage from "../../components/Image/ParallaxImage";
 import DsnGrid from "../../layout/DsnGrid";
 import Layout from "../../layout/Layout";
 import HeaderFull from "../../components/header/HeaderFull";
-import {getPortfolioItem} from "../../../back/data/portfolio";
+import {getPortfolioItem} from "../../../data/(ecom)/portfolio";
 import NextProject from "../../components/next/NextProject";
 
 
