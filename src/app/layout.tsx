@@ -6,8 +6,7 @@ import 'swiper/css/parallax';
 import 'swiper/css/pagination';
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
-import '../front/styles/style.scss';
-
+import '@front-ecom/styles/style.scss';
 
 import {Back, gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
@@ -17,15 +16,15 @@ import { SessionProvider } from "next-auth/react";
 import React, {useEffect, useState} from "react";
 import {Provider} from 'react-redux'
 
-import dsnEffect, {moveSection, fade, textAnimation} from "../front/animation/dsnEffect";
-import {store} from "../front/features/store";
-import EremiaMenu from "../front/components/header/menu/EremiaMenu";
-import OptionTheme from "../front/components/option-theme/OptionTheme";
-import RightScrollTop from "../front/components/option-theme/RightScrollTop";
-import {checkMobile, parallaxIt} from "../front/hooks/helper";
-import LoadingPage from "../front/layout/LoadingPage";
-import {tdEnd} from "../front/hooks/transition/transitionDefalut";
-import CustomCursor from "../front/layout/CustomCursor";
+import dsnEffect, {moveSection, fade, textAnimation} from "@front-ecom/animation/dsnEffect";
+import {store} from "@front-ecom/features/store";
+import EremiaMenu from "@front-ecom/components/header/menu/EremiaMenu";
+import OptionTheme from "@front-ecom/components/option-theme/OptionTheme";
+import RightScrollTop from "@front-ecom/components/option-theme/RightScrollTop";
+import {checkMobile, parallaxIt} from "@front-ecom/hooks/helper";
+import LoadingPage from "@front-ecom/layout/LoadingPage";
+import {tdEnd} from "@front-ecom/hooks/transition/transitionDefalut";
+import CustomCursor from "@front-ecom/layout/CustomCursor";
 import Script from "next/script";
 
 
@@ -142,13 +141,13 @@ export default function RootLayout({children, session, ...pageProps}: any) {
                     {children}
                     <OptionTheme lineTheme={[creativeLine, setCreativeLine]} pageColor={[colorPage, setColorPage]}/>
                     <RightScrollTop options={{duration: 1.5, ease: "power4.inOut"}}/>
-                    <CustomCursor
+                    {/* <CustomCursor
                         duration={0.5}
                         durationChangeSize={0.3}
                         size={30}
                         scale={75}
                         ease="power2.out"
-                    />
+                    /> */}
                 </SessionProvider>
             </div>
             <Script src="/js/splitting.min.js" strategy="beforeInteractive"/>

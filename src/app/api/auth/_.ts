@@ -4,11 +4,12 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "../../../../db/prisma/connection"
 
-export const options: NextAuthOptions = {
-    adapter: PrismaAdapter(prisma),
+export const OPTIONS: NextAuthOptions = {
+    // adapter: PrismaAdapter(prisma),
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
-        signIn: '/login'
+        // signIn: '/login',
+        // newUser: "/"
     },
     // adapter: Adapter(prisma)"",
     providers: [
@@ -27,12 +28,14 @@ export const options: NextAuthOptions = {
                 },
             },
             async authorize(credentials): Promise<any> {
-                console.log("AUTHORISING")
+                console.log("AUTHORISING....")
                 const user = {id: 42, username: "John", password: "next-auth"}
-
+                
                 if(credentials?.username === user.username && credentials.password === user.password) {
+                    console.log("AUTHORISED", true)
                     return true
                 } else {
+                    console.log("AUTHORISED: ERR:", null)
                     return null
                 }
             }
@@ -40,7 +43,7 @@ export const options: NextAuthOptions = {
     ]
 }
 
-const Handler = NextAuth(options)
+const Handler = NextAuth(OPTIONS)
 
-export default Handler
+export default {GET: Handler, POST: Handler}
 // export { handler as GET, handler as POST }

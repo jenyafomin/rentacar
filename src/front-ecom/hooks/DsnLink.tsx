@@ -43,6 +43,7 @@ function DsnLink({children, className, href, transitionPage = true, ...restProps
             [domTransition.current, domTransition.tl] = tdStart(transitionPage);
             domTransition.tl.call(() => {
                 // router.push(href);
+                console.log("HREF", href);
                 router.forward(href);
                 domTransition.tl.kill();
                 domTransition.tl = null;

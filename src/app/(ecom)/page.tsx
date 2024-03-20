@@ -1,25 +1,25 @@
 import React from "react";
-import Layout from "../../front/layout/Layout";
-import SliderPortfolio from "../../front/components/slider-portfolio/SliderPortfolio";
-import HeroSection from "../../front/components/hero-section/HeroSection";
-import TitleSection from "../../front/components/heading/TitleSection";
-import ServiceOne from "../../front/components/services/grid/ServiceOne";
-import ParallaxImage from "../../front/components/Image/ParallaxImage";
-import MoveBox from "../../front/components/move-box/MoveBox";
-import Button from "../../front/components/button/Button";
-import PortfolioSwiper from "../../front/components/portfolio/PortfolioSwiper";
-import SwiperPagination from "../../front/components/swiper-pagination/SwiperPagination";
-import Testimonial from "../../front/components/testimonial/Testimonial";
-import Accordion, {AccordionItem} from "../../front/components/accordion/Accordion";
-import DsnGrid from "../../front/layout/DsnGrid";
-import TitleCover from "../../front/components/heading/TitleCover";
-import BlogSwiper from "../../front/components/bolg/BlogSwiper";
-import Team from "../../front/components/Team/Team";
-import BrandClient from "../../front/components/brand-client/BrandClient";
+import Layout from "@front-ecom/layout/Layout";
+import SliderPortfolio from "@front-ecom/components/slider-portfolio/SliderPortfolio";
+import HeroSection from "@front-ecom/components/hero-section/HeroSection";
+import TitleSection from "@front-ecom/components/heading/TitleSection";
+import ServiceOne from "@front-ecom/components/services/grid/ServiceOne";
+import ParallaxImage from "@front-ecom/components/Image/ParallaxImage";
+import MoveBox from "@front-ecom/components/move-box/MoveBox";
+import Button from "@front-ecom/components/button/Button";
+import PortfolioSwiper from "@front-ecom/components/portfolio/PortfolioSwiper";
+import SwiperPagination from "@front-ecom/components/swiper-pagination/SwiperPagination";
+import Testimonial from "@front-ecom/components/testimonial/Testimonial";
+import Accordion, {AccordionItem} from "@front-ecom/components/accordion/Accordion";
+import DsnGrid from "@front-ecom/layout/DsnGrid";
+import TitleCover from "@front-ecom/components/heading/TitleCover";
+import BlogSwiper from "@front-ecom/components/bolg/BlogSwiper";
+import Team from "@front-ecom/components/Team/Team";
+import BrandClient from "@front-ecom/components/brand-client/BrandClient";
 
-import NextPage from "../../front/components/next/NextPage";
-import Footer from "../../front/components/footer/Footer";
-import ModalContact from "../../front/components/model-right/ModalContact";
+import NextPage from "@front-ecom/components/next/NextPage";
+import Footer from "@front-ecom/components/footer/Footer";
+import ModalContact from "@front-ecom/components/model-right/ModalContact";
 import Head from "next/head";
 
 
