@@ -21,21 +21,12 @@ interface TestimonialProps extends SwiperOptions {
     parallaxContent?: Object | ParallaxOption,
     styleBox?: styleBox,
     backgroundColor?: backgroundColor,
-    skin?: [] | ["testimonials-half" | "testimonials-personal" | "box-line" | "box-half"]
+    skin?: [] | ["testimonials-half" | "testimonials-personal" | "box-line" | "box-half"],
+    speed?: any,
+    loopedSlides?: any,
+    loop?: any,
 }
 
-Testimonial.defaultProps = {
-    desktop: {
-        slidesPerView: 3
-    },
-    tablet: {
-        slidesPerView: 2
-
-    },
-    mobile: {
-        slidesPerView: 2
-    }
-}
 export default function Testimonial({
                          className,
                          title,
@@ -51,7 +42,7 @@ export default function Testimonial({
                          parallaxImage,
                          parallaxContent,
                          speed,
-                         skin ,
+                         skin = [],
                          loopedSlides,
                          backgroundColor,
                          styleBox,
@@ -64,7 +55,7 @@ export default function Testimonial({
 
 
     const TestimonialDetails = getTestimonialData();
-    const testimonials = useRef(null);
+    const testimonials = useRef<any>(null);
     const isLine = styleBox === "line";
     const isCorner = styleBox === "corner";
 

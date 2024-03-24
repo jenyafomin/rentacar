@@ -27,13 +27,19 @@ export interface PortfolioSwiperProps extends SwiperOptions {
 
 }
 
-
-function PortfolioSwiper(
+export default function PortfolioSwiper(
     {
-        desktop,
-        mobile,
+        desktop={
+            slidesPerView: 3
+        },
+        mobile={
+            slidesPerView: 2
+        },
         stylePortfolio,
-        tablet,
+        tablet={
+            slidesPerView: 2
+    
+        },
         className,
         parallaxImage,
         styleBox ,
@@ -78,18 +84,3 @@ function PortfolioSwiper(
 
     );
 }
-
-PortfolioSwiper.defaultProps = {
-    desktop: {
-        slidesPerView: 3
-    },
-    tablet: {
-        slidesPerView: 2
-
-    },
-    mobile: {
-        slidesPerView: 2
-    }
-}
-
-export default PortfolioSwiper

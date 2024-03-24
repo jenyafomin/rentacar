@@ -1,11 +1,8 @@
-'use client'
 import OpenDialogOnElementClick from '@/front/components/dialogs/OpenDialogOnElementClick'
 import EditUserInfoModal from '@/front/views/dialogs/edit-user-info/EditUserInfoModal'
 import CreateAppModal from '@/front/views/dialogs/create-app'
-import CardMobile from '@front/components/cards/CardMobile'
+// import CardMobile from '@front/components/cards/CardMobile'
 import { Button, Hr } from './htmlStyle'
-
-// Third-party Imports
 
 export default function Page() {
   // const Button = <button> Click Me</button>

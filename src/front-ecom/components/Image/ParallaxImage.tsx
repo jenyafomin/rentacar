@@ -22,17 +22,16 @@ export interface ParallaxImageProps extends ImageProps {
     parallaxFrom?: Object
 }
 
-
-function ParallaxImage(
+export default function ParallaxImage(
     {
-        speed,
-        parallax,
-        overlay,
-        height,
-        heightTable,
-        heightMobile,
-        triggerHook,
-        animationActive,
+        speed=30,
+        parallax={},
+        overlay=0,
+        height="100vh",
+        heightTable="80vh",
+        heightMobile="50vh",
+        triggerHook="bottom",
+        animationActive=true,
         caption,
         className,
         asBackground,
@@ -104,18 +103,3 @@ function ParallaxImage(
         </div>
     );
 }
-
-
-ParallaxImage.defaultProps = {
-    height: "100vh",
-    heightTable: "80vh",
-    heightMobile: "50vh",
-    overlay: 0,
-    triggerHook: "bottom",
-    animationActive: true,
-    speed: 30,
-    parallax: {}
-}
-
-
-export default ParallaxImage;

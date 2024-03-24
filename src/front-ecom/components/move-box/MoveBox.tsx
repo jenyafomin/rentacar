@@ -11,7 +11,7 @@ interface MoveBoxProps extends MoveTriggerProps {
 }
 
 
-function MoveBox({bgColor, free, className, children, ...restProps}: MoveBoxProps) {
+export default function MoveBox({bgColor="section", free=true, className, children, ...restProps}: MoveBoxProps) {
     const refEl = useRef<HTMLDivElement>(null);
 
 
@@ -22,7 +22,18 @@ function MoveBox({bgColor, free, className, children, ...restProps}: MoveBoxProp
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <MoveTrigger {...restProps}>
+        <MoveTrigger  
+        from={ {y: 100}}
+        to={{y: -100}}
+        ease={ "none"}
+        start={ "100%"}
+        end={ "0%"}
+        scrub={true}
+        markers={ false}
+        stagger={ null}
+        tablet={ false}
+        mobile={ false}
+        {...restProps}>
             {
                 (ref) =>
                     <div className={dsnCN('dsn-move-section', !free && 'p-relative', className)} ref={ref} >
@@ -37,20 +48,3 @@ function MoveBox({bgColor, free, className, children, ...restProps}: MoveBoxProp
 
     );
 }
-
-MoveBox.defaultProps = {
-    bgColor: 'section',
-    free: true,
-    from: {y: 100},
-    to: {y: -100},
-    ease: "none",
-    start: "100%",
-    end: "0%",
-    scrub: true,
-    markers: false,
-    stagger: null,
-    tablet: false,
-    mobile: false
-}
-
-export default MoveBox;

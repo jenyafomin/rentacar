@@ -8,12 +8,15 @@ import ThemeProvider from '@/front/theme'
 
 // Util Imports
 import { getDemoName, getMode, getSettingsFromCookie, getSystemMode } from '@/front/@core/utils/serverHelpers'
+import { NextAuthProvider } from '../context/nextAuthProvider'
+// import { SessionProvider, useSession } from 'next-auth/react'
 
 type Props = ChildrenType & {
-  direction: Direction
+  direction: Direction,
+  session?: any
 }
 
-const Providers = (props: Props) => {
+const Providers = ({session, ...props}: Props) => {
   // Props
   const { children, direction } = props
 
@@ -23,14 +26,17 @@ const Providers = (props: Props) => {
   const demoName = getDemoName()
   const systemMode = getSystemMode()
 
+
   return (
-    <VerticalNavProvider>
-      <SettingsProvider settingsCookie={settingsCookie} mode={mode} demoName={demoName}>
-        <ThemeProvider direction={direction} systemMode={systemMode}>
-          {children}
-        </ThemeProvider>
-      </SettingsProvider>
-    </VerticalNavProvider>
+    <NextAuthProvider session={session}>
+      <VerticalNavProvider>
+        <SettingsProvider settingsCookie={settingsCookie} mode={mode} demoName={demoName}>
+          <ThemeProvider direction={direction} systemMode={systemMode}>
+            {children}
+          </ThemeProvider>
+        </SettingsProvider>
+      </VerticalNavProvider>
+    </NextAuthProvider>
   )
 }
 

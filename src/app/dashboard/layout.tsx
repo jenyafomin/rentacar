@@ -9,6 +9,8 @@ import '@front/styles/global.css'
 
 // Generated Icon CSS Imports
 import '@front/assets/iconify-icons/generated-icons.css'
+import { SessionProvider } from 'next-auth/react'
+import { Session } from 'inspector'
 
 export const metadata = {
   title: 'Vuexy - MUI Next.js Admin Dashboard Template',
@@ -16,13 +18,15 @@ export const metadata = {
     'Vuexy - MUI Next.js Admin Dashboard Template - is the most developer friendly & highly customizable Admin Dashboard Template based on MUI v5.'
 }
 
-const RootLayout = ({ children }: ChildrenType) => {
+const RootLayout = ({ children, session }: ChildrenType & {session: any}) => {
   // Vars
   const direction = 'ltr'
 
   return (
     <html id='__next' lang='en' dir={direction}>
-      <body className='flex is-full min-bs-full flex-auto flex-col'>{children}</body>
+      <body className='flex is-full min-bs-full flex-auto flex-col'>
+          {children}
+      </body>
     </html>
   )
 }

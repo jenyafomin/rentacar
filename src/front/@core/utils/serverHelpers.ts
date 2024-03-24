@@ -8,8 +8,8 @@ import themeConfig from '@/data/configs/themeConfig'
 
 import demoConfigs from '@/data/configs/demoConfigs'
 
-import type { Settings } from '@/front/@core/contexts/settingsContext'
-import type { DemoName, SystemMode } from '@/front/@core/types'
+import type { Settings } from '@core/contexts/settingsContext'
+import type { DemoName, SystemMode } from '@core/types'
 
 // Config Imports
 
