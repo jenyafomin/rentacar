@@ -29,7 +29,7 @@ import Logo from '@/front/components/Logo'
 import CustomTextField from '@/front/@core/components/mui/TextField'
 
 // Config Imports
-import themeConfig from '@/data/configs/themeConfig'
+import themeConfig from '@/configs/(dashboard)/themeConfig'
 
 // Hook Imports
 import { useImageVariant } from '@/front/@core/hooks/useImageVariant'

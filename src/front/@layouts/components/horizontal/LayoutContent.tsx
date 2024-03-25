@@ -7,7 +7,7 @@ import classnames from 'classnames'
 import type { ChildrenType } from '@/front/@core/types'
 
 // Config Imports
-import themeConfig from '@/data/configs/themeConfig'
+import themeConfig from '@/configs/(dashboard)/themeConfig'
 
 // Hook Imports
 import { useSettings } from '@/front/@core/hooks/useSettings'

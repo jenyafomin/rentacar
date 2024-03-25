@@ -21,7 +21,7 @@ import { useMedia } from 'react-use'
 import stylisRTLPlugin from 'stylis-plugin-rtl'
 
 // Type Imports
-import themeConfig from '@/data/configs/themeConfig'
+import themeConfig from '@/configs/(dashboard)/themeConfig'
 
 import type { ChildrenType, Direction, SystemMode } from '@/front/@core/types'
 

@@ -22,6 +22,8 @@ import StyledVerticalNavExpandIcon from '@/front/@menu/styles/vertical/StyledVer
 // Style Imports
 import menuItemStyles from '@/front/@core/styles/vertical/menuItemStyles'
 import menuSectionStyles from '@/front/@core/styles/vertical/menuSectionStyles'
+import { usePathname } from 'next/navigation'
+import { getLocaleFromPath } from '@/utils/getLocale'
 
 type RenderExpandIconProps = {
   open?: boolean
@@ -40,6 +42,9 @@ const RenderExpandIcon = ({ open, transitionDuration }: RenderExpandIconProps) =
 
 const VerticalMenu = ({ scrollMenu }: Props) => {
   // Hooks
+  const path = usePathname();
+  const locale = getLocaleFromPath(path);
+  
   const theme = useTheme()
   const verticalNavOptions = useVerticalNav()
   const { settings } = useSettings()
@@ -73,10 +78,10 @@ const VerticalMenu = ({ scrollMenu }: Props) => {
         renderExpandedMenuItemIcon={{ icon: <i className='tabler-circle text-xs' /> }}
         menuSectionStyles={menuSectionStyles(verticalNavOptions, theme)}
       >
-        <MenuItem href='/home' icon={<i className='tabler-smart-home' />}>
-          Home
+        <MenuItem href={`/${locale}/dashboard`} icon={<i className='tabler-smart-home' />}>
+          Dashboard
         </MenuItem>
-        <MenuItem href='/about' icon={<i className='tabler-info-circle' />}>
+        <MenuItem href={`${locale}/about`} icon={<i className='tabler-info-circle' />}>
           About
         </MenuItem>
       </Menu>

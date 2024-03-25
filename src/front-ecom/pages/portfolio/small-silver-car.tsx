@@ -5,7 +5,7 @@ import ButtonProject from "../../components/button/ButtonProject";
 import ParallaxImage from "../../components/Image/ParallaxImage";
 import DsnGrid from "../../layout/DsnGrid";
 import Layout from "../../layout/Layout";
-import {getPortfolioItem} from "../../../data/(ecom)/portfolio";
+import {getPortfolioItem} from "../../../configs/(ecom)/portfolio";
 import HeaderFull from "../../components/header/HeaderFull";
 import NextProject from "../../components/next/NextProject";
 

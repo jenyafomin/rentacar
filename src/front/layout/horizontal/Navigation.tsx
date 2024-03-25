@@ -8,7 +8,7 @@ import classnames from 'classnames'
 import HorizontalMenu from './HorizontalMenu'
 
 // Config Imports
-import themeConfig from '@/data/configs/themeConfig'
+import themeConfig from '@/configs/(dashboard)/themeConfig'
 
 // Hook Imports
 import { useSettings } from '@/front/@core/hooks/useSettings'

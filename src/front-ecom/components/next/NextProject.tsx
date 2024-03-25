@@ -3,7 +3,7 @@ import  {useEffect, useRef} from 'react';
 import {useSelector, dsnMediaMatching} from '../../hooks/dsnHooks';
 import {gsap} from 'gsap';
 
-import {getPortfolioLink} from "../../../data/(ecom)/portfolio";
+import {getPortfolioLink} from "../../../configs/(ecom)/portfolio";
 
 
 //--> Component

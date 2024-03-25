@@ -26,7 +26,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 // Type Imports
 import type { Settings } from '@/front/@core/contexts/settingsContext'
 import type { Direction } from '@/front/@core/types'
-import type { PrimaryColorConfig } from '@/data/configs/primaryColorConfig'
+import type { PrimaryColorConfig } from '@/configs/(dashboard)/primaryColorConfig'
 
 // Icon Imports
 import SkinDefault from '@/front/@core/svg/SkinDefault'
@@ -40,7 +40,7 @@ import DirectionLtr from '@/front/@core/svg/DirectionLtr'
 import DirectionRtl from '@/front/@core/svg/DirectionRtl'
 
 // Config Imports
-import primaryColorConfig from '@/data/configs/primaryColorConfig'
+import primaryColorConfig from '@/configs/(dashboard)/primaryColorConfig'
 
 // Hook Imports
 import { useSettings } from '@/front/@core/hooks/useSettings'

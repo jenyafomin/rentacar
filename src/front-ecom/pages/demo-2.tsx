@@ -15,7 +15,7 @@ import Team from "../components/Team/Team";
 import NextPage from "../components/next/NextPage";
 import Footer from "../components/footer/Footer";
 import ModalContact from "../components/model-right/ModalContact";
-import {getTeamData} from "../../data/(ecom)/team";
+import {getTeamData} from "../../configs/(ecom)/team";
 import Head from "next/head";
 
 

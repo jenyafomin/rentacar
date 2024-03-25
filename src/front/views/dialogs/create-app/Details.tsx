@@ -13,7 +13,7 @@ import CustomTextField from '@core/components/mui/TextField'
 import DirectionalIcon from '@front/components/DirectionalIcon'
 
 // Config Imports
-import themeConfig from '@/data/configs/themeConfig'
+import themeConfig from '@/configs/(dashboard)/themeConfig'
 
 type Props = {
   activeStep: number

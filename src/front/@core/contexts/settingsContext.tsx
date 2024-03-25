@@ -7,9 +7,9 @@ import { createContext, useMemo, useState } from 'react'
 // Type Imports
 
 // Config Imports
-import themeConfig from '@/data/configs/themeConfig'
-import demoConfigs from '@/data/configs/demoConfigs'
-import primaryColorConfig from '@/data/configs/primaryColorConfig'
+import themeConfig from '@/configs/(dashboard)/themeConfig'
+import demoConfigs from '@/configs/(dashboard)/demoConfigs'
+import primaryColorConfig from '@/configs/(dashboard)/primaryColorConfig'
 
 import type { Mode, Skin, Layout, LayoutComponentWidth, DemoName } from '@/front/@core/types'
 

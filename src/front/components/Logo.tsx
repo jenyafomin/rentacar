@@ -17,7 +17,7 @@ import type { VerticalNavContextProps } from '@/front/@menu/contexts/verticalNav
 import VuexyLogo from '@/front/@core/svg/Logo'
 
 // Config Imports
-import themeConfig from '@/data/configs/themeConfig'
+import themeConfig from '@/configs/(dashboard)/themeConfig'
 
 // Hook Imports
 import useVerticalNav from '@/front/@menu/hooks/useVerticalNav'

@@ -2,7 +2,7 @@
 import React, {useEffect, useRef} from 'react'
 
 
-import {getPortfolioLink} from "../../../data/(ecom)/portfolio";
+import {getPortfolioLink} from "../../../configs/(ecom)/portfolio";
 import {dsnCN} from "../../hooks/helper";
 import BgImage from "../Image/BgImage";
 import MetaPost from "../meta/MetaPost";

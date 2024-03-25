@@ -4,9 +4,9 @@ import 'server-only'
 import { cookies, headers } from 'next/headers'
 
 // Type Imports
-import themeConfig from '@/data/configs/themeConfig'
+import themeConfig from '@/configs/(dashboard)/themeConfig'
 
-import demoConfigs from '@/data/configs/demoConfigs'
+import demoConfigs from '@/configs/(dashboard)/demoConfigs'
 
 import type { Settings } from '@core/contexts/settingsContext'
 import type { DemoName, SystemMode } from '@core/types'

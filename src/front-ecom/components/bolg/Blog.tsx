@@ -1,5 +1,5 @@
 import BlogItem from './BlogItem';
-import {getBlogData} from "../../../data/(ecom)/blog";
+import {getBlogData} from "../../../configs/(ecom)/blog";
 import {dsnCN} from "../../hooks/helper";
 import {MetaData} from "../../hooks/EremiaType";
 import DsnGrid, {DsnGridProps} from "../../layout/DsnGrid";
