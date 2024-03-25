@@ -90,7 +90,7 @@ export function middleware(request: NextRequest) {
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
     console.log("pathname", pathname);
-    if(!pathname.startsWith("/dashboard"))
+    // if(!pathname.startsWith("/dashboard"))
       return NextResponse.redirect(
         new URL(
           `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,

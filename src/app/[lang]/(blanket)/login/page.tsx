@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { useSession, signIn } from "next-auth/react"
 import { getServerSession } from "next-auth/next"
-import { OPTIONS } from '../api/auth/[...nextauth]/route'
+import { OPTIONS } from '../../../api/auth/[...nextauth]/route'
 
 export default function Login() {
     // const [usernam, setUsername] = useState("");

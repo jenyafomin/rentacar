@@ -90,6 +90,7 @@ export default function SliderPortfolio({
         contentRef.current.forEach((item) => {
             const title = item.querySelector('.title');
             if (title)
+                console.log("title",title);
                 dsnSplitting.Char(title);
         });
 
