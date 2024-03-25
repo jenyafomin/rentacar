@@ -11,12 +11,9 @@ import type { NextRequestWithAuth } from 'next-auth/middleware'
 // Config Imports
 import { i18n } from '../i18n-config'
 
-// Util Imports
-// import { getLocalizedUrl, isUrlMissingLocale } from '@/utils/i18n'
-// import { ensurePrefix, withoutSuffix } from '@/utils/string'
 
 // Constants
-const HOME_PAGE_URL = '/dashboards/crm'
+const HOME_PAGE_URL = '/dashboards'
 
 const getLocale = (request: NextRequest): string | undefined => {
   // Try to get locale from URL
@@ -34,34 +31,11 @@ const getLocale = (request: NextRequest): string | undefined => {
 
   // Use negotiator and intl-localematcher to get best locale
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales)
-
+  console.log(languages);
   const locale = matchLocale(languages, locales, i18n.defaultLocale)
 
   return locale
 }
-
-/*
-const localizedRedirect = (url: string, locale: string | undefined, request: NextRequestWithAuth) => {
-  let _url = url
-
-  const isLocaleMissing = isUrlMissingLocale(_url)
-
-  if (isLocaleMissing) {
-    // e.g. incoming request is /products
-    // The new URL is now /en/products
-    _url = getLocalizedUrl(_url, locale ?? i18n.defaultLocale)
-  }
-
-  let _basePath = process.env.BASEPATH ?? ''
-
-  _basePath = _basePath.replace('demo-1', request.headers.get('X-server-header') ?? 'demo-1')
-
-  _url = ensurePrefix(_url, `${_basePath ?? ''}`)
-
-  const redirectUrl = new URL(_url, request.url).toString()
-
-  return NextResponse.redirect(redirectUrl)
-}*/
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -89,17 +63,45 @@ export function middleware(request: NextRequest) {
 
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
-    console.log("pathname", pathname);
     // if(!pathname.startsWith("/dashboard"))
-      return NextResponse.redirect(
-        new URL(
-          `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
-          request.url,
-        ),
-      );
+    const url = `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`
+    const response = NextResponse.redirect(
+      new URL(
+        url,
+        request.url,
+      ),
+    );
+    response.headers.set("x-pathname", url);
+
+    return response
   }
+  const response = NextResponse.next()
+  response.headers.set("x-pathname", pathname);
+  return response
 }
 
+/*
+const localizedRedirect = (url: string, locale: string | undefined, request: NextRequestWithAuth) => {
+  let _url = url
+
+  const isLocaleMissing = isUrlMissingLocale(_url)
+
+  if (isLocaleMissing) {
+    // e.g. incoming request is /products
+    // The new URL is now /en/products
+    _url = getLocalizedUrl(_url, locale ?? i18n.defaultLocale)
+  }
+
+  let _basePath = process.env.BASEPATH ?? ''
+
+  _basePath = _basePath.replace('demo-1', request.headers.get('X-server-header') ?? 'demo-1')
+
+  _url = ensurePrefix(_url, `${_basePath ?? ''}`)
+
+  const redirectUrl = new URL(_url, request.url).toString()
+
+  return NextResponse.redirect(redirectUrl)
+}*/
 
 /* withAuth
 export default withAuth(

@@ -1,6 +1,8 @@
+import { NextAuthProvider } from "@/front/context/nextAuthProvider"
 import DictionaryProvider from "@/localization/dictionaryProvider"
 import { getDictionary } from "@/localization/getDictionary"
 import { Locale } from "i18n-config"
+import { SessionProvider } from "next-auth/react"
 
 export const metadata = {
   title: 'GA Dashboard',
@@ -8,9 +10,10 @@ export const metadata = {
     'Admin Dashboard for proffesional usage'
 }
 
-const RootLayout = async ({ children, params }: {
+const RootLayout = async ({ children, params, session }: {
     children: React.ReactNode
-    params: { lang: Locale }
+    params: { lang: Locale },
+    session: any
   }) => {
   // Vars
   const direction = 'ltr'
@@ -20,7 +23,9 @@ const RootLayout = async ({ children, params }: {
     <html id='__next' lang='en' dir={direction}>
       <body className='flex is-full min-bs-full flex-auto flex-col'>
         <DictionaryProvider dictionary={dictionary}>
-          {children}
+            <NextAuthProvider session={session}>
+                {children}
+            </NextAuthProvider>
         </DictionaryProvider>
       </body>
     </html>

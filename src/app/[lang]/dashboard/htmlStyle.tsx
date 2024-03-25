@@ -1,4 +1,6 @@
 "use client"
+import { getLocaleFromPath } from '@/localization/getLocale'
+import { useLocale } from '@/localization/useLocale'
 import styled from '@emotion/styled'
 
 export const ButtonStyle = styled.button<any>`
@@ -22,3 +24,18 @@ export const Hr = styled.hr<any>`
   ${({ marginBottom = '16px' }) => `margin-bottom:${marginBottom};`}
   ${({ marginTop = '16px' }) => `margin-top:${marginTop};`}
 `
+
+export function ButtonFetch() {
+  const locale = useLocale()
+
+  async function handleClick() {
+    const result = await fetch(`/api/cars`, {method: "GET", headers: {
+      'x-locale': locale
+    }})
+    const res = await result.json();
+
+    console.log("result: ", res);
+  }
+
+  return <Button onClick={handleClick} text={`${"Make Request".toUpperCase()}`}/>
+}

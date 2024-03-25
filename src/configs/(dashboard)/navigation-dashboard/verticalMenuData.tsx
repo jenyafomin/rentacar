@@ -4,13 +4,18 @@ import type { VerticalMenuDataType } from '@/front/types/menuTypes'
 const verticalMenuData = (): VerticalMenuDataType[] => [
   {
     label: 'Home',
-    href: '/home',
+    href: '/dashboard',
     icon: 'tabler-smart-home'
   },
   {
-    label: 'About',
-    href: '/about',
-    icon: 'tabler-info-circle'
+    label: 'Cars',
+    href: '/dashboard/cars',
+    icon: "tabler-car"
+  },
+  {
+    label: 'Excel Cars',
+    href: '/dashboard/excel-cars',
+    icon: "tabler-truck"
   }
 ]
 

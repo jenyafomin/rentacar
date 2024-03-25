@@ -2,7 +2,7 @@ import OpenDialogOnElementClick from '@/front/components/dialogs/OpenDialogOnEle
 import EditUserInfoModal from '@/front/views/dialogs/edit-user-info/EditUserInfoModal'
 import CreateAppModal from '@/front/views/dialogs/create-app'
 // import CardMobile from '@front/components/cards/CardMobile'
-import { Button, Hr } from './htmlStyle'
+import { Button, ButtonFetch, Hr } from './htmlStyle'
 
 export default function Page() {
   // const Button = <button> Click Me</button>
@@ -15,6 +15,7 @@ export default function Page() {
       <Hr />
       <OpenDialogOnElementClick element={Button} elementProps={{ text: 'WIZZARD MODAL' }} dialog={CreateAppModal} />
       <Hr />
+      <ButtonFetch/>
       {/* <CardMobile /> */}
     </>
   )
