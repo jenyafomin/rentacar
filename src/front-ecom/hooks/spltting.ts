@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 // ERROR:
 //  ⨯ node_modules/splitting/dist/splitting.js (7:11) @ document
 //  ⨯ ReferenceError: document is not defined
-const Splitting: any = dynamic(() => require('splitting'))
+// const Splitting: any = dynamic(() => require('splitting'))
 // const Splitting: any = dynamic(() => require('splitting'), {ssr: false})
 
 

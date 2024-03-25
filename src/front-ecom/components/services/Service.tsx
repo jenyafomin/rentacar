@@ -5,6 +5,7 @@ import ServiceItem, {dataServiceProps} from "./ServiceItem";
 import DsnGrid, {DsnGridProps} from "../../layout/DsnGrid";
 import {backgroundColor, styleBox} from "../../hooks/EremiaType";
 import {SwiperSlide} from "swiper/react";
+// import Isotope from "isotope-layout";
 import {ParallaxOption} from "../../../../types/DsnSwiper";
 
 

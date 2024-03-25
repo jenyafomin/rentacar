@@ -357,6 +357,8 @@ function DsnWebgelDirction(props: DsnWebgelDirctionParams) {
                         image(item.src, x);
                 })
 
+                console.log("THIS",$this);
+
                 return $this.allImgs;
             })
             .then(() => {
