@@ -3,6 +3,7 @@ import EditUserInfoModal from '@/front/views/dialogs/edit-user-info/EditUserInfo
 import CreateAppModal from '@/front/views/dialogs/create-app'
 // import CardMobile from '@front/components/cards/CardMobile'
 import { Button, ButtonFetch, Hr } from './htmlStyle'
+import CreateCarModal from '@/front/views/dialogs/create-app'
 
 export default function Page() {
   // const Button = <button> Click Me</button>
@@ -13,7 +14,7 @@ export default function Page() {
       <Hr marginTop={'0px'} />
       <OpenDialogOnElementClick element={Button} elementProps={{ text: 'USER MODAL' }} dialog={EditUserInfoModal} />
       <Hr />
-      <OpenDialogOnElementClick element={Button} elementProps={{ text: 'WIZZARD MODAL' }} dialog={CreateAppModal} />
+      <OpenDialogOnElementClick element={Button} elementProps={{ text: 'WIZZARD MODAL' }} dialog={CreateCarModal} />
       <Hr />
       <ButtonFetch/>
       {/* <CardMobile /> */}
