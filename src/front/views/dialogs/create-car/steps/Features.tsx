@@ -6,65 +6,46 @@ import type { ChangeEvent } from "react";
 import CustomTextField from "@core/components/mui/TextField";
 
 // Config Imports
-import themeConfig from "@/configs/(dashboard)/themeConfig";
-import PrevNextSubmitBtns from "../../../components/dialogs/prevNextSubmitBtns";
+import PrevNextSubmitBtns from "@/front/components/dialogs/wizzard/prevNextSubmitBtns";
 import { Checkbox, Chip, Grid } from "@mui/material";
 import CustomAutocomplete from "@/front/@core/components/mui/Autocomplete";
-import { StepComponentProps } from "@/front/components/dialogs/renderStep";
+import { StepComponentProps } from "@/front/components/dialogs/wizzard/renderStep";
+import { ICar } from "types/Car";
+import { ECarFeatures, ECarFuelType, ECarTransmission } from "types/enum/ECar";
 
-const colors = ["Black", "White", "Green", "Blue", "Red", "Yellow"];
-const carTypes = [
-  "Sedan",
-  "Coupe",
-  "SUV",
-  "Convertable",
-  "Minivan",
-  "Hatchback",
-];
-const categories = [
-  "econom",
-  "business",
-  "luxury",
-  "premium",
-  "sport",
-  "family",
-];
-
-const features = [
-  "sunroof",
-  "panorama",
-  "luxury",
-  "premium",
-  "sport",
-  "family",
-];
-
-const CarInfo = ({
+export default function Features ({
   activeStep,
   isLastStep,
   handleNext,
   handlePrev,
-}: StepComponentProps) => {
+  state,
+  setState
+}: StepComponentProps<ICar>) {
   // States
-  const [value, setValue] = useState<string>("crm");
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, key: keyof ICar) => {
+    const newValue = event.target.value;
+    const newObj = {...state, [key]: newValue}
+    setState(newObj);
+  };
+
+  const handleChangeWithValue = (newValue: any, key: keyof ICar) => {
+    const newObj = {...state, [key]: newValue}
+    setState(newObj);
   };
 
   return (
     <div className="flex flex-col">
       <Grid container className="flex mb-8" spacing={4}>
+
         <Grid item xs={12} md={6} lg={4} className="">
           {/* <TextField fullWidth id='outlined-basic' label="Make" /> */}
           <CustomAutocomplete
             fullWidth
             freeSolo
             disableClearable
-            // value={["econom"]}
-            onChange={(e, allValues, _, option: any) => console.log(allValues)}
-            id="autocomplete-multiple-filled"
-            // defaultValue={[top100Films[13].title]}
+            value={state.amountOfDoors?.toString()}
+            onChange={(e, value: any) => handleChangeWithValue(value, "amountOfDoors")}
             options={["2", "3", "4", "5"]}
             renderInput={(params) => (
               <CustomTextField
@@ -77,15 +58,16 @@ const CarInfo = ({
             )}
           />
         </Grid>
+  
         <Grid item xs={12} md={6} lg={4}>
           <CustomAutocomplete
               fullWidth
               freeSolo
               disableClearable
-              // value={["econom"]}
-              onChange={(e, allValues, _, option: any) => console.log(allValues)}
-              id="autocomplete-multiple-filled"
-              // defaultValue={"5"}
+              
+              value={state.amountOfSeats?.toString()}
+              onChange={(e, value: any) => handleChangeWithValue(value, "amountOfSeats")}
+
               options={["2", "3", "4", "5", "6", "7"]}
               renderInput={(params) => (
                 <CustomTextField
@@ -98,13 +80,16 @@ const CarInfo = ({
               )}
             />
         </Grid>
+  
         <Grid item xs={12} md={6} lg={4}>
           <CustomAutocomplete
               fullWidth
               freeSolo
               disableClearable
-              // value={["econom"]}
-              onChange={(e, allValues, _, option: any) => console.log(allValues)}
+                
+              value={state.amountOfLaguage?.toString()}
+              onChange={(e, value: any) => handleChangeWithValue(value, "amountOfLaguage")}
+
               id="autocomplete-multiple-filled"
               // defaultValue={"5"}
               options={["1","2", "3", "4", "5", "6", "7"]}
@@ -119,38 +104,61 @@ const CarInfo = ({
               )}
             />
         </Grid>
+
         <Grid item xs={12} md={6} lg={4}>
-          <CustomTextField fullWidth label="Engine" placeholder={"2.4 v4"} />
+          <CustomTextField 
+            fullWidth 
+            label="Engine" 
+            placeholder={"2.0T v4"} 
+            value={state.engine || ""}
+            onChange={(e) => handleChange(e, "engine")}
+          />
         </Grid>
+
+        <Grid item xs={12} md={6} lg={4}>
+          <CustomTextField 
+            fullWidth 
+            label="Horse Power" 
+            placeholder={"234"} 
+            value={state.horsePower?.toString()}
+            onChange={(e) => handleChange(e, "horsePower")}
+          />
+        </Grid>
+
         <Grid item xs={12} md={6} lg={4}>
           <CustomAutocomplete
                 fullWidth
                 freeSolo
                 disableClearable
-                // value={["econom"]}
-                onChange={(e, allValues, _, option: any) => console.log(allValues)}
+                
+                value={state.transmission || ""}
+                onChange={(e, value: any) => handleChangeWithValue(value, "transmission")}
+
                 id="autocomplete-multiple-filled"
-                options={["Front","Rear", "4x4"]}
+                options={Object.values(ECarTransmission)}
                 renderInput={(params) => (
                   <CustomTextField
                     {...params}
                     // variant="filled"
                     variant="outlined"
-                    label="Transmision"
+                    label="Transmission"
                     placeholder="Front"
                   />
                 )}
               />
         </Grid>
+
         <Grid item xs={12} md={6} lg={4}>
               <CustomAutocomplete
                 fullWidth
                 freeSolo
                 disableClearable
-                // value={["econom"]}
-                onChange={(e, allValues, _, option: any) => console.log(allValues)}
+                
+                value={state.fuelType || ""}
+                onChange={(e, value: any) => handleChangeWithValue(value, "fuelType")}
+
                 id="autocomplete-multiple-filled"
-                options={["Petrol", "Gas", "Diesel", "Electro", "Hybrid"]}
+                options={Object.values(ECarFuelType)}
                 renderInput={(params) => (
                   <CustomTextField
                     {...params}
@@ -174,30 +182,35 @@ const CarInfo = ({
               />
         </Grid>
 
+        <Grid item xs={12} md={6} lg={4}>
+          <CustomTextField 
+            fullWidth 
+            label="Fuel Consumption" 
+            placeholder={"10.3"} 
+            helperText={"L/100km"} 
+            
+            value={state.fuelConsumption || ""}
+            onChange={(e) => handleChange(e, "fuelConsumption")}
+          />
+        </Grid>
+
         <Grid item xs={12}>
           <CustomAutocomplete
             fullWidth
             freeSolo
             multiple
             disableCloseOnSelect
-            // value={["econom"]}
-            onChange={(e, allValues, _, option: any) =>
-              console.log(
-                "Selected values",
-                allValues,
-                "\nSelected Option:",
-                option?.option
-              )
-            }
-            id="autocomplete-multiple-filled"
-            // defaultValue={[top100Films[13].title]}
-            options={features}
+            
+            value={state.features}
+            onChange={(e, values: any) => handleChangeWithValue(values, "features")}
+
+            options={Object.values(ECarFeatures)}
             renderInput={(params) => (
               <CustomTextField
                 {...params}
                 // variant="filled"
                 variant="outlined"
-                label="Categories"
+                label="Features"
                 placeholder="Favorites"
               />
             )}
@@ -231,5 +244,3 @@ const CarInfo = ({
     </div>
   );
 };
-
-export default CarInfo;

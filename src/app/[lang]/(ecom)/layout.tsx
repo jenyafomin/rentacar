@@ -141,13 +141,13 @@ export default function RootLayout({children, session, ...pageProps}: any) {
                     {children}
                     <OptionTheme lineTheme={[creativeLine, setCreativeLine]} pageColor={[colorPage, setColorPage]}/>
                     <RightScrollTop options={{duration: 1.5, ease: "power4.inOut"}}/>
-                    {/* <CustomCursor
+                    <CustomCursor
                         duration={0.5}
                         durationChangeSize={0.3}
                         size={30}
                         scale={75}
                         ease="power2.out"
-                    /> */}
+                    />
                 </SessionProvider>
             </div>
             <Script src="/js/splitting.min.js" strategy="beforeInteractive"/>

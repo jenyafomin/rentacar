@@ -1,14 +1,22 @@
 import { ComponentType } from "react";
+import PrevNextSubmitBtns from "./prevNextSubmitBtns";
 
-function NotFoundStep({index}: {index: number}): any {
-    return <div>404 Component not found by index: '{index}'</div>
+function NotFoundStep({activeStep, restProps}: {activeStep: number, restProps: any}): any {
+    return <div className="flex flex-col">
+      <div className="mb-4">404 Component not found by index: '{activeStep}'</div>
+      <PrevNextSubmitBtns activeStep={activeStep} {...restProps} />
+    </div>
 }
 
-export type StepComponentProps = {
+export type StepComponentProps<T, TT = {}> = {
     activeStep: number;
     isLastStep: boolean;
     handleNext: () => void;
     handlePrev: () => void;
+    state: T;
+    setState: (newValue: T) => any,
+    extraState: TT,
+    setExtraState: (newValue: TT) => any,
   };
 
 export const renderStepCount = (
@@ -18,7 +26,7 @@ export const renderStepCount = (
 ) => {
     let Tag: ComponentType<any>;
     if(activeStep > stepComponents.length -1) {
-        return <NotFoundStep index={activeStep} />
+        return <NotFoundStep activeStep={activeStep} restProps={restProps} />
     } else {
         Tag = stepComponents[activeStep]
     }

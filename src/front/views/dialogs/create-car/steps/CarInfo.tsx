@@ -1,48 +1,41 @@
 // React Imports
-import { useState } from "react";
 import type { ChangeEvent } from "react";
 
 // MUI Imports
 import CustomTextField from "@core/components/mui/TextField";
 
 // Config Imports
-import themeConfig from "@/configs/(dashboard)/themeConfig";
-import PrevNextSubmitBtns from "../../../components/dialogs/prevNextSubmitBtns";
+import PrevNextSubmitBtns from "@/front/components/dialogs/wizzard/prevNextSubmitBtns";
 import { Checkbox, Chip, Grid } from "@mui/material";
 import CustomAutocomplete from "@/front/@core/components/mui/Autocomplete";
-import { StepComponentProps } from "@/front/components/dialogs/renderStep";
+import { StepComponentProps } from "@/front/components/dialogs/wizzard/renderStep";
+import { ICar } from "types/Car";
+import { ECarCategories, ECarType } from "types/enum/ECar";
+import { EColors } from "types/enum/EGeneral";
 
-const colors = [
-  "Black", "White", "Green", "Blue", "Red", "Yellow"
-]
-const carTypes = [
-  "Sedan", "Coupe", "SUV", "Convertable", "Minivan", "Hatchback"
-]
-const categories = [
-  "econom",
-  "business",
-  "luxury",
-  "premium",
-  "sport",
-  "family",
-];
 
-const features = [
-  "sunroof",
-  "panorama",
-  "luxury",
-  "premium",
-  "sport",
-  "family",
-];
-
-const CarInfo = ({ activeStep, isLastStep, handleNext, handlePrev }: StepComponentProps) => {
+export default function CarInfo({
+  activeStep,
+  isLastStep,
+  handleNext,
+  handlePrev,
+  state,
+  setState,
+}: StepComponentProps<ICar>) {
   // States
-  const [value, setValue] = useState<string>("crm");
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, key: keyof ICar) => {
+    const newValue = event.target.value;
+    const newObj = {...state, [key]: newValue}
+    setState(newObj);
   };
+  
+  const handleChangeWithValue = (newValue: any, key: keyof ICar) => {
+    const newObj = {...state, [key]: newValue}
+    setState(newObj);
+  };
+
+  console.log("STATE", state);
 
   return (
     <div className="flex flex-col">
@@ -52,77 +45,85 @@ const CarInfo = ({ activeStep, isLastStep, handleNext, handlePrev }: StepCompone
           <CustomTextField
             fullWidth
             label="Make"
-            placeholder={`${themeConfig.templateName}`}
+            placeholder={`Mercedes`}
+            value={state.make}
+            onChange={(e) => handleChange(e, "make")}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <CustomTextField
             fullWidth
             label="Model"
-            placeholder={`${themeConfig.templateName}`}
+            placeholder={`C300`}
+            value={state.model}
+            onChange={(e) => handleChange(e, "model")}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <CustomTextField
             fullWidth
             label="Option"
-            placeholder={`${themeConfig.templateName}`}
+            placeholder={`AMG`}
+            value={state.option}
+            onChange={(e) => handleChange(e, "option")}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <CustomTextField
-            fullWidth
-            label="Year"
-            placeholder={"2022"}
+          <CustomTextField 
+            fullWidth 
+            label="Year" 
+            placeholder={"2022"} 
+            value={state.year}
+            onChange={(e) => handleChange(e, "year")}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-        <CustomAutocomplete
-            // className='is-[250px]'
+          <CustomAutocomplete
             freeSolo
             disableClearable
-            options={colors}
-            id='autocomplete-disableClearable'
-            getOptionLabel={option => option || ''}
-            renderInput={params => <CustomTextField {...params} label='Color' />}
+            options={Object.values(EColors)}
+            id="autocomplete-disableClearable"
+            getOptionLabel={(option) => option || ""}
+            renderInput={(params) => (
+              <CustomTextField {...params} label="Color" />
+            )}
+            value={state.color}
+            onChange={(_, value: any) => handleChangeWithValue(value, "color")}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
           <CustomAutocomplete
             // className='is-[250px]'
             disableClearable
-            options={carTypes}
-            id='autocomplete-disableClearable'
-            getOptionLabel={option => option || ''}
-            renderInput={params => <CustomTextField {...params} label='Type' />}
+            options={Object.values(ECarType)}
+            id="autocomplete-disableClearable"
+            getOptionLabel={(option) => option || ""}
+            renderInput={(params) => (
+              <CustomTextField {...params} label="Type" />
+            )}
+            value={state.type}
+            onChange={(_, value: any) => handleChangeWithValue(value, "type")}
           />
         </Grid>
 
         <Grid item xs={12}>
-
           <CustomAutocomplete
             fullWidth
             freeSolo
             multiple
-            // value={["econom"]}
-            onChange={(e, allValues, _, option: any) =>
-              console.log(
-                "Selected values",
-                allValues,
-                "\nSelected Option:",
-                option?.option
-              )
-            }
+            value={state.categories}
+            onChange={(_, value: any) => handleChangeWithValue(value, "categories")}
+
             id="autocomplete-multiple-filled"
             // defaultValue={[top100Films[13].title]}
-            options={categories}
+            options={Object.values(ECarCategories)}
             renderInput={(params) => (
               <CustomTextField
                 {...params}
                 // variant="filled"
                 variant="outlined"
                 label="Categories"
-                placeholder="Favorites"
+                placeholder="Coupe"
               />
             )}
             renderOption={(props, option, { selected }) => (
@@ -154,6 +155,4 @@ const CarInfo = ({ activeStep, isLastStep, handleNext, handlePrev }: StepCompone
       />
     </div>
   );
-};
-
-export default CarInfo;
+}

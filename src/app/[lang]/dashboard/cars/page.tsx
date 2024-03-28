@@ -3,7 +3,7 @@ import { getServerLocale } from "@/localization/getLocale";
 import CardCar from "@/front/components/cards/CardCar";
 import { ICar } from "types/Car";
 import OpenDialogOnElementClick from "@/front/components/dialogs/OpenDialogOnElementClick";
-import CreateCarModal from "@/front/views/dialogs/create-app";
+import CreateCarModal from "@/front/views/dialogs/create-car";
 import PrimaryButton from "@/front/components/buttons/primaryButton";
 
 export default async function AllCars() {

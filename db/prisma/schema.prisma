@@ -67,8 +67,9 @@ model User {
 
 model Car {
   id String @id @default(cuid())
-  mamaCarId String? @unique
-  nodeId String? @unique
+  carExcelId String?
+  carExcel CarExcel? @relation(fields: [carExcelId], references: [id])
+
   vin String?
   plateNumber String?
 
@@ -94,16 +95,23 @@ model Car {
 
 	priceDaily Int?
 	priceMonthly Int?
-
 	extraMiles Int?
 	extraMilesPrice Int?
+
+  transmission String? // front, rear, 4x4
 	engine String?
 	horsePower Int?
+  fuelType String? 
 	fuelConsumption Float?
+
+  images String[] @default([])
+  uploadedImages String[] @default([])
 }
 
 model CarExcel {
   id String @id
+  car Car[]
+
   mamaCarId String? @unique
   nodeId String? @unique
 

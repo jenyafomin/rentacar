@@ -2,10 +2,11 @@
 import { ICar } from "types/Car";
 import ActionButton from "../buttons/actionBtn";
 import Image from "next/image";
+import { Card } from "@mui/material";
 
 export default function CardCar({car}: {car: ICar}) {
   return (
-    <div className="flex align-center rounded shadow-xl overflow-hidden gap-8 transition-all hover:opacity-80">
+    <Card className="flex align-center rounded shadow-xl overflow-hidden gap-8 transition-all hover:opacity-80">
       
       {/* IMAGE */}
       <div
@@ -53,6 +54,6 @@ export default function CardCar({car}: {car: ICar}) {
           ]}
         />
       </div>
-    </div>
+    </Card>
   );
 }
