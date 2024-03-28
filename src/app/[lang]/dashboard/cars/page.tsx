@@ -5,6 +5,8 @@ import { ICar } from "types/Car";
 import OpenDialogOnElementClick from "@/front/components/dialogs/OpenDialogOnElementClick";
 import CreateCarModal from "@/front/views/dialogs/create-car";
 import PrimaryButton from "@/front/components/buttons/primaryButton";
+import { toast } from "react-toastify";
+import { ButtonToast } from "../htmlStyle";
 
 export default async function AllCars() {
   const locale = getServerLocale();
@@ -41,6 +43,7 @@ export default async function AllCars() {
             return <CardCar key={i} car={car} />;
         })}
       </div>
+      <ButtonToast/>
     </>
   );
 }

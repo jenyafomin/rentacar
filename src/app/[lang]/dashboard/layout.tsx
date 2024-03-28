@@ -5,6 +5,7 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 import type { ChildrenType } from '@core/types'
 
 // Style Imports
+import 'react-toastify/dist/ReactToastify.css';
 import '@front/styles/global.css'
 
 // Generated Icon CSS Imports
@@ -29,6 +30,7 @@ import ScrollToTop from '@/front/@core/components/scroll-to-top'
 
 // Util Imports
 import { getMode, getSystemMode } from '@/front/@core/utils/serverHelpers'
+import { ToastContainer } from 'react-toastify';
 
 export const metadata = {
   title: 'GA Dashboard',
@@ -43,6 +45,8 @@ export default function RootDashboardLayout({ children }: ChildrenType) {
   const systemMode = getSystemMode()
 
   return (
+    <>
+    
     <Providers direction={direction}>
       <LayoutWrapper
         systemMode={systemMode}
@@ -69,5 +73,7 @@ export default function RootDashboardLayout({ children }: ChildrenType) {
         </Button>
       </ScrollToTop>
     </Providers>
+    <ToastContainer/>
+    </>
   )
 }

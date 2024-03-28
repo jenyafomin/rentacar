@@ -12,6 +12,7 @@ import { renderStepCount } from "@/front/components/dialogs/wizzard/renderStep";
 import { defaultValues, forms, steps } from "./steps";
 import { ICar } from "types/Car";
 import { FileProp } from "@/front/types/file";
+import { toast } from "react-toastify";
 
 // Styled Component Imports
 // import StepperWrapper from '@core/styles/stepper'
@@ -55,6 +56,8 @@ export default function CreateCarWizzard({
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
       // TODO Operate
+      console.log("state", state);
+      console.log("extraState", extraState);
       handleClose();
     }
   };

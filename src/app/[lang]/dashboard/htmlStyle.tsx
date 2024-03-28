@@ -2,6 +2,7 @@
 import { getLocaleFromPath } from '@/localization/getLocale'
 import { useLocale } from '@/localization/useLocale'
 import styled from '@emotion/styled'
+import { toast } from 'react-toastify'
 
 export const ButtonStyle = styled.button<any>`
   background: linear-gradient(135deg, #bbb, #777);
@@ -38,4 +39,20 @@ export function ButtonFetch() {
   }
 
   return <Button onClick={handleClick} text={`${"Make Request".toUpperCase()}`}/>
+}
+
+export function ButtonToast() {
+  return <button onClick={() => {
+    console.log("CLICKED");
+    toast("EASY to use")
+    const resolveAfter3Sec = new Promise(resolve => setTimeout(resolve, 3000));
+    toast.promise(
+        resolveAfter3Sec,
+        {
+          pending: 'Promise is pending',
+          success: 'Promise resolved 👌',
+          error: 'Promise rejected 🤯'
+        }
+    )
+  }}>CLICK ME</button>
 }

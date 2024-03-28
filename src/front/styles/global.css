@@ -17,10 +17,14 @@
   --search-z-index: var(--mui-zIndex-tooltip);
   --drawer-z-index: var(--mui-zIndex-drawer);
   --backdrop-color: rgb(var(--mui-mainColorChannels-light) / 0.5);
+  --toastify-color-light: #ffffff;
+  --toastify-toast-min-height: 48px;
 }
 
 [data-mui-color-scheme='dark'] {
   --backdrop-color: rgb(23 25 37 / 0.6);
+  --toastify-color-light: #272b3f;
+  --toastify-text-color-light: #e7e7e7;
 }
 
 *,
