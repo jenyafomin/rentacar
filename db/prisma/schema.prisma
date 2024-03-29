@@ -76,7 +76,7 @@ model Car {
   make String
   model String
   option String?
-  year String
+  year Int
   color String
 
   type String 

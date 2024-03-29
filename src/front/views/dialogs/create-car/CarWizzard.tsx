@@ -13,6 +13,9 @@ import { defaultValues, forms, steps } from "./steps";
 import { ICar } from "types/Car";
 import { FileProp } from "@/front/types/file";
 import { toast } from "react-toastify";
+import { clientApiFetch } from "@/utils/fetchClient";
+import { useLocale } from "@/localization/useLocale";
+import { usePathname } from "next/navigation";
 
 // Styled Component Imports
 // import StepperWrapper from '@core/styles/stepper'
@@ -21,15 +24,19 @@ type CreateCarModalProps = {
   open: boolean;
   setOpen: (open: boolean) => void;
   initialValues?: Partial<ICar>;
-  onSave: (state: ICar, extraState: {images: Array<FileProp>, uploadedImages: Array<FileProp>}) => boolean;
+  onSave: (
+    state: ICar,
+    extraState: { images: Array<FileProp>; uploadedImages: Array<FileProp> }
+  ) => boolean;
 };
 
-export default function CreateCarWizzard({
+export default function CarWizzard({
   open,
   setOpen,
   initialValues = defaultValues,
 }: CreateCarModalProps) {
   // States
+  const locale = useLocale();
   const [activeStep, setActiveStep] = useState(0);
   const [state, setState] = useState(initialValues);
 
@@ -51,14 +58,29 @@ export default function CreateCarWizzard({
   // Vars
   const isLastStep = activeStep === steps.length - 1;
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (!isLastStep) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
       // TODO Operate
       console.log("state", state);
       console.log("extraState", extraState);
-      handleClose();
+
+      const formData = new FormData()
+      formData.append("file", extraState.images[0].file)
+
+      // const body = JSON.stringify({ car: state });
+      // const promise = clientApiFetch(locale, "api/admin/cars", { method: "POST", body }); // prettier-ignore
+      const promise = clientApiFetch(locale, "api/admin/cars", { method: "POST", body: formData }); // prettier-ignore
+
+      const result = await toast.promise(promise, {
+        pending: "Creating car for you",
+        success: "Car is Created",
+        error: "Something went wrong",
+      });
+
+      console.log(result);
+      // handleClose();
     }
   };
 

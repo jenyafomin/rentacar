@@ -3,20 +3,18 @@ import { getServerLocale } from "@/localization/getLocale";
 import CardCar from "@/front/components/cards/CardCar";
 import { ICar } from "types/Car";
 import OpenDialogOnElementClick from "@/front/components/dialogs/OpenDialogOnElementClick";
-import CreateCarModal from "@/front/views/dialogs/create-car";
+import CreateCarModal from "@/front/views/dialogs/create-car/CarWizzard";
 import PrimaryButton from "@/front/components/buttons/primaryButton";
 import { toast } from "react-toastify";
 import { ButtonToast } from "../htmlStyle";
+import { serverApiFetch } from "@/utils/fetchServer";
 
 export default async function AllCars() {
-  const locale = getServerLocale();
-  // const locale = useLocale()
-  const json = await fetch(`http://localhost:3000/api/cars`, {
-    headers: { "x-locale": locale },
+  const cars = await serverApiFetch("api/admin/cars", {
+    next: { tags: ["cars"] },
   });
-  const cars: Array<any> = await json.json();
+  // console.log("CARS:", cars);
 
-  //   console.log(json);
   return (
     <>
       <div className="mb-4 flex justify-between" style={{ fontSize: "18px" }}>
@@ -31,7 +29,7 @@ export default async function AllCars() {
               size: "small",
               color: "primary",
               startIcon: "plus",
-            //   startIcon: "new-section"
+              //   startIcon: "new-section"
             }}
             dialog={CreateCarModal}
           />
@@ -39,11 +37,10 @@ export default async function AllCars() {
       </div>
       {/* <br/> */}
       <div className="flex gap-4 flex-col">
-        {cars.map((car: ICar, i) => {
-            return <CardCar key={i} car={car} />;
+        {cars.map((car: ICar, i: number) => {
+          return <CardCar key={i} car={car} />;
         })}
       </div>
-      <ButtonToast/>
     </>
   );
 }

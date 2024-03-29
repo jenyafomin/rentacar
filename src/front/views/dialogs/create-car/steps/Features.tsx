@@ -12,6 +12,7 @@ import CustomAutocomplete from "@/front/@core/components/mui/Autocomplete";
 import { StepComponentProps } from "@/front/components/dialogs/wizzard/renderStep";
 import { ICar } from "types/Car";
 import { ECarFeatures, ECarFuelType, ECarTransmission } from "types/enum/ECar";
+import { changeStateWithInput, changeStateWithValue } from "@/front/utils/handleInputChange";
 
 export default function Features ({
   activeStep,
@@ -23,16 +24,8 @@ export default function Features ({
 }: StepComponentProps<ICar>) {
   // States
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, key: keyof ICar) => {
-    const newValue = event.target.value;
-    const newObj = {...state, [key]: newValue}
-    setState(newObj);
-  };
-
-  const handleChangeWithValue = (newValue: any, key: keyof ICar) => {
-    const newObj = {...state, [key]: newValue}
-    setState(newObj);
-  };
+  const handleChange = changeStateWithInput(state, setState)
+  const handleChangeWithValue = changeStateWithValue(state, setState)
 
   return (
     <div className="flex flex-col">
@@ -45,7 +38,7 @@ export default function Features ({
             freeSolo
             disableClearable
             value={state.amountOfDoors?.toString()}
-            onChange={(e, value: any) => handleChangeWithValue(value, "amountOfDoors")}
+            onChange={(e, value: any) => handleChangeWithValue(value, "amountOfDoors", true)}
             options={["2", "3", "4", "5"]}
             renderInput={(params) => (
               <CustomTextField
@@ -66,7 +59,7 @@ export default function Features ({
               disableClearable
               
               value={state.amountOfSeats?.toString()}
-              onChange={(e, value: any) => handleChangeWithValue(value, "amountOfSeats")}
+              onChange={(e, value: any) => handleChangeWithValue(value, "amountOfSeats", true)}
 
               options={["2", "3", "4", "5", "6", "7"]}
               renderInput={(params) => (
@@ -88,7 +81,7 @@ export default function Features ({
               disableClearable
                 
               value={state.amountOfLaguage?.toString()}
-              onChange={(e, value: any) => handleChangeWithValue(value, "amountOfLaguage")}
+              onChange={(e, value: any) => handleChangeWithValue(value, "amountOfLaguage", true)}
 
               id="autocomplete-multiple-filled"
               // defaultValue={"5"}
@@ -121,7 +114,7 @@ export default function Features ({
             label="Horse Power" 
             placeholder={"234"} 
             value={state.horsePower?.toString()}
-            onChange={(e) => handleChange(e, "horsePower")}
+            onChange={(e) => handleChange(e, "horsePower", true)}
           />
         </Grid>
 
@@ -190,7 +183,7 @@ export default function Features ({
             helperText={"L/100km"} 
             
             value={state.fuelConsumption || ""}
-            onChange={(e) => handleChange(e, "fuelConsumption")}
+            onChange={(e) => handleChange(e, "fuelConsumption", true)}
           />
         </Grid>
 

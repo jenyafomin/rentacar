@@ -11,6 +11,7 @@ import CustomAutocomplete from "@/front/@core/components/mui/Autocomplete";
 import { StepComponentProps } from "@/front/components/dialogs/wizzard/renderStep";
 import { ECarStatus } from "types/enum/ECar";
 import { ICar } from "types/Car";
+import { changeStateWithInput, changeStateWithValue } from "@/front/utils/handleInputChange";
 
 export default function Status({
   activeStep,
@@ -22,16 +23,8 @@ export default function Status({
 }: StepComponentProps<ICar>) {
   // States
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, key: keyof ICar) => {
-    const newValue = event.target.value;
-    const newObj = {...state, [key]: newValue}
-    setState(newObj);
-  };
-  
-  const handleChangeWithValue = (newValue: any, key: keyof ICar) => {
-    const newObj = {...state, [key]: newValue}
-    setState(newObj);
-  };
+  const handleChange = changeStateWithInput(state, setState)
+  const handleChangeWithValue = changeStateWithValue(state, setState)
 
   const connectedExcel = state.carExcelId ? true : false
 

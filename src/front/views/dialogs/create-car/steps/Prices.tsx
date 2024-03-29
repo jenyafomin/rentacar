@@ -12,6 +12,7 @@ import { Checkbox, Chip, Grid } from "@mui/material";
 import CustomAutocomplete from "@/front/@core/components/mui/Autocomplete";
 import { StepComponentProps } from "@/front/components/dialogs/wizzard/renderStep";
 import { ICar } from "types/Car";
+import { changeStateWithInput, changeStateWithValue } from "@/front/utils/handleInputChange";
 
 export default function Prices({
   activeStep,
@@ -23,16 +24,8 @@ export default function Prices({
 }: StepComponentProps<ICar>) {
   // States
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, key: keyof ICar) => {
-    const newValue = event.target.value;
-    const newObj = {...state, [key]: newValue}
-    setState(newObj);
-  };
-
-  const handleChangeWithValue = (newValue: any, key: keyof ICar) => {
-    const newObj = {...state, [key]: newValue}
-    setState(newObj);
-  };
+  const handleChange = changeStateWithInput(state, setState)
+  const handleChangeWithValue = changeStateWithValue(state, setState);
 
   return (
     <div className="flex flex-col">
@@ -44,9 +37,9 @@ export default function Prices({
             label="Price Dayly"
             placeholder={`150`}
             helperText={"AED"}
-
+            inputMode="numeric"
             value={state.priceDaily}
-            onChange={(e) => handleChange(e, "priceDaily")}
+            onChange={(e) => handleChange(e, "priceDaily", true)}
           />
         </Grid>
 
@@ -58,7 +51,7 @@ export default function Prices({
               helperText={"AED"}
 
               value={state.priceMonthly}
-              onChange={(e) => handleChange(e, "priceMonthly")}
+              onChange={(e) => handleChange(e, "priceMonthly", true)}
             />
         </Grid>
 
@@ -70,7 +63,7 @@ export default function Prices({
             helperText={"Max km per day"}
 
             value={state.extraMiles}
-            onChange={(e) => handleChange(e, "extraMiles")}
+            onChange={(e) => handleChange(e, "extraMiles", true)}
           />
         </Grid>
 
@@ -82,7 +75,7 @@ export default function Prices({
               helperText={"AED"}
 
               value={state.extraMilesPrice}
-            onChange={(e) => handleChange(e, "extraMilesPrice")}
+            onChange={(e) => handleChange(e, "extraMilesPrice", true)}
             />
         </Grid>
       </Grid>

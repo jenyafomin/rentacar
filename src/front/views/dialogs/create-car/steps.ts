@@ -52,8 +52,11 @@ type stepperProps = {
 
   export const defaultValues: Partial<ICar> = {
     make: "Mercedes",
+    model: "C300",
     amountOfDoors: 4,
     amountOfSeats: 5,
     amountOfLaguage: 2,
+    extraMiles: 500,
+    extraMilesPrice: 15,
     status: ECarStatus.ACTIVE
   }

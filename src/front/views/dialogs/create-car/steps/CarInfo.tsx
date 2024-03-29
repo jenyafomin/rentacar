@@ -12,7 +12,7 @@ import { StepComponentProps } from "@/front/components/dialogs/wizzard/renderSte
 import { ICar } from "types/Car";
 import { ECarCategories, ECarType } from "types/enum/ECar";
 import { EColors } from "types/enum/EGeneral";
-
+import { changeStateWithInput, changeStateWithValue } from "@/front/utils/handleInputChange";
 
 export default function CarInfo({
   activeStep,
@@ -24,16 +24,8 @@ export default function CarInfo({
 }: StepComponentProps<ICar>) {
   // States
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, key: keyof ICar) => {
-    const newValue = event.target.value;
-    const newObj = {...state, [key]: newValue}
-    setState(newObj);
-  };
-  
-  const handleChangeWithValue = (newValue: any, key: keyof ICar) => {
-    const newObj = {...state, [key]: newValue}
-    setState(newObj);
-  };
+  const handleChange = changeStateWithInput(state, setState)
+  const handleChangeWithValue = changeStateWithValue(state, setState)
 
   console.log("STATE", state);
 
@@ -69,12 +61,12 @@ export default function CarInfo({
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <CustomTextField 
-            fullWidth 
-            label="Year" 
-            placeholder={"2022"} 
+          <CustomTextField
+            fullWidth
+            label="Year"
+            placeholder={"2022"}
             value={state.year}
-            onChange={(e) => handleChange(e, "year")}
+            onChange={(e) => handleChange(e, "year", true)}
           />
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
@@ -111,9 +103,11 @@ export default function CarInfo({
             fullWidth
             freeSolo
             multiple
+            disableCloseOnSelect
             value={state.categories}
-            onChange={(_, value: any) => handleChangeWithValue(value, "categories")}
-
+            onChange={(_, value: any) =>
+              handleChangeWithValue(value, "categories")
+            }
             id="autocomplete-multiple-filled"
             // defaultValue={[top100Films[13].title]}
             options={Object.values(ECarCategories)}

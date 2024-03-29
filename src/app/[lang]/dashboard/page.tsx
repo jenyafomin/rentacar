@@ -1,9 +1,9 @@
 import OpenDialogOnElementClick from '@/front/components/dialogs/OpenDialogOnElementClick'
 import EditUserInfoModal from '@/front/views/dialogs/edit-user-info/EditUserInfoModal'
-import CreateAppModal from '@/front/views/dialogs/create-car'
+import CreateAppModal from '@/front/views/dialogs/create-car/CarWizzard'
 // import CardMobile from '@front/components/cards/CardMobile'
 import { Button, ButtonFetch, Hr } from './htmlStyle'
-import CreateCarModal from '@/front/views/dialogs/create-car'
+import CreateCarModal from '@/front/views/dialogs/create-car/CarWizzard'
 
 export default function Page() {
   // const Button = <button> Click Me</button>
