@@ -1,11 +1,11 @@
 import { ICar } from "types/Car";
-import CarInfo from "./steps/CarInfo";
-import Features from "./steps/Features";
+import CarInfo from "./steps/CarInfo.form";
+import Features from "./steps/Features.form";
 import { ECarCategories, ECarFeatures, ECarFuelType, ECarStatus, ECarTransmission, ECarType } from "types/enum/ECar";
-import Prices from "./steps/Prices";
-import ImageUploader from "./steps/Images";
-import Status from "./steps/Status";
-import Submit from "./steps/Submit";
+import Prices from "./steps/Prices.form";
+import ImageUploader from "./steps/Images.form";
+import Status from "./steps/Status.form";
+import Submit from "./steps/SubmitWizzard";
 import { EColors } from "types/enum/EGeneral";
 
 type stepperProps = {

@@ -2,7 +2,7 @@ import { clientApiFetch } from "@/utils/fetchClient";
 import { IExtraState, IOnSaveProps } from "./CarWizzard";
 import { toast } from "react-toastify";
 import { ICar } from "types/Car";
-import { createFormDataFromImages } from "./createFormData";
+import { createFormDataForImages } from "./createImageFormData";
 
 
 export async function onSaveCreateCar({ state, extraState }: IOnSaveProps): Promise<boolean> {
@@ -23,7 +23,7 @@ export async function onSaveCreateCar({ state, extraState }: IOnSaveProps): Prom
         if (!extraState.images.length) {
             return true;
         }
-        const formData = createFormDataFromImages(newCar.id, extraState.images);
+        const formData = createFormDataForImages(newCar.id, extraState.images);
         const promise = clientApiFetch("en", "api/admin/cars/image", { method: "POST", body: formData }); // prettier-ignore
 
         const result = await toast.promise(promise, {

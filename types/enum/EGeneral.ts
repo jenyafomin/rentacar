@@ -4,3 +4,12 @@ export enum EColors {
     GREEN = "Green", 
     BLUE = "Blue", RED = "Red", YELLOW = "Yellow"
  };
+
+ export enum EColorsStyle {
+    ERROR = "error", 
+    INFO =  "info",
+    PRIMARY = "primary",
+    SECONDARY =  "secondary",
+    SUCCESS = "success",
+    WARNING = "warning",
+ }

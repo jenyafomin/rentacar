@@ -12,12 +12,12 @@ export default function FileList({
   onClick?: (file: FileProp, index: number) => any
 }) {
   return (
-    <div className="flex flex-wrap gap-4 py-4 px-0">
+    <div className="flex flex-wrap gap-4 gap-y-4 py-4 px-0">
       {files.map((fileProp: FileProp, i: number) => {
         const {file, url} = fileProp;
         return (
           <div
-            key={file.name}
+            key={i}
             className={`flex grow shrink max-w-[100%]`}
             style={{ position: "relative", minWidth: "160px" }}
           >
@@ -26,11 +26,11 @@ export default function FileList({
                 <FilePreview file={file} url={url} index={i} onClick={onClick} />
               </div>
               <div>
-                <Typography className="file-size" variant="body2">
+                {/* {file !== undefined && <Typography className="file-size absolute" variant="body2">
                   {Math.round(file.size / 100) / 10 > 1000
                     ? `${(Math.round(file.size / 100) / 10000).toFixed(1)} mb`
                     : `${(Math.round(file.size / 100) / 10).toFixed(1)} kb`}
-                </Typography>
+                </Typography>} */}
               </div>
             </div>
             <IconButton

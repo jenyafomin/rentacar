@@ -104,7 +104,7 @@ export default function StepWrapper({
                       className: "shadow-primarySm",
                     })}
                     size={38}
-                    style={iconStyle}
+                    style={{...iconStyle, border: "1px solid #fff3"}}
                   >
                     <i
                       className={classnames(

@@ -4,10 +4,10 @@ import DialogCloseButton from "./DialogCloseButton";
 interface IProps {
   children?: any;
   title: string;
-  description?: string;
+  description?: any;
   setOpen: (newValue: boolean) => any;
   open: boolean;
-  handleClose: () => any;
+  handleClose?: () => any;
 }
 export default function DialogWrapper({
   children,
@@ -15,7 +15,7 @@ export default function DialogWrapper({
   description,
   setOpen,
   open,
-  handleClose,
+  handleClose=()=>setOpen(false),
 }: IProps) {
   return (
     <Dialog
@@ -24,6 +24,10 @@ export default function DialogWrapper({
       open={open}
       onClose={handleClose}
       scroll="body"
+      PaperProps={{style: {backdropFilter: "blur(8px)", background: "var(--background-gradient)"}}}
+      TransitionProps={{style: {background: "#0006", backdropFilter: "blur(8px)"}}}
+      
+      
       sx={{ "& .MuiDialog-paper": { overflow: "visible" } }}
     >
       <DialogCloseButton onClick={() => setOpen(false)} disableRipple>

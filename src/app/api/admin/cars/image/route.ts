@@ -1,8 +1,7 @@
-import { prisma } from "@/back/prismaConnect";
-import { getApiLocale } from "@/localization/getLocale";
 import { NextRequest, NextResponse } from "next/server";
-import { saveCarImages } from "./carImage.service";
-import { updateCar } from "../car.service";
+import { removeCarImages, saveCarImages } from "./carImage.service";
+import { getErrorMessage } from "@/back/utils/getErrorMessage";
+import { getCarById, updateCar } from "@/back/models/car.model";
 
 export async function POST(req: NextRequest) {
     try {
@@ -12,8 +11,11 @@ export async function POST(req: NextRequest) {
         if(!carId) {
             throw new Error("id of the car is not provided");
         }
-        
-        const images = await saveCarImages(formData);
+
+        const car = await getCarById(carId as string);
+        const filePrefix = `${car?.make}-${car?.model}-${car?.year}-${car?.color}`
+
+        const images = await saveCarImages(formData, filePrefix);
         console.log("IMAGES URLS", images);
 
         const updatedCar = await updateCar(carId as any, {images})
@@ -21,8 +23,22 @@ export async function POST(req: NextRequest) {
 
         // Respond with success
         return new NextResponse(JSON.stringify(updatedCar));
-    } catch (error) {
-        console.error('Upload error:', error);
-        return new NextResponse(JSON.stringify({ error: 'Upload failed' }), { status: 500 });
+    } catch (e) {
+        const error = getErrorMessage(e)
+        console.error('Upload images:', error);
+        return new NextResponse(JSON.stringify({ error }), { status: 500 });
+    }
+}
+
+// * DELETE files/images
+export async function PUT(req: NextRequest) {
+    const filesToDelete = await req.json();
+    try {
+        await removeCarImages(filesToDelete);
+        return NextResponse.json({success: true, removed: filesToDelete})
+    } catch(e) {
+        const error = getErrorMessage(e)
+        console.error('[ERROR] remove images:', error);
+        return new NextResponse(JSON.stringify({ error }), { status: 500 });
     }
 }

@@ -7,7 +7,7 @@ import { StepComponentProps } from '@/front/components/dialogs/wizzard/renderSte
 import Image from 'next/image'
 import { ICar } from 'types/Car'
 
-export default function Submit (props: StepComponentProps<ICar>) {
+export default function SubmitWizzard (props: StepComponentProps<ICar>) {
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex flex-col items-center gap-4'>

@@ -1,8 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
+const rootFolder = "./public"
+
 export async function saveImage(file: File, fileName: string, pathName: string) {
-    const fullPath = "./public" + pathName
+    const fullPath = rootFolder + pathName
     const filePath = path.join(fullPath, fileName);
     console.log("object");
 
@@ -17,4 +19,19 @@ export async function saveImage(file: File, fileName: string, pathName: string) 
     writableStream.end();
 
     return `${pathName}/${fileName}`;
+}
+
+export async function removeImage(filePath: string) {
+    const fullPath = rootFolder + filePath;
+    
+    return new Promise<boolean>((resolve, reject) => {
+        fs.unlink(fullPath, (err) => {
+            if(err) {
+                console.error(err)
+                reject(`Failed to remove file ${filePath}`)
+            }
+            resolve(true)
+        })
+
+    })
 }

@@ -1,8 +1,8 @@
 import { FileProp } from "@/front/types/file";
 import Image from "next/image";
 
-export default function FilePreview ({file, url, onClick, index}: {file: File, url: string, onClick: (file: FileProp, index: number) => {}, index: number}) {
-    if (file.type.startsWith("image")) {
+export default function FilePreview ({file, url, onClick, index}: {file?: File, url: string, onClick: (file: FileProp, index: number) => {}, index: number}) {
+    if (file?.type.startsWith("image") || (file === undefined && url)) {
       return (
         <div
           style={{
@@ -20,7 +20,7 @@ export default function FilePreview ({file, url, onClick, index}: {file: File, u
             objectFit="cover"
             // width={38}
             // height={38}
-            alt={file.name}
+            alt={file?.name || index.toString()}
             src={url}
           />
         </div>

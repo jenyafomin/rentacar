@@ -123,7 +123,7 @@ export default function FileUploaderMultiple({
 
       {/* //** SAVED IMAGES */}
       {uploadedImages.length !== 0 && (
-        <div className="mt-4 uppercase text-lg font-bold">Uploaded Images:</div>
+        <div className="mt-4 uppercase text-lg font-bold">NOT Selected Images:</div>
       )}
       <FileList
         files={uploadedImages}

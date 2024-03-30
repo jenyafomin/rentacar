@@ -26,6 +26,7 @@ export default function PrimaryButton({
       startIcon={startIcon && <i className={`${startIcon.startsWith("tabler") ? startIcon : `tabler-${startIcon}`}`} />}
       size={size}
       onClick={onClick}
+      color={color}
     >
       <strong>{text}</strong>
     </Button>

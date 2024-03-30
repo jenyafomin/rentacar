@@ -72,7 +72,10 @@ export default function MenuButton({actions=[]}: IProps) {
       > 
         {actions.map((item, i) => {
             return <MenuItem key={i}
-            onClick={item.onCLick ? item.onCLick : () => {console.log("Clicked")}}
+            onClick={() => {
+              item.onCLick && item.onCLick()
+              handleClose()
+            }}
             >
             <ListItemIcon>
               <i className={`${item.icon.startsWith("tabler") ? item.icon : `tabler-${item.icon}`} text-xl`} />

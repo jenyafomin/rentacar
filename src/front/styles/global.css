@@ -17,6 +17,10 @@
   --search-z-index: var(--mui-zIndex-tooltip);
   --drawer-z-index: var(--mui-zIndex-drawer);
   --backdrop-color: rgb(var(--mui-mainColorChannels-light) / 0.5);
+
+  --background-gradient: linear-gradient(45deg, rgb(189, 191, 197), rgb(246, 247, 255));
+  /* background: linear-gradient(45deg, black, gray); */
+
   --toastify-color-light: #ffffff;
   --toastify-toast-min-height: 48px;
 }
@@ -25,7 +29,18 @@
   --backdrop-color: rgb(23 25 37 / 0.6);
   --toastify-color-light: #272b3f;
   --toastify-text-color-light: #e7e7e7;
+  --background-gradient: linear-gradient(45deg, rgb(34, 40, 52), rgb(59, 62, 93));
 }
+
+/* CUSTOM CSS (MY) */
+.hover-up {
+  transition: all .3s !important;
+}
+.hover-up:hover {
+  margin-top: -4px;
+  margin-bottom: 4px;
+}
+/* CUSTOM CSS (MY) [END] */
 
 *,
 ::before,

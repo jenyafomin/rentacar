@@ -1,3 +1,4 @@
+// "use client";
 import CardCar from "@/front/components/cards/CardCar";
 import { serverApiFetch } from "@/utils/fetchServer";
 import { HeaderCars } from "./header";
@@ -8,13 +9,12 @@ export default async function AllCars() {
   const cars = await serverApiFetch("api/admin/cars", {
     next: { tags: ["cars"] },
   });
-  // console.log("CARS:", cars);
 
   return (
     <>
       <HeaderCars cars={cars} />
       {/* <br/> */}
-      <div className="flex gap-4 flex-col">
+      <div className="flex gap-4 flex-col-reverse">
         {cars.map((car: ICar, i: number) => {
           return <CardCar key={i} car={car} />;
         })}

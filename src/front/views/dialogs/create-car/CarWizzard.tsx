@@ -4,18 +4,14 @@
 import { useState } from "react";
 
 // Component Imports
-import Features from "./steps/Features";
-import CarInfo from "./steps/CarInfo";
 import StepWrapper from "@/front/components/dialogs/wizzard/StepWrapper";
 import DialogWrapper from "@/front/components/dialogs/DialogWrapper";
 import { renderStepCount } from "@/front/components/dialogs/wizzard/renderStep";
 import { defaultValues, forms, steps } from "./steps";
 import { ICar } from "types/Car";
 import { FileProp } from "@/front/types/file";
-import { toast } from "react-toastify";
-import { clientApiFetch } from "@/utils/fetchClient";
 import { useLocale } from "@/localization/useLocale";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 // Styled Component Imports
 // import StepperWrapper from '@core/styles/stepper'
@@ -34,7 +30,7 @@ export type IOnSaveFn = ({
   initialValues,
   state,
   extraState,
-}: IOnSaveProps) => boolean;
+}: IOnSaveProps) => Promise<boolean>;
 
 type CreateCarModalProps = {
   open: boolean;
@@ -51,6 +47,7 @@ export default function CarWizzard({
 }: CreateCarModalProps) {
   // States
   const locale = useLocale();
+  const router = useRouter();
   const [activeStep, setActiveStep] = useState(0);
   const [state, setState] = useState<ICar>(initialValues as ICar);
 
@@ -76,8 +73,13 @@ export default function CarWizzard({
     if (!isLastStep) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
-      onSave({initialValues, state, extraState})
-      // handleClose();
+      const success = await onSave({initialValues, state, extraState})
+      if(success) {
+        setTimeout(() => {
+          router.refresh();
+          handleClose()
+        }, 500)
+      }
     }
   };
 
