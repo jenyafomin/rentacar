@@ -13,7 +13,7 @@ export default function CardCar({car}: {car: ICar}) {
         className="flex image relative"
         style={{ width: "100px", minHeight: "80px", overflow: "hidden" }}
       >
-        <Image src={"/img/agency-1.jpg"} alt={car.make} fill={true} />
+        <Image src={car.images?.[0] || "/img/agency-1.jpg"} alt={car.make} objectFit="cover" fill={true} />
       </div>
 
       {/* BASE CONTENT */}

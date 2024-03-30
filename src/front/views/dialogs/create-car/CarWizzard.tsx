@@ -20,28 +20,42 @@ import { usePathname } from "next/navigation";
 // Styled Component Imports
 // import StepperWrapper from '@core/styles/stepper'
 
+export interface IExtraState {
+  images: Array<FileProp>;
+  uploadedImages: Array<FileProp>;
+}
+export type IOnSaveProps = {
+  initialValues: Partial<ICar>,
+  state: ICar;
+  extraState: IExtraState;
+}
+
+export type IOnSaveFn = ({
+  initialValues,
+  state,
+  extraState,
+}: IOnSaveProps) => boolean;
+
 type CreateCarModalProps = {
   open: boolean;
   setOpen: (open: boolean) => void;
   initialValues?: Partial<ICar>;
-  onSave: (
-    state: ICar,
-    extraState: { images: Array<FileProp>; uploadedImages: Array<FileProp> }
-  ) => boolean;
+  onSave: IOnSaveFn;
 };
 
 export default function CarWizzard({
   open,
   setOpen,
   initialValues = defaultValues,
+  onSave
 }: CreateCarModalProps) {
   // States
   const locale = useLocale();
   const [activeStep, setActiveStep] = useState(0);
-  const [state, setState] = useState(initialValues);
+  const [state, setState] = useState<ICar>(initialValues as ICar);
 
   // Save images in different state, because new images will be stored as a FileProp = {file, url}
-  const [extraState, setExtraState] = useState({
+  const [extraState, setExtraState] = useState<IExtraState>({
     images: initialValues.images?.map((url) => ({ url })) || [],
     uploadedImages: initialValues.uploadedImages?.map((url) => ({ url })) || [],
   });
@@ -62,24 +76,7 @@ export default function CarWizzard({
     if (!isLastStep) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
-      // TODO Operate
-      console.log("state", state);
-      console.log("extraState", extraState);
-
-      const formData = new FormData()
-      formData.append("file", extraState.images[0].file)
-
-      // const body = JSON.stringify({ car: state });
-      // const promise = clientApiFetch(locale, "api/admin/cars", { method: "POST", body }); // prettier-ignore
-      const promise = clientApiFetch(locale, "api/admin/cars", { method: "POST", body: formData }); // prettier-ignore
-
-      const result = await toast.promise(promise, {
-        pending: "Creating car for you",
-        success: "Car is Created",
-        error: "Something went wrong",
-      });
-
-      console.log(result);
+      onSave({initialValues, state, extraState})
       // handleClose();
     }
   };

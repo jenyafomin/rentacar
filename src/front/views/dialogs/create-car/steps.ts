@@ -1,11 +1,12 @@
 import { ICar } from "types/Car";
 import CarInfo from "./steps/CarInfo";
 import Features from "./steps/Features";
-import { ECarStatus } from "types/enum/ECar";
+import { ECarCategories, ECarFeatures, ECarFuelType, ECarStatus, ECarTransmission, ECarType } from "types/enum/ECar";
 import Prices from "./steps/Prices";
 import ImageUploader from "./steps/Images";
 import Status from "./steps/Status";
 import Submit from "./steps/Submit";
+import { EColors } from "types/enum/EGeneral";
 
 type stepperProps = {
     icon: string;
@@ -51,12 +52,28 @@ type stepperProps = {
   ];
 
   export const defaultValues: Partial<ICar> = {
+    status: ECarStatus.IN_ACTIVE,
+
     make: "Mercedes",
     model: "C300",
+    option: "AMG",
+    year: 2022,
+    color: EColors.BLUE,
+    type: ECarType.SEDAN,
+    categories: [ECarCategories.BUSINESS, ECarCategories.PREMIUM],
+
     amountOfDoors: 4,
     amountOfSeats: 5,
     amountOfLaguage: 2,
+    engine: "2.0T",
+    horsePower: 235,
+    transmission: ECarTransmission.REAR,
+    fuelType: ECarFuelType.PETROL,
+    fuelConsumption: 10.3,
+    features: [ECarFeatures.CARPLAY, ECarFeatures.PANORAMA, ECarFeatures.SUNROOF],
+
+    priceDaily: 175,
+    priceMonthly: 4500,
     extraMiles: 500,
     extraMilesPrice: 15,
-    status: ECarStatus.ACTIVE
   }

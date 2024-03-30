@@ -1,15 +1,20 @@
 "use client"
 import { useLocale } from "@/localization/useLocale";
 import { makeApiCall } from "./fetch";
+import { Locale } from "i18n-config";
 
-export async function clientApiFetch(locale: string, endpoint: string, options: RequestInit = {}) {
+export async function clientApiFetch(locale: Locale, endpoint: string, options: RequestInit = {}) {
     'use client'
     try {
-        // const locale = useLocale();
-        return await makeApiCall(locale, endpoint, options);
-    } catch (e) {
+        const response = await makeApiCall(locale, endpoint, options);
+        if(response.error) {
+            throw new Error(response.error);
+        }
+        return response;
+    } catch (e: any) {
+        const errorMessage = e.message ? e.message : e;
         console.error(e)
-        throw new Error('{ error: "Server error", code: 500 }')
+        throw new Error(errorMessage)
     }
 
 }
