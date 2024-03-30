@@ -27,10 +27,6 @@ export default function About() {
     
     return (
         <>
-        {/* // <Layout modelRight={{children: <ModalContact/>, propsModal: {textBtn: "Contact"}}}> */}
-            {/* <Head>
-                <title>Home | Eremia Creative Portfolio Multi-Purpose</title>
-            </Head> */}
 
             <SliderPortfolio
                 webgel

@@ -48,23 +48,27 @@
 
 :root, :root .v-light {
   --bg-color: #f9f9f9;
-  --assistant-color: #e6e6e6;
+  --bg-color2: #292929;
+  --assistant-color: #080505;
+  --assistant-color2: #333;
   --theme-color: #14bfb5;
   --font-color: #0009;
   --heading-color: #000;
-  --border-color: #bebebe;
+  --border-color: #fff1;
   --smooth-color: #141414;
   --reverse-color: #141414;
   --reverse-heading-color: #fff;
 }
 
 :root .v-dark, :root .v-dark-head {
-  --bg-color: #000;
-  --assistant-color: #101010;
+  --bg-color: #070707;
+  --bg-color2: #292929;
+  --assistant-color: #111;
+  --assistant-color2: #333;
   --theme-color: #14bfb5;
   --font-color: #bbb;
   --heading-color: #fff;
-  --border-color: rgba(255, 255, 255, 0.07);
+  --border-color: rgba(255, 255, 255, 0.067);
   --smooth-color: #f9f9f9;
   --reverse-color: #f9f9f9;
   --reverse-heading-color: #000;
@@ -78,7 +82,7 @@
     --theme-color: #14bfb5;
     --font-color: #bbb;
     --heading-color: #fff;
-    --border-color: rgba(255, 255, 255, 0.07);
+    --border-color: #fff1;
     --smooth-color: #f9f9f9;
     --reverse-color: #f9f9f9;
     --reverse-heading-color: #000;

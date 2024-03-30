@@ -1,6 +1,6 @@
 .v-dark,
 .v-light {
-  background-color: $bg-color;
+  background: radial-gradient(at 50% 0%, $bg-color2, $bg-color);
   color: $body-color;
 }
 
@@ -9,11 +9,13 @@
 }
 
 .background-main {
-  background-color: $bg-color;
+  background: radial-gradient(at 50% 0%, $bg-color2, $bg-color);
 }
 
 .background-section {
-  background-color: $assistant-color;
+  background:  radial-gradient(at 0% 0%,$assistant-color2, $assistant-color);
+  border-radius: 3px;
+  box-shadow: 12px 12px 36px #00000099, 4px 4px 12px #00000077, -1px -1px 1px #ffffff33, -4px -4px 12px #ffffff11;
 }
 
 .background-gradient-left {
