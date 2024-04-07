@@ -7,14 +7,14 @@ const data = [
         slug: 'maybe-speaker',
         category: ['Product', 'voice'],
         description: 'Vin tries to reflect Diesel’s vision and combines.',
-        src: '/img/project/project1/1.jpg',
-        overlay: 6
+        src: '/img/3D/concept_4(scene).jpg',
+        overlay: 4
     },
     {
         id: 2,
         title: "Yaren Collection",
         slug: 'yaren-collection',
-        src: '/img/project/project2/1.jpg',
+        src: '/img/3D/concept_3(scene).jpg',
 
         category: ['pen'],
         description: 'symbols through which express themselves.',

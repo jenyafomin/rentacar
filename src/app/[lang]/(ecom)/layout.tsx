@@ -127,7 +127,7 @@ export default function RootLayout({ children, session, ...pageProps }: any) {
         <body className="">
           <div id="__dsn_content" className={colorPage}>
             <SessionProvider session={session}>
-              {/* <LoadingPage /> */}
+              <LoadingPage />
               <EremiaMenu hamburger={true} />
               
               <Layout modelRight={{children: <ModalContact/>, propsModal: {textBtn: "Contact"}}}>
