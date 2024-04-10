@@ -1,0 +1,122 @@
+.car-card-container {
+    width: 28%;
+    position: relative;
+
+    &.animate-on-mount {
+        // Don't forget to add gsap animation
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    cursor: pointer;
+
+    @include media_1400 {
+     width: 42%;   
+    }
+
+    @include media_991 {
+        width: 42%;
+    }
+    @include media_768 {
+        width: 85%;
+    }
+}
+
+.car-card-container {
+    transition: all .3s;
+    img {
+        transition: all .5s;
+    }
+    .price {
+        transition: all .5s;
+    }
+    &:hover {
+        // margin-top: -4px;
+        // margin-bottom: 4px;
+        img {
+            transform: scale(1.1);
+        }
+        .neon-wrapper {
+            animation: gradient-360 3s infinite ease-in-out;
+        }
+        .price {
+            font-size: 20px;
+        }
+    }
+}
+
+.car-card-image-container {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 4px 4px 12px #0006, 12px 12px 24px #0004, 24px 24px 36px #0002, -1px -1px 2px -1px #fff4, -3px -3px 9px #ffffff09;
+
+    .car-card-image-over {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(#0008 0, #0001 40%, #0001 60%, #0008 100%);
+    }
+
+    .neon-wrapper {
+        width: 110%;
+        margin-left: -5%;
+        height: 3px;
+        position: relative; 
+        background: linear-gradient(90deg, #40E98E, #3FA5EE);
+        border-radius: 4px;
+
+        &::after, &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #40E98E, #3FA5EE);
+            opacity: 0.6;
+        };
+        &::after {
+            filter: blur(4px);
+        };
+        &::before {
+            filter: blur(14px);
+        };
+        
+    }
+}
+
+.car-card-price-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .price-wrapper {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+        color: #fff;
+        font-weight: 900;
+        padding-right: 12px;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+
+    span {
+        font-size: 17px;
+        color: transparent;   
+        -webkit-text-stroke: 0.5px #fffA; // Todo - var
+        letter-spacing: 2px;
+        
+        &.price {
+            color: #fff; //Todo - var
+            -webkit-text-stroke: 1px #fff; // Todo - var
+        }
+        &.text-small{
+            font-size: 12px;
+        }
+        &.transparent-border-white {
+            
+        }
+    }
+}

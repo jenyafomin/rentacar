@@ -1,6 +1,6 @@
 import { Locale } from "i18n-config";
 
-export async function makeApiCall(locale: Locale, endpoint: string, options?: RequestInit) {
+export async function makeApiCall<T>(locale: Locale, endpoint: string, options?: RequestInit): Promise<T> {
     endpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`
 
     const result = await fetch(`http://localhost:3000${endpoint}`, {
@@ -11,5 +11,5 @@ export async function makeApiCall(locale: Locale, endpoint: string, options?: Re
         }
     })
 
-    return await result.json();
+    return await result.json() as T;
 }

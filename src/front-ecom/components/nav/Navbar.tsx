@@ -1,5 +1,5 @@
 "use client"
-import  {useCallback, useEffect, useRef, useState} from 'react';
+import  { ReactNode, useCallback, useEffect, useRef, useState} from 'react';
 import Toggle from './toggle';
 import Link from "next/link";
 import {dsnCN} from "../../hooks/helper";
@@ -8,7 +8,15 @@ import Dropdown from './dropdown';
 import {gsap} from "gsap";
 import DsnLink, {LinkDsnProps} from "../../hooks/DsnLink";
 
-export default function Navbar({children, textOpen="Open", textMenu="Menu", textClose="Close", hamburger}) {
+
+interface IProps {
+    textOpen?: string;
+    textMenu?: string;
+    textClose?: string;
+    hamburger: boolean;
+    children?: ReactNode
+}
+export default function Navbar({children, textOpen="Open", textMenu="Menu", textClose="Close", hamburger}: IProps) {
     const nav = useRef(null);
     const [typeNave, setTypeNave] = useState("");
     const [reserved, setReserved] = useState(false);

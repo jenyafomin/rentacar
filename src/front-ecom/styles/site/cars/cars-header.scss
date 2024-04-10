@@ -1,0 +1,35 @@
+@import "./line-background.scss";
+
+.car-header-wrapper {
+    padding-left: $padding;
+    margin-left: -5px;
+    position: relative;
+
+    @include media_1400 {
+        padding-left: $padding-laptop;
+    }
+    @include media_575 {
+        padding-left: $padding-mobile;
+    }
+
+    .title-small {
+        font-weight: 900; 
+        margin-bottom: -12px; 
+        margin-left: -20px;
+    }
+    .title-big {
+        font-weight: 900;
+        font-size: 66px;
+    }
+
+    div {
+        margin-left: 4px;
+    }
+
+    p {
+        color: #fff9; 
+        // width: calc(100% - $padding*2);
+        // max-width: "calc(60% - var(--body-style-space)/3)", 
+        width: 300px;
+    }
+}

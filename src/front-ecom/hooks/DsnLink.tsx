@@ -3,7 +3,7 @@ import Link from "next/link";
 import {LinkProps} from "next/link";
 import {ReactNode, useEffect, useRef} from "react";
 import {transitionPage} from "./EremiaType";
-import {tdStart} from "./transition/transitionDefalut";
+import {tdEnd, tdStart} from "./transition/transitionDefalut";
 import {gsap} from "gsap";
 import {useRouter, usePathname} from "next/navigation";
 
@@ -14,13 +14,17 @@ export interface LinkDsnProps extends LinkProps {
     className?: string,
     dangerouslySetInnerHTML?: {
         __html: string;
-    } | undefined
+    } | undefined;
+    linkref?: any
+
 }
 
 
-function DsnLink({children, className, href, transitionPage = true, ...restProps}: LinkDsnProps) {
+function DsnLink({children, className, href, linkref, transitionPage = true, ...restProps}: LinkDsnProps) {
 
-    const ref = useRef<HTMLAnchorElement>(null);
+    if(!linkref)
+    linkref = useRef<HTMLAnchorElement>(null);
+
     const router = useRouter();
     const path = usePathname;
 
@@ -29,7 +33,7 @@ function DsnLink({children, className, href, transitionPage = true, ...restProps
         if (!transitionPage || !href || path === href)
             return;
 
-        const currentLink = ref.current;
+        const currentLink = linkref.current;
         const domTransition: { current: HTMLDivElement | null, tl: gsap.core.Timeline | null } = {
             current: null,
             tl: null
@@ -44,12 +48,17 @@ function DsnLink({children, className, href, transitionPage = true, ...restProps
             domTransition.tl.call(() => {
                 // router.push(href);
                 console.log("HREF", href);
-                router.forward(href);
+                // router.forward(href);
+                router.push(href);
                 domTransition.tl.kill();
                 domTransition.tl = null;
                 domTransition.current = null;
-
+                
+                setTimeout(() => {
+                    tdEnd()
+                }, 1000)
             });
+
 
         }
 
@@ -60,7 +69,7 @@ function DsnLink({children, className, href, transitionPage = true, ...restProps
     }, [transitionPage, router, href]);
 
 
-    return <Link href={href} className={className} {...restProps} ref={ref} >{children}</Link>;
+    return <Link href={href} className={className} {...restProps} ref={linkref} >{children}</Link>;
 
 }
 

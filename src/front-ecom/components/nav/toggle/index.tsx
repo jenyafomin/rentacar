@@ -3,7 +3,16 @@ import dsnSplitting from "../../../hooks/spltting";
 import {dsnCN} from "../../../hooks/helper";
 import SvgAnimate from "../../../animation/SvgAnimate";
 
-
+interface IProps {
+    textOpen: string;
+    textMenu: string;
+    textClose: string;
+    targetNav: any;
+    reserved: boolean;
+    setReserved: (newValue: boolean) => any;
+    removeOpenMenu: () => any;
+    className?: string;
+}
 function Toggle({
                     textOpen,
                     textMenu,
@@ -14,26 +23,28 @@ function Toggle({
                     removeOpenMenu,
                     className,
                     ...restProps
-                }) {
-
-    const splitMenu = useRef();
-    const splitOpen = useRef();
-    const splitClose = useRef();
-    const navbarToggle = useRef();
-    const svg = useRef();
-    const backgroundMain = useRef();
+                }: IProps) {
+    
+    // @ts-ignore
+    const $this = this;
+    const splitMenu = useRef<any>();
+    const splitOpen = useRef<any>();
+    const splitClose = useRef<any>();
+    const navbarToggle = useRef<any>();
+    const svg = useRef<any>();
+    const backgroundMain = useRef<any>();
 
     const TransEnd = () => {
         !reserved && targetNav.current.querySelector('.primary-nav')?.classList.add('open');
     }
-    const onCompleteAnimate = (e) => {
+    const onCompleteAnimate = (e: any) => {
         targetNav.current?.classList.toggle('dsn-open');
         navbarToggle.current?.classList.toggle('open');
         document.body.classList.toggle('over-hidden')
     }
 
 
-    const toggleClick = (e) => {
+    const toggleClick = (e: any) => {
 
         setReserved(!reserved)
 
@@ -43,13 +54,15 @@ function Toggle({
 
 
         if (!reserved) {
+            // @ts-ignore
             SvgAnimate.up(svg.current, TransEnd)
                 .to("#dsn-scrollbar", {y: -200, duration: 1, ease: 'power4.in',}, "top")
                 .set(backgroundMain.current, {autoAlpha: 1}, "center");
-            onCompleteAnimate(this);
+            onCompleteAnimate($this); 
         } else
+        // @ts-ignore
             SvgAnimate.down(svg.current
-                , () => onCompleteAnimate(this)
+                , () => onCompleteAnimate($this)
             )
                 .to("#dsn-scrollbar", {y: 0, clearProps: "y", duration: 1, ease: 'power4',}, "-=1")
                 .set(backgroundMain.current, {autoAlpha: 0}, "center");
@@ -64,7 +77,7 @@ function Toggle({
 
     return (
         <>
-            <div id="navbar_toggle" className={dsnCN('navbar-toggle', className)} {...restProps} onClick={toggleClick} ref={navbarToggle}>
+            <div id="navbar_toggle" className={dsnCN('navbar-toggle', className || "")} {...restProps} onClick={toggleClick} ref={navbarToggle}>
                 <div className="toggle-icon">
                     <div className="toggle-line"/>
                     <div className="toggle-line"/>

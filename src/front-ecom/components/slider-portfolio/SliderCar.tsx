@@ -17,6 +17,7 @@ import DsnWebgelDirction from "./DsnWebgelDirction";
 import { dataProjectProps, justifyContent } from "../../hooks/EremiaType";
 import { SwiperProps } from "swiper/react";
 import { useDictionary } from "@/localization/useDictionary";
+import { ICar } from "types/Car";
 
 export interface SliderPortfolioProps {
   typeBg?: string | "full-image" | "padding-image" | "half-image";
@@ -48,13 +49,13 @@ export interface SliderPortfolioProps {
     hasDescription?: boolean;
     separateCat?: string | null;
   };
-  data?: [dataProjectProps];
+  car?: ICar;
   alignControlNav?: justifyContent;
   optionSlider?: SwiperProps;
   tag?: React.ElementType;
 }
 
-export default function SliderPortfolio({
+export default function SliderCar({
   className,
   classNameSlider = "",
   typeBg,
@@ -65,13 +66,13 @@ export default function SliderPortfolio({
   metaData,
   alignControlNav = "between",
   optionSlider = {},
-  data,
+  car,
   ...restProps
 }: SliderPortfolioProps) {
 
   const rootSlider = useRef(),
     [contentRef, setContentRef] = useArrayRef(),
-    dataProject = data || getPortfolioData(),
+    dataProject = getPortfolioData(),
     [active, setActive] = useState(0),
     bg = useRef();
 
@@ -225,14 +226,17 @@ export default function SliderPortfolio({
       <div className="content-slider">
         <div className="bg-container" ref={bg}>
           <Swiper {...optionSwiper} grabCursor>
-            {dataProject.map((item, key) => (
+            {/* {dataProject.map((imageUrl, key) => ( */}
+            {car?.images.map((imageUrl, key) => (
               <SwiperSlide className="over-hidden" key={key} data-dsn-id={key}>
                 {/*// @ts-ignore*/}
                 <BgImage
-                  src={item.src}
-                  video={item.video}
-                  alt={item.title}
-                  overlay={item.overlay}
+                  src={imageUrl}
+                  // src={imageUrl.src}
+                  // video={item.video}
+                  alt={`${car.make}-${car.model}-${key}`}
+                  // alt={imageUrl.description}
+                  overlay={3}
                   height={"100%"}
                   {...restProps.parallaxSwiper}
                 />
@@ -242,7 +246,8 @@ export default function SliderPortfolio({
             {restProps.webgel && (
               <DsnWebgelDirction
                 parent={rootSlider}
-                data={dataProject}
+                data={car?.images || []}
+                // data={dataProject.map(item => item.src)}
                 direction={
                   optionSlider.direction !== "vertical"
                     ? "horizontal"
@@ -263,13 +268,13 @@ export default function SliderPortfolio({
           parent={rootSlider}
         />
 
-        <ContentSlider
-          data={dataProject}
+        {/* <ContentSlider
+          data={car}
           activeClass={active}
           ref={setContentRef}
           {...metaData}
           className={className}
-        />
+        /> */}
       </div>
     </Tag>
   );

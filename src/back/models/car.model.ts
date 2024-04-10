@@ -1,6 +1,17 @@
 import { prisma } from "@/back/prismaConnect";
 import { saveImage } from "@/back/utils/saveImage";
 import { ICar } from "types/Car";
+import { ECarStatus } from "types/enum/ECar";
+
+export async function getAllCars() {
+    const cars = await prisma.car.findMany();
+    return cars;
+}
+
+export async function getActiveCars() {
+    const cars = await prisma.car.findMany({ where: { status: ECarStatus.ACTIVE } });
+    return cars;
+}
 
 export async function createCar(car: ICar) {
     const newCar = await prisma.car.create({ data: car })
@@ -13,9 +24,9 @@ export async function updateCar(id: string, car: Partial<ICar>) {
 }
 
 export async function getCarById(id: string) {
-    return await prisma.car.findUnique({where: {id}})
+    return await prisma.car.findUnique({ where: { id } })
 }
 
 export async function deleteCarById(id: string) {
-    return await prisma.car.delete({where: {id}})
+    return await prisma.car.delete({ where: { id } })
 }

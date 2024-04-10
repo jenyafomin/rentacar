@@ -1,5 +1,5 @@
 // "use client";
-import CardCar from "@/front/components/cards/CardCar";
+import CardCar from "@/front/components/cards/car.card";
 import { serverApiFetch } from "@/utils/fetchServer";
 import { HeaderCars } from "./header";
 // types

@@ -4,12 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { Car } from "@prisma/client";
 import { getErrorMessage } from "@/back/utils/getErrorMessage";
-import { createCar, deleteCarById, updateCar } from "@/back/models/car.model";
+import { createCar, deleteCarById, getAllCars, updateCar } from "@/back/models/car.model";
 
 
 export async function GET(req: NextRequest, res: NextResponse) {
     const locale = getApiLocale(req)
-    const cars = await prisma.car.findMany()
+    const cars = await getAllCars();
     return NextResponse.json(cars)
 }
 
@@ -41,6 +41,7 @@ export async function PUT(req: NextRequest) {
 
         const updatedCar = await updateCar(id, car);
 
+        revalidateTag("cars")
         return NextResponse.json(updatedCar)
     } catch (e) {
         const error = getErrorMessage(e)
@@ -57,6 +58,7 @@ export async function DELETE(req: NextRequest) {
 
         if(id) {
             const deletedCar = await deleteCarById(id)
+            revalidateTag("cars")
             return NextResponse.json(deletedCar)
         } else {
             return NextResponse.json({error: "Invalid Request. id is not provided"}, {status: 400})

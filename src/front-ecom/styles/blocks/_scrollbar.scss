@@ -7,8 +7,10 @@
     mix-blend-mode: exclusion;
 
     .scrollbar-thumb {
-      background: #fff;
+      background: linear-gradient(#45e494, #4ecbe7);
+      animation: gradient-240 3s infinite ease-in-out;
       width: $smooth-width;
+      z-index: 99999;
     }
   }
 }

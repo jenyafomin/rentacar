@@ -5,7 +5,7 @@ import {gsap ,Expo} from "gsap";
 
 export interface DsnWebgelDirctionParams {
     parent: any,
-    data: Object[],
+    data: Object[] | string[],
     direction: "vertical" | "horizontal",
     displacement?:  string,
     nextEl?: HTMLElement,
@@ -19,7 +19,7 @@ export interface DsnWebgelDirctionParams {
 }
 
 
-function effectSwiper($obj) {
+function effectSwiper($obj: any) {
 
     let progressStart = 0;
     let start = false;
@@ -350,11 +350,19 @@ function DsnWebgelDirction(props: DsnWebgelDirctionParams) {
                 $this.loader = new THREE.TextureLoader(manager);
                 $this.disp = $this.loader.load(displacement);
                 $this.disp.wrapS = $this.disp.wrapT = THREE.RepeatWrapping;
-                data.forEach((item: { poster: string, src: string }, x) => {
-                    if (item.poster)
-                        video(item.src, item.poster, x);
-                    else
-                        image(item.src, x);
+                
+                // todo
+                data.forEach((item: { poster: string, src: string } | string, index) => {
+                    
+                    if(typeof item === "string") {
+                        image(item, index);
+                    } else
+                    if (item.poster) {
+                            video(item.src, item.poster, index);
+                    }
+                    else {
+                        image(item.src, index);
+                    }
                 })
 
                 console.log("THIS",$this);
@@ -397,10 +405,11 @@ function DsnWebgelDirction(props: DsnWebgelDirctionParams) {
 
             if (swiper) {
                 effectSwiper.bind($this)({swiper, intensity, speedIn, easing});
-                bgContainer.dataset.overlay = data[swiper.activeIndex]["overlay"] || "0";
+                bgContainer.dataset.overlay = data[swiper.activeIndex]["overlay"] || "3";
                 swiper.dsnOnChange = (activeIndex, oldIndex) => {
                     $this.changeTo(activeIndex, oldIndex);
-                    bgContainer.dataset.overlay = data[activeIndex]["overlay"] || "0";
+                    // TODO
+                    bgContainer.dataset.overlay = data[activeIndex]["overlay"] || "3";
                 }
             }
         })

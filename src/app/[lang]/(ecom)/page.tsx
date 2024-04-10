@@ -239,7 +239,7 @@ export default function About() {
             {/*========== End team Section ========== */}
 
             {/*========== End brand-client Section ==========*/}
-            {/* <section className="container section-margin" data-dsn-title="our clients">
+            <section className="container section-margin" data-dsn-title="our clients">
                 <TitleSection
                     className={`align-items-center text-center`}
                     description={"Our clients"}
@@ -249,7 +249,7 @@ export default function About() {
                 </TitleSection>
 
                 <BrandClient col={4} colTablet={3} colMobile={2} colGap={0} rowGap={0}/>
-            </section> */}
+            </section>
             {/*========== End brand-client Section ==========*/}
 
             {/*========== Next Page ==========*/}

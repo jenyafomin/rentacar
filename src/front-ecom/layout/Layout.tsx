@@ -11,6 +11,7 @@ import ModalRight from "../components/model-right/ModalRight";
 import { useSelector } from "react-redux";
 import { RootState } from "../features/store";
 import { ScrollbarOptions } from "smooth-scrollbar/interfaces/index";
+import LineBackground from "@/app/[lang]/(ecom)/cars/lineBackground";
 
 interface LayoutProps {
   className?: string;
