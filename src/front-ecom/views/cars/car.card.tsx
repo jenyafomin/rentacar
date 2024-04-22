@@ -9,10 +9,12 @@ import { ICar } from "types/Car";
 
 export default function CarCard({
   car,
+  isVissible = false, // for animation
   aspectRatio = "16 / 9",
   width = "28%",
 }: {
   car: ICar;
+  isVissible?: boolean;
   aspectRatio?: string;
   width?: string;
 }) {
@@ -53,9 +55,10 @@ export default function CarCard({
     // }
   }, []);
 
+  console.log("CAR_CARD", car);
   return (
     <DsnLink
-      className="car-card-container animate-on-mount"
+      className={`car-card-container ${!isVissible && "animate-on-mount"}`}
       href={`/${locale}/cars/${car.id}`}
       linkref={carRef}
       transitionPage={{title: `${car.make} ${car.model}`}}
@@ -84,7 +87,7 @@ export default function CarCard({
           {/* PRICE WRAPPER END */}
 
           {/* NEON UNDERLINE */}
-          <div className="neon-wrapper">
+          <div className={`neon-wrapper ${car.isFeatured && "featured"}`}>
             {/* <div className="neon-1"/>
             <div className="neon-2"/>
             <div/> */}

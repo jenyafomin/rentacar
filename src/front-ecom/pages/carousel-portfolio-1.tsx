@@ -1,7 +1,7 @@
 import Layout from "../layout/Layout";
 import ModalContact from "../components/model-right/ModalContact";
 import SwiperPagination from "../components/swiper-pagination/SwiperPagination";
-import PortfolioSwiper from "../components/portfolio/PortfolioSwiper";
+import PortfolioSwiper from "../components/portfolio/CarsSwiper";
 import React from "react";
 import Head from "next/head";
 

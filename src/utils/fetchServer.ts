@@ -1,4 +1,4 @@
-import { getServerLocale } from "@/localization/getLocale"
+import { getServerLocale } from "@/localization/getServerLocale"
 import { makeApiCall } from "./fetch";
 
 export async function serverApiFetch(endpoint: string, options: RequestInit = {}): Promise<any> {

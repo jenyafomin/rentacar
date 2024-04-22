@@ -60,6 +60,19 @@
   }
 
   .services-item {
+    .services-content {
+      transition: all 0.3s;
+    }
+    &:hover {
+      .services-content {
+        transform: scale(1.02);
+      }
+      .icon {
+        svg {
+          animation: gradient-360 3s infinite cubic-bezier(0.23, 1, 0.320, 1);
+        }
+      }
+    }
     .services-item-inner {
       position: relative;
 
@@ -95,6 +108,13 @@
         svg {
           width: 60px;
           fill: $theme-color;
+          
+          // &:hover {
+          //   animation: gradient-360 2s infinite linear;
+          // }
+          &.gradient {
+            fill: url("#gradient2");
+          }
         }
       }
     }
@@ -102,6 +122,7 @@
     .service-title + p {
       margin-top: 10px;
     }
+
   }
 
   @include media_575(min) {
@@ -155,6 +176,14 @@
   }
 
 
+}
+
+.swiper-slide-active .services-item {
+  .icon {
+    svg {
+      // animation: gradient-360 3s infinite linear;
+    }
+  }
 }
 
 .services-no-padding .with-line .services-item .services-item-inner {

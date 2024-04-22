@@ -27,16 +27,28 @@ export default function CarsList({
   // console.log("ALL CARS", allCars);
   // console.log("CARS", cars);
 
+  
   useEffect(() => {
-    // gsap.from(".car-card-container", { y: 40, opacity: 0 });
-    gsap.to(".car-card-container", {
+    const animation = gsap.to(".car-card-container", {
+      // scrollTrigger: {
+      //   trigger: ".car-card-container",
+      //   scrub: true,
+      //   markers: true,
+      //   start: "top 90%",
+      //   end: "top 100%",
+      //   toggleActions: "play none none none none"
+      // },
       y: 0,
       opacity: 1,
       stagger: 0.14,
-      from: "center",
+      // from: "top 90%",
+      // end: "top 100%",
       ease: "power1.in",
-      duration: 0.4
+      duration: 0.4,
+      // marker: true
     });
+    
+    return () => {animation.revert()}
   }, []);
 
   return (

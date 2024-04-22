@@ -7,7 +7,7 @@ import ServiceOne from "@front-ecom/components/services/grid/ServiceOne";
 import ParallaxImage from "@front-ecom/components/Image/ParallaxImage";
 import MoveBox from "@front-ecom/components/move-box/MoveBox";
 import Button from "@front-ecom/components/button/Button";
-import PortfolioSwiper from "@front-ecom/components/portfolio/PortfolioSwiper";
+import PortfolioSwiper from "@/front-ecom/components/portfolio/CarsSwiper";
 import SwiperPagination from "@front-ecom/components/swiper-pagination/SwiperPagination";
 import Testimonial from "@front-ecom/components/testimonial/Testimonial";
 import Accordion, {AccordionItem} from "@front-ecom/components/accordion/Accordion";

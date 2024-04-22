@@ -7,7 +7,7 @@ import ServiceOne from "../components/services/grid/ServiceOne";
 import ParallaxImage from "../components/Image/ParallaxImage";
 import MoveBox from "../components/move-box/MoveBox";
 import Button from "../components/button/Button";
-import PortfolioSwiper from "../components/portfolio/PortfolioSwiper";
+import PortfolioSwiper from "../components/portfolio/CarsSwiper";
 import SwiperPagination from "../components/swiper-pagination/SwiperPagination";
 import Testimonial from "../components/testimonial/Testimonial";
 import Accordion, {AccordionItem} from "../components/accordion/Accordion";

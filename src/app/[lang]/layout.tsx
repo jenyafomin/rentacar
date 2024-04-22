@@ -27,6 +27,14 @@ const RootLayout = async ({ children, params, session }: {
                 {children}
             </NextAuthProvider>
         </DictionaryProvider>
+        {/* <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="shape">
+          <defs>
+            <linearGradient id="gradient">
+                  <stop offset="0%" stop-color="var(--theme-color)" />
+                  <stop offset="100%" stop-color="var(--theme-color2)" />
+              </linearGradient>
+          </defs>
+        </svg> */}
       </body>
     </html>
   )

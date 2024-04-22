@@ -1,5 +1,5 @@
 import { prisma } from "@/back/prismaConnect";
-import { getApiLocale } from "@/localization/getLocale";
+import { getApiLocale } from "@/localization/getServerLocale";
 import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { Car } from "@prisma/client";

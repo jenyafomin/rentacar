@@ -8,7 +8,7 @@ import gsap from 'gsap';
 //     scale: 75
 // }
 
-export default function CustomCursor({duration=0.5, durationChangeSize=0.3, size=30, scale=50, ease=undefined}) {
+export default function CustomCursor({duration=0.5, durationChangeSize=0.3, size=30, scale=50, ease="power2.out"}) {
 
     const cursor = useRef<HTMLDivElement>(null);
 

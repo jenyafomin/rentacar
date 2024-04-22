@@ -22,6 +22,7 @@ function ServiceItem({data, isLine, isCorner, backgroundColor, iconOption, ...re
 
     const {className: classNameIcon} = iconOption || {};
 
+    const Icon = data?.icon;
 
     return (<div className="services-item p-relative grid-item" {...restProps}>
         <div className="services-item-inner">
@@ -40,8 +41,15 @@ function ServiceItem({data, isLine, isCorner, backgroundColor, iconOption, ...re
             </>)}
 
 
-            <div className={dsnCN('services-content', backgroundColor)}>
-                <div  {...iconOption} className={dsnCN("icon", classNameIcon)}>
+            <div className={dsnCN('services-content', backgroundColor || "")}>
+                {/* <svg className="gradient" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <linearGradient id="gradient">
+                        <stop offset="0%" stop-color="var(--theme-color)" />
+                        <stop offset="100%" stop-color="var(--theme-color2)" />
+                    </linearGradient>
+                </svg> */}
+
+                <div  {...iconOption} className={dsnCN("icon",  classNameIcon)}>
                     {data?.icon}
                 </div>
                 <div className="service-description">

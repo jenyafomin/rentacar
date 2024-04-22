@@ -4,17 +4,20 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination, Parallax, SwiperOptions} from "swiper";
 
 
-import PortfolioItem from './PortfolioItem';
+import CarSwiperItem from './CarSwiperItem';
 import {getPortfolioData} from "../../../configs/(ecom)/portfolio";
 import {dsnCN} from "../../hooks/helper";
 import {ParallaxOption} from "../../../../types/DsnSwiper";
 import {styleBox, stylePortfolio} from "../../hooks/EremiaType";
+import { ICar } from 'types/Car';
+import CarCard from '@/front-ecom/views/cars/car.card';
 
 
 
 
 
-export interface PortfolioSwiperProps extends SwiperOptions {
+export interface CarsSwiperProps extends SwiperOptions {
+    cars: Array<ICar>,
     desktop?: {} | SwiperOptions,
     mobile?: {} | SwiperOptions,
     tablet?: {} | SwiperOptions,
@@ -27,8 +30,9 @@ export interface PortfolioSwiperProps extends SwiperOptions {
 
 }
 
-export default function PortfolioSwiper(
-    {
+export default function CarsSwiper(
+    {   
+        cars,
         desktop={
             slidesPerView: 3
         },
@@ -40,7 +44,7 @@ export default function PortfolioSwiper(
             slidesPerView: 2
     
         },
-        className,
+        className = "",
         parallaxImage,
         styleBox ,
         parallaxContent,
@@ -48,10 +52,10 @@ export default function PortfolioSwiper(
         // @ts-ignore
         children,
         ...restProps
-    }: PortfolioSwiperProps
+    }: CarsSwiperProps
 ) {
-    const dataPortfolio = getPortfolioData();
 
+    console.log("CAR_SWIPER CARS:", cars.length);
     return (
         <Swiper
             modules={[Pagination, Parallax]}
@@ -64,17 +68,20 @@ export default function PortfolioSwiper(
                 576: mobile
             }}
 
-            className={dsnCN("work", className, stylePortfolio , blur && "has-blur")}
+            className={dsnCN("work", className, stylePortfolio || "" , blur && "has-blur" || "")}
 
             {...restProps}
 
 
         >
             {
-                dataPortfolio.map((item, index) =>
-                    <SwiperSlide key={index}>
-                        <PortfolioItem portoDetails={item} textButton="View Case" parallaxImage={parallaxImage}
+                cars.map((car, index) =>
+                <SwiperSlide key={index}>
+                        {/* {<CarCard car={car} />} */}
+                        {/* {car.make} */}
+                        <CarSwiperItem portoDetails={car} car={car} textButton="View Case" parallaxImage={parallaxImage}
                                        parallaxContent={parallaxContent} styleBox={styleBox}/>
+                        {/* <CarCard car={car} width='100%' isVissible={true} /> */}
                     </SwiperSlide>)
             }
 

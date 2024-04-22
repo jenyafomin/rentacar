@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../layout/Layout";
 import TitleSection from "../components/heading/TitleSection";
 import HeaderNormal from "../components/header/HeaderNormal";
-import PortfolioSwiper from "../components/portfolio/PortfolioSwiper";
+import PortfolioSwiper from "../components/portfolio/CarsSwiper";
 import SwiperPagination from "../components/swiper-pagination/SwiperPagination";
 import ServiceTow from "../components/services/grid/ServiceTow";
 import HeroSectionThree from "../components/hero-section/HeroSectionThree";

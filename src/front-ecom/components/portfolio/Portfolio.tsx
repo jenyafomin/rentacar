@@ -1,5 +1,5 @@
 import  {useRef, useState, useEffect} from 'react';
-import PortfolioItem from './PortfolioItem';
+import PortfolioItem from './CarSwiperItem';
 import {getPortfolioData} from "../../../configs/(ecom)/portfolio";
 
 

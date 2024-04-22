@@ -1,6 +1,6 @@
 const servicesDetails = [
     {
-        icon: <svg enableBackground="new 0 0 300 300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        icon: <svg className="gradient" enableBackground="new 0 0 300 300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
             <g>
                 <path
                     d="m164.804 62.461c2.478-.344 4.207-2.632 3.863-5.11s-2.632-4.207-5.11-3.862c-2.478.344-4.207 2.632-3.862 5.11.344 2.477 2.632 4.206 5.109 3.862z"/>
@@ -24,7 +24,7 @@ const servicesDetails = [
         description: "Web design encompasses many different skills and disciplines in the production of all web.",
     },
     {
-        icon: <svg enableBackground="new 0 0 300 300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        icon: <svg className="gradient" enableBackground="new 0 0 300 300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
             <g>
                 <path
                     d="m260 197.907h-8.08c-1.714-42.685-30.743-79.928-71.92-91.959v-16.041c0-.06-.031-.109-.034-.168-.019-.442-.096-.88-.263-1.301-.014-.036-.018-.075-.033-.11-.004-.009-.004-.019-.008-.028l-11.711-26.684-12.354-25.455c-1.336-2.758-5.859-2.758-7.195 0l-12.418 25.594-11.646 26.545c-.004.009-.004.019-.008.028-.015.036-.019.075-.033.111-.167.421-.244.858-.262 1.3-.003.059-.034.109-.034.169v16.043c-41.182 12.034-70.209 49.261-71.92 91.957h-12.081c-2.209 0-4 1.791-4 4v48c0 2.209 1.791 4 4 4h84v2.514c0 5.23 4.256 9.486 9.486 9.486h37.027c5.23 0 9.486-4.256 9.486-9.486v-2.514h80c2.209 0 4-1.791 4-4v-48c.001-2.21-1.79-4.001-3.999-4.001zm-136 0h-23.848c1.24-16.309 10.075-30.892 23.848-39.711zm8-104h8.486v92c0 2.209 1.791 4 4 4s4-1.791 4-4v-92h8v77.455c0 2.209 1.791 4 4 4s4-1.791 4-4v-77.455h7.514v91.262c0 2.209 1.791 4 4 4s4-1.791 4-4v-26.97c13.77 8.82 22.608 23.404 23.848 39.708h-71.848zm20-46.84 5.969 12.295h-11.936zm-9.744 20.295h19.485l8.136 18.545h-35.754zm28.258 190.545h-37.027c-.82 0-1.486-.666-1.486-1.486v-2.514h40v2.514c-.001.82-.667 1.486-1.487 1.486zm85.486-12h-12v-12c0-2.209-1.791-4-4-4s-4 1.791-4 4v12h-8v-8c0-2.209-1.791-4-4-4s-4 1.791-4 4v8h-8v-12c0-2.209-1.791-4-4-4s-4 1.791-4 4v12h-8v-8c0-2.209-1.791-4-4-4s-4 1.791-4 4v8h-8v-12c0-2.209-1.791-4-4-4s-4 1.791-4 4v12h-8v-8c0-2.209-1.791-4-4-4s-4 1.791-4 4v8h-8v-12c0-2.209-1.791-4-4-4s-4 1.791-4 4v12h-8v-8c0-2.209-1.791-4-4-4s-4 1.791-4 4v8h-8v-12c0-2.209-1.791-4-4-4s-4 1.791-4 4v12h-8v-8c0-2.209-1.791-4-4-4s-4 1.791-4 4v8h-8v-12c0-2.209-1.791-4-4-4s-4 1.791-4 4v12h-8v-8c0-2.209-1.791-4-4-4s-4 1.791-4 4v8h-16v-40h12c2.209 0 4-1.791 4-4 0-40.01 26.151-75.437 64-87.56v34.529c-19.751 10.46-32 30.688-32 53.031 0 2.209 1.791 4 4 4h112c2.209 0 4-1.791 4-4 0-22.336-12.249-42.573-32-53.033v-34.53c37.847 12.125 64 47.559 64 87.563 0 2.209 1.791 4 4 4h8z"/>
@@ -40,7 +40,7 @@ const servicesDetails = [
         description: "Web design encompasses many different skills and disciplines in the production of all web.",
     },
     {
-        icon: <svg enableBackground="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        icon: <svg className="gradient" enableBackground="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
             <g>
                 <g>
                     <path
@@ -52,7 +52,7 @@ const servicesDetails = [
         description: "Web design encompasses many different skills and disciplines in the production of all web.",
     },
     {
-        icon: <svg enableBackground="new 0 0 300 300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        icon: <svg className="gradient" enableBackground="new 0 0 300 300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
             <g>
                 <path
                     d="m251.757 225.516c-1.562-1.562-4.094-1.562-5.656 0l-2.828 2.828-2.828-2.828c-1.562-1.562-4.094-1.562-5.656 0s-1.562 4.094 0 5.656l2.828 2.828-2.828 2.828c-1.562 1.562-1.562 4.094 0 5.656.781.781 1.805 1.172 2.828 1.172s2.047-.391 2.828-1.172l2.828-2.828 2.828 2.828c.781.781 1.805 1.172 2.828 1.172s2.047-.391 2.828-1.172c1.562-1.562 1.562-4.094 0-5.656l-2.828-2.828 2.828-2.828c1.562-1.563 1.562-4.094 0-5.656z"/>
@@ -75,7 +75,7 @@ const servicesDetails = [
         description: "Web design encompasses many different skills and disciplines in the production of all web.",
     },
     {
-        icon: <svg enableBackground="new 0 0 300 300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        icon: <svg className="gradient" enableBackground="new 0 0 300 300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
             <g>
                 <path
                     d="m248.172 54.504c2.502.005 4.533-2.02 4.538-4.521s-2.02-4.533-4.521-4.537c-2.501-.005-4.533 2.02-4.538 4.521s2.02 4.532 4.521 4.537z"/>
@@ -99,7 +99,11 @@ const servicesDetails = [
         description: "Web design encompasses many different skills and disciplines in the production of all web.",
     },
     {
-        icon: <svg enableBackground="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        icon: <svg className="gradient" enableBackground="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <linearGradient id="gradient2">
+                  <stop offset="0%" stopColor="var(--theme-color)" />
+                  <stop offset="100%" stopColor="var(--theme-color2)" />
+              </linearGradient>
             <g>
                 <g>
                     <path

@@ -2,7 +2,13 @@ import styled from "styled-components";
 import {dsnCN} from "../../hooks/helper";
 
 
-function MetaPost({date = false, className = null, category, separate = null}) {
+interface IMetaPostProps {
+  date?: boolean;
+  className?: string;
+  category: Array<string> | string;
+  separate?: any;
+}
+function MetaPost({date = false, className = "", category, separate = null}: IMetaPostProps) {
     return (
         <Meta className={dsnCN("post-info", className)}>
             {date && <span className="post-date">{date} </span>}

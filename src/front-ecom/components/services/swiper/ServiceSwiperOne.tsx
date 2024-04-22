@@ -1,8 +1,10 @@
+"use client"
 import ServiceSwiper from "../ServiceSwiper";
 import {getServiceData} from "../../../../configs/(ecom)/service";
 import SwiperPagination from "../../swiper-pagination/SwiperPagination";
 
-function ServiceSwiperOne({className , ...restProps}) {
+function ServiceSwiperOne({className, ...restProps}: {className?: string}) {
+
     return <ServiceSwiper
         desktop={{slidesPerView: 3}}
         tablet={{slidesPerView: 1.5}}
@@ -16,7 +18,7 @@ function ServiceSwiperOne({className , ...restProps}) {
         spaceBetween={0}
         parallax
         centeredSlides
-        className={className} data={getServiceData()}
+        className={className} data={getServiceData() as any}
         {...restProps}
     >
         <SwiperPagination className={"mt-30 dsn-container justify-content-between"} />

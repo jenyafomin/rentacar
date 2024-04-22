@@ -6,6 +6,8 @@ import {transitionPage} from "./EremiaType";
 import {tdEnd, tdStart} from "./transition/transitionDefalut";
 import {gsap} from "gsap";
 import {useRouter, usePathname} from "next/navigation";
+import { useLocale } from "@/localization/useLocale";
+import { getLocaleUrl, isUrlMissingLocale } from "@/localization/getSetUrlLocale";
 
 
 export interface LinkDsnProps extends LinkProps {
@@ -24,7 +26,7 @@ function DsnLink({children, className, href, linkref, transitionPage = true, ...
 
     if(!linkref)
     linkref = useRef<HTMLAnchorElement>(null);
-
+    const locale = useLocale();
     const router = useRouter();
     const path = usePathname;
 
@@ -32,6 +34,16 @@ function DsnLink({children, className, href, linkref, transitionPage = true, ...
     useEffect(() => {
         if (!transitionPage || !href || path === href)
             return;
+
+        const isMissingLocale = isUrlMissingLocale(href as string);
+        let localeHref: any;
+
+        if(isMissingLocale) {
+            localeHref = getLocaleUrl(locale, href as string);
+        } else {
+            localeHref = href;
+        }
+
 
         const currentLink = linkref.current;
         const domTransition: { current: HTMLDivElement | null, tl: gsap.core.Timeline | null } = {
@@ -46,10 +58,9 @@ function DsnLink({children, className, href, linkref, transitionPage = true, ...
 
             [domTransition.current, domTransition.tl] = tdStart(transitionPage);
             domTransition.tl.call(() => {
-                // router.push(href);
-                console.log("HREF", href);
-                // router.forward(href);
-                router.push(href);
+                console.log("HREF", localeHref);
+
+                router.push(localeHref);
                 domTransition.tl.kill();
                 domTransition.tl = null;
                 domTransition.current = null;

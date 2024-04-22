@@ -13,6 +13,11 @@ export async function getActiveCars() {
     return cars;
 }
 
+export async function getFeaturedCars() {
+    const cars = await prisma.car.findMany({ where: { isFeatured: true } });
+    return cars;
+}
+
 export async function createCar(car: ICar) {
     const newCar = await prisma.car.create({ data: car })
     return newCar;

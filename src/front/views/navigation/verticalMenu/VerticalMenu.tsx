@@ -23,7 +23,7 @@ import StyledVerticalNavExpandIcon from '@/front/@menu/styles/vertical/StyledVer
 import menuItemStyles from '@/front/@core/styles/vertical/menuItemStyles'
 import menuSectionStyles from '@/front/@core/styles/vertical/menuSectionStyles'
 import { usePathname } from 'next/navigation'
-import { getLocaleFromPath } from '@/localization/getLocale'
+import { getLocaleFromPath } from '@/localization/getServerLocale'
 import menuData from "@/configs/(dashboard)/navigation-dashboard/verticalMenuData"
 import { useLocale } from '@/localization/useLocale'
 

@@ -19,7 +19,8 @@ export interface ParallaxImageProps extends ImageProps {
     animationActive?: boolean,
     caption?: string,
     asBackground?: boolean,
-    parallaxFrom?: Object
+    parallaxFrom?: Object,
+    className?: string
 }
 
 export default function ParallaxImage(

@@ -1,5 +1,5 @@
 "use client"
-import { getLocaleFromPath } from '@/localization/getLocale'
+import { getLocaleFromPath } from '@/localization/getServerLocale'
 import { useLocale } from '@/localization/useLocale'
 import styled from '@emotion/styled'
 import { toast } from 'react-toastify'

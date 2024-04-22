@@ -9,7 +9,7 @@ import ButtonPopup from "../components/button-popup/ButtonPopup";
 import HeroSectionPersonal from "../components/hero-section/HeroSectionPersonal";
 import Resume from "../components/resume/Resume";
 import ServiceTow from "../components/services/grid/ServiceTow";
-import PortfolioSwiper from "../components/portfolio/PortfolioSwiper";
+import PortfolioSwiper from "../components/portfolio/CarsSwiper";
 import SwiperPagination from "../components/swiper-pagination/SwiperPagination";
 import Testimonial from "../components/testimonial/Testimonial";
 import BlogSwiper from "../components/bolg/BlogSwiper";

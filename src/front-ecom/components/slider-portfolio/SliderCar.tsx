@@ -53,6 +53,7 @@ export interface SliderPortfolioProps {
   alignControlNav?: justifyContent;
   optionSlider?: SwiperProps;
   tag?: React.ElementType;
+  children?: React.ReactNode
 }
 
 export default function SliderCar({
@@ -67,12 +68,13 @@ export default function SliderCar({
   alignControlNav = "between",
   optionSlider = {},
   car,
+  children,
   ...restProps
 }: SliderPortfolioProps) {
 
   const rootSlider = useRef(),
     [contentRef, setContentRef] = useArrayRef(),
-    dataProject = getPortfolioData(),
+    // dataProject = getPortfolioData(),
     [active, setActive] = useState(0),
     bg = useRef();
 
@@ -259,14 +261,18 @@ export default function SliderCar({
           </Swiper>
         </div>
 
+        {/* <div style={{color: "#000"}}>
+          Hello
+        </div> */}
         <ControlNav
-          className={dsnCN(
+          className={dsnCN("car",
             alignControlNav && "justify-content-" + alignControlNav
           )}
           timeline={tl}
           activeClass={active}
           parent={rootSlider}
         />
+
 
         {/* <ContentSlider
           data={car}

@@ -7,7 +7,7 @@ import ServiceOne from "@front-ecom/components/services/grid/ServiceOne";
 import ParallaxImage from "@front-ecom/components/Image/ParallaxImage";
 import MoveBox from "@front-ecom/components/move-box/MoveBox";
 import Button from "@front-ecom/components/button/Button";
-import PortfolioSwiper from "@front-ecom/components/portfolio/PortfolioSwiper";
+import CarsSwiper from "@/front-ecom/components/portfolio/CarsSwiper";
 import SwiperPagination from "@front-ecom/components/swiper-pagination/SwiperPagination";
 import Testimonial from "@front-ecom/components/testimonial/Testimonial";
 import Accordion, {AccordionItem} from "@front-ecom/components/accordion/Accordion";
@@ -21,13 +21,23 @@ import NextPage from "@front-ecom/components/next/NextPage";
 import Footer from "@front-ecom/components/footer/Footer";
 import ModalContact from "@front-ecom/components/model-right/ModalContact";
 import Head from "next/head";
+import LineBackground from "../../../front-ecom/layout/LineBackground";
+import ServiceSwiperOne from "@/front-ecom/components/services/swiper/ServiceSwiperOne";
+import { makeApiCall } from "@/utils/fetch";
+import { getServerLocale } from "@/localization/getServerLocale";
+import { ICar } from "types/Car";
+import { Methods_Get_Cars } from "@/app/api/cars/route";
+import BgDot from "@/front-ecom/components/header/BgDot";
+import Facts from "@/front-ecom/components/facts/Facts";
 
 
-export default function About() {
-    
+export default async function About() {
+    const locale = getServerLocale()
+    const featuredCars = await makeApiCall<Array<ICar>>(locale, `/api/cars?method=${Methods_Get_Cars.FEATURED}`)
+    console.log("featuredCars", featuredCars?.length);
     return (
         <>
-
+            <LineBackground />
             <SliderPortfolio
                 webgel
                 fullWidth
@@ -39,11 +49,31 @@ export default function About() {
                 metaData={{hasSeparator: true}}
             />
 
-            <HeroSection className="container section-margin container fill-right-container"
-                         data-dsn-title="How We Are"/>
+            {/* <HeroSection className="container section-margin container fill-right-container"
+                         data-dsn-title="How We Are"/> */}
+
+            {/*<!-- ========== facts-section ==========*/}
+            {/* <div className="section-margin p-relative">
+                <BgDot/>
+                <BgDot rightPosition/>
+                <div className="container">
+                    <Facts className="text-center" col={4} colTablet={2}/>
+                </div>
+            </div> */}
+            {/*<!-- ========== end facts-section ========== */}
 
             {/*Start Service*/}
-            <div className="container section-margin" data-dsn-title="Our Services">
+            <div className="container section-margin" data-dsn-title="our Services">
+                <TitleSection description={"WHY CHOOSE US?"}>
+                    We are delivering beautiful <br/> digital products for you.
+                </TitleSection>
+                <ServiceSwiperOne/>
+            </div>
+            {/*End Service*/}
+
+
+            {/*Start Service*/}
+            {/* <div className="container section-margin" data-dsn-title="Our Services">
                 <TitleSection
                     className="align-items-center text-center"
                     description={"Our Services"}
@@ -51,12 +81,12 @@ export default function About() {
                     We are delivering beautiful <br/> digital products for you.
                 </TitleSection>
                 <ServiceOne/>
-            </div>
+            </div> */}
             {/*End Service*/}
 
             {/*Start Box Info Move Content*/}
-            <div className="p-relative section-margin">
-                <ParallaxImage src="/img/project/project3/2.jpg" overlay={2} alt={""}/>
+            {/* <div className="p-relative section-margin">
+                <ParallaxImage className="full-width" src="/img/project/project3/2.jpg" overlay={2} alt={""}/>
                 <MoveBox tablet={false}>
                     <TitleSection
                         className={`align-items-start mb-30`}
@@ -83,7 +113,7 @@ export default function About() {
                         NOTE : Some details are very important.
                     </p>
                 </MoveBox>
-            </div>
+            </div> */}
             {/*End Box Info Move Content*/}
 
 
@@ -96,7 +126,8 @@ export default function About() {
                     Creative Portfolio <br/>
                     Designs
                 </TitleSection>
-                <PortfolioSwiper
+                <CarsSwiper
+                    cars={featuredCars}
                     grabCursor
                     desktop={{spaceBetween: 50, slidesPerView: 1.5}}
                     tablet={{spaceBetween: 0, slidesPerView: 1.3}}
@@ -116,7 +147,7 @@ export default function About() {
                     <SwiperPagination
                         className={`justify-content-between dsn-container mt-30`}
                     />
-                </PortfolioSwiper>
+                </CarsSwiper>
             </div>
             {/*End Portfolio*/}
 

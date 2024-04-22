@@ -4,7 +4,7 @@ import TitleSection from "../components/heading/TitleSection";
 import SliderPortfolio from "../components/slider-portfolio/SliderPortfolio";
 import HeroSection2 from "../components/hero-section/HeroSection2";
 import ServiceSwiperOne from "../components/services/swiper/ServiceSwiperOne";
-import PortfolioSwiper from "../components/portfolio/PortfolioSwiper";
+import PortfolioSwiper from "../components/portfolio/CarsSwiper";
 import Facts from "../components/facts/Facts";
 import BgDot from "../components/header/BgDot";
 import BlogSwiper from "../components/bolg/BlogSwiper";

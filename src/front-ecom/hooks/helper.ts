@@ -53,8 +53,8 @@ export function pageLoad(startTime, endTime, duration, current_timer ) {
 }
 
 
-export function dsnCN(...args: string[]) {
-    return args.join(' ').trim();
+export function dsnCN(...args: any[]) {
+    return args.filter(v => typeof v === "string").join(' ').trim();
 }
 
 export function checkMobile($width = true) {
