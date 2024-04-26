@@ -75,6 +75,7 @@
         .title,
         .metas,
         .link-custom,
+        button
         {
           pointer-events: auto;
         }
@@ -90,11 +91,11 @@
         .title,
         .metas,
         .link-custom,
-        .description, hr {
+        .description, hr, button {
           opacity: 0;
           visibility: hidden;
           transform: scale(0.8);
-
+          display: none;
         }
       }
 

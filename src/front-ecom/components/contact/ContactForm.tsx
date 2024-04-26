@@ -4,11 +4,11 @@ import emailjs from '@emailjs/browser';
 import {dsnCN} from "../../hooks/helper";
 import TitleSection from "../heading/TitleSection";
 
-function ContactForm({className}) {
+function ContactForm({className}: {className?: string}) {
 
     const form = useRef();
-    const [loading, setLoading] = useState();
-    const [result, setResult] = useState();
+    const [loading, setLoading] = useState<boolean>(false);
+    const [result, setResult] = useState<boolean>(false);
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -23,12 +23,12 @@ function ContactForm({className}) {
                 setLoading(false);
                 setResult(true);
                 form.current.reset();
+                setTimeout(() => setResult(false), 5000);
             }, (error) => {
                 setLoading(false);
             });
     };
 
-    setTimeout(() => setResult(false), 5000);
 
 
     return (
@@ -87,7 +87,7 @@ function ContactForm({className}) {
                             </div>
                             {loading && <div className="loading-message mt-20">Message Send ...</div>}
                             {result &&
-                            <p className="success-message mt-20">Your Message has been successfully sent. I will contact you
+                            <p className="success-message mt-20">Your Message has been successfully sent. We will contact you
                                 soon.</p>}
                         </div>
                     </div>

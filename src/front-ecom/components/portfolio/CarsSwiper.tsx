@@ -1,5 +1,5 @@
 "use client"
-import {Swiper, SwiperSlide} from 'swiper/react';
+import {Swiper, SwiperProps, SwiperSlide} from 'swiper/react';
 
 import {Pagination, Parallax, SwiperOptions} from "swiper";
 
@@ -10,13 +10,13 @@ import {dsnCN} from "../../hooks/helper";
 import {ParallaxOption} from "../../../../types/DsnSwiper";
 import {styleBox, stylePortfolio} from "../../hooks/EremiaType";
 import { ICar } from 'types/Car';
-import CarCard from '@/front-ecom/views/cars/car.card';
+import { ReactNode } from 'react';
 
 
 
 
 
-export interface CarsSwiperProps extends SwiperOptions {
+export interface CarsSwiperProps extends SwiperProps {
     cars: Array<ICar>,
     desktop?: {} | SwiperOptions,
     mobile?: {} | SwiperOptions,
@@ -26,7 +26,8 @@ export interface CarsSwiperProps extends SwiperOptions {
     parallaxContent?: Object | ParallaxOption,
     stylePortfolio?: stylePortfolio,
     blur?: boolean,
-    styleBox?: styleBox
+    styleBox?: styleBox,
+    children?: ReactNode
 
 }
 
@@ -69,7 +70,6 @@ export default function CarsSwiper(
             }}
 
             className={dsnCN("work", className, stylePortfolio || "" , blur && "has-blur" || "")}
-
             {...restProps}
 
 
@@ -79,7 +79,7 @@ export default function CarsSwiper(
                 <SwiperSlide key={index}>
                         {/* {<CarCard car={car} />} */}
                         {/* {car.make} */}
-                        <CarSwiperItem portoDetails={car} car={car} textButton="View Case" parallaxImage={parallaxImage}
+                        <CarSwiperItem car={car} parallaxImage={parallaxImage}
                                        parallaxContent={parallaxContent} styleBox={styleBox}/>
                         {/* <CarCard car={car} width='100%' isVissible={true} /> */}
                     </SwiperSlide>)

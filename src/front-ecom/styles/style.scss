@@ -46,6 +46,8 @@
 @import "global/_normalize.scss";
 @import "typography/_typography.scss";
 
+
+
 :root, :root .v-light {
   --bg-color: #f9f9f9;
   --bg-color2: #292929;
@@ -67,15 +69,24 @@
   --assistant-color: #111;
   --assistant-color2: #333;
   --theme-color: #50ef73;
-  --theme-color2: #147bbf;
+  --theme-color2: #49cae6;
   --font-color: #bbb;
   --heading-color: #fff;
   --border-color: rgba(255, 255, 255, 0.067);
   --smooth-color: #f9f9f9;
   --reverse-color: #f9f9f9;
   --reverse-heading-color: #000;
+
+  --background-shadow-main: 12px 12px 36px #00000099, 4px 4px 12px #00000077, -2px -2px 1px -2px #ffffff33, -1px -1px 1px #ffffff11, -4px -4px 12px #ffffff11;;
 }
 
+.gradient-text {
+  background: linear-gradient(90deg, $theme-color, $theme-color2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #fff0;
+  animation: gradient 1s infinite linear;
+}
 
 @media only screen and (max-width: 991px) {
   .v-dark-head-mobile {
@@ -161,7 +172,7 @@
 @import "global/global";
 
 @import "_core.scss";
-@import "forms/_forms.scss";
+@import "forms/index";
 @import "navigation/_navigation.scss";
 @import "blocks/blocks";
 @import "site/_site.scss";

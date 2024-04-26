@@ -41,6 +41,9 @@
 
   .sm-title-block {
     color: $theme-color;
+    &.gradient-text {
+      color: #fff0;
+    }
     font-size: 14px;
   }
 

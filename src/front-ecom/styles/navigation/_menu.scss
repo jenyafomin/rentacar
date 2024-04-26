@@ -113,7 +113,7 @@
 }
 
 .site-header {
-
+  pointer-events: none;
   @include body-line() {
     padding-left: 0;
     &.dsn-hamburger{
@@ -125,6 +125,7 @@
 
 
     .main-logo {
+      pointer-events:all;
       width: $body-style-space;
       text-align: center;
 
@@ -133,6 +134,7 @@
       }
     }
     #navbar_toggle {
+      pointer-events:all;
       position: fixed;
       width: var(--body-style-space);
       padding: 0;

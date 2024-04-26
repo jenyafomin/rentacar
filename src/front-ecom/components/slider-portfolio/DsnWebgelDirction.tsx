@@ -15,6 +15,7 @@ export interface DsnWebgelDirctionParams {
     swiper?: any,
     speedIn?: number,
     easing?: any,
+    overlay?: string
 
 }
 
@@ -141,7 +142,8 @@ function DsnWebgelDirction(props: DsnWebgelDirctionParams) {
         direction,
         onComplete,
         speedIn = 1.6,
-        easing = Expo.easeOut
+        easing = Expo.easeOut,
+        overlay = "3",
     } = props;
 
     const canvas = useRef(null);
@@ -365,7 +367,7 @@ function DsnWebgelDirction(props: DsnWebgelDirctionParams) {
                     }
                 })
 
-                console.log("THIS",$this);
+                // console.log("THIS",$this);
 
                 return $this.allImgs;
             })
@@ -405,11 +407,11 @@ function DsnWebgelDirction(props: DsnWebgelDirctionParams) {
 
             if (swiper) {
                 effectSwiper.bind($this)({swiper, intensity, speedIn, easing});
-                bgContainer.dataset.overlay = data[swiper.activeIndex]["overlay"] || "3";
+                bgContainer.dataset.overlay = data[swiper.activeIndex]["overlay"] || overlay;
                 swiper.dsnOnChange = (activeIndex, oldIndex) => {
                     $this.changeTo(activeIndex, oldIndex);
                     // TODO
-                    bgContainer.dataset.overlay = data[activeIndex]["overlay"] || "3";
+                    bgContainer.dataset.overlay = data[activeIndex]["overlay"] || overlay;
                 }
             }
         })

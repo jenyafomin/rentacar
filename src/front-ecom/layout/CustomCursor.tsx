@@ -38,6 +38,18 @@ export default function CustomCursor({duration=0.5, durationChangeSize=0.3, size
             item.addEventListener('mouseleave', mouseLinkLeve);
         });
 
+        const tagButton = document.body.querySelectorAll('button');
+        tagButton.forEach((item) => {
+            item.addEventListener('mouseenter', mouseLinkEnter);
+            item.addEventListener('mouseleave', mouseLinkLeve);
+        });
+
+        const tagInput = document.body.querySelectorAll('input');
+        tagInput.forEach((item) => {
+            item.addEventListener('mouseenter', mouseLinkEnter);
+            item.addEventListener('mouseleave', mouseLinkLeve);
+        });
+
 
         document.body.addEventListener('mousemove', moseMove);
 

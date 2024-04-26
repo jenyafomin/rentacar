@@ -1,0 +1,185 @@
+$border-radius: 4px;
+$gradient-bg: linear-gradient(45deg, #d4f2ae, #00ffb3);
+$gradient-bg-blue: linear-gradient(45deg, #aec7f2, #00fffb);
+$gradient-bg-cyan: linear-gradient(45deg, #00fffb, #00f9b2);
+$gradient-bg-red: linear-gradient(45deg, #fb4b00, #ec5992);
+$gradient-bg-yellow: linear-gradient(45deg, #e85252, #646fea);
+// $gradient-bg-yellow: radial-gradient(at 0% 0%, rgba(237,115,4,1) 1.9%, rgba(237,208,4,1) 19.6%, rgba(255,255,255,1) 70.5%, rgba(0,204,255,1) 100.3% );
+$gradient-bg-rainbow: linear-gradient(
+  90deg,
+  hsl(240, 100%, -30%) -30%,
+  hsl(254, 67%, 13%),
+  hsl(275, 82%, 22%),
+  hsl(297, 65%, 26%),
+  hsl(324, 58%, 36%),
+  hsl(345, 54%, 47%),
+  hsl(8, 70%, 54%),
+  hsl(25, 89%, 52%),
+  hsl(38, 97%, 51%),
+  hsl(49, 90%, 61%),
+  hsl(49, 90%, 61%)
+);
+
+.btn-gradient {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: $gradient-bg;
+  padding: 8px 20px;
+  border-radius: $border-radius;
+
+  box-shadow:
+    inset -1px -1px 9px 0px #fff3,
+    inset 0px 2px 9px 0px #fff3,
+    inset 0px 0px 12px 0px #fff3,
+    inset 0px 0px 24px 0px #fff3,
+    inset 0px 0px 48px 0px #fff3,
+    // Outside
+    // 3px 3px 16px #0009,
+    // 0px 0px 2px 14px #fff,
+;
+
+  text-shadow:
+    -0.7px -0.7px 1px #fff3,
+    -1px -1px 3px #fff3;
+
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #064264;
+
+  transition: all 0.5s;
+  &.animate {
+    animation: gradient-15 1.4s infinite ease;
+
+    &::before {
+      // animation: blur-24 1.4s infinite ease-in-out;
+    }
+  }
+  &.rounded {
+    border-radius: 50%;
+    &::before,
+    &::after {
+      border-radius: 50%;
+    }
+  }
+
+  // -webkit-box-shadow: inset -2px -2px 3px 3px #fff;
+
+  z-index: 0;
+
+  &.blue {
+    background: $gradient-bg-blue;
+    &::before,
+    &::after {
+      background: $gradient-bg-blue;
+    }
+  }
+  &.cyan {
+    background: $gradient-bg-cyan;
+    // color: #000;
+    font-weight: 900;
+    -webkit-text-stroke: 2px solid #000;
+    &::before,
+    &::after {
+      background: $gradient-bg-cyan;
+    }
+  }
+  &.red {
+    background: $gradient-bg-red;
+    &::before,
+    &::after {
+      background: $gradient-bg-red;
+    }
+  }
+  &.yellow {
+    background: $gradient-bg-yellow;
+    color: #fff;
+    // box-shadow: none;
+    // text-shadow: none;
+    &::before,
+    &::after {
+      background: $gradient-bg-yellow;
+      // z-index: 0;
+      // opacity: 0.2;
+      //   display: none;
+    }
+  }
+  &.rainbow {
+    background: $gradient-bg-rainbow;
+    &::before,
+    &::after {
+      background: $gradient-bg-rainbow;
+    }
+  }
+  // &.blue {
+  //     background: $gradient-bg-blue;
+  // }
+
+  &:hover {
+    animation: gradient-360 3s infinite ease-in-out;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: $gradient-bg;
+    border-radius: $border-radius;
+    // &.rounded {
+    //   border-radius: 50%;
+    // }
+    z-index: -1;
+    opacity: 0.7;
+
+    display: none;
+  }
+
+  &::before {
+    display: block;
+    filter: blur(4px);
+  }
+
+  &::after {
+    display: block;
+    filter: blur(12px);
+  }
+
+  &.lg {
+    padding: 4px 20px;
+    font-size: 18px;
+  }
+
+  &.inActive {
+    background: #0001;
+    box-shadow: none;
+    color: #fff;
+    // border: 1px solid #fff3;
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+      inset 1px 1px 5px #0009,
+      inset 0 0 12px #0006,
+      inset 0 0 24px #0003,
+      inset -0.5px -0.5px 1px 0.3px rgba(255, 255, 255, 0.3),
+      -0.3px -0.3px 0.5px 0.3px #fff1,
+      -1px -1px 2px 0.3px #fff1,
+      ;
+
+    &:hover {
+      // background: #0004;
+      opacity: 0.8;
+    }
+
+    &::before,
+    &::after {
+      opacity: 0;
+    }
+  }
+}

@@ -37,6 +37,13 @@
 @include MarginPadding(10, 10, ".w", width, "%");
 
 
+.gradient-text {
+  background: linear-gradient(90deg, $theme-color, $theme-color2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #fff0;
+  animation: gradient 1s infinite linear;
+}
 
 .d-grid {
   display: grid;

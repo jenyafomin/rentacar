@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import brandLight from './logo.png';
-import brandDark from './logo-dark.png';
+import brandLight from './ga-black.png';
+import brandDark from './ga-white.png';
 import Image from "next/legacy/image";
 
 const MainBrand = styled.div`
@@ -33,11 +33,11 @@ const MainBrand = styled.div`
 const Logo = ({width="80px", height="auto", alt="GreenAge"}) => {
 
 
-
     return (
         <MainBrand className="main-brand" width={width} height={height}>
-            <Image className="logo-light" src={brandLight?.src} alt={`${alt} - logo light`} width={320} height={84}/>
-            <Image className="logo-dark" src={brandDark?.src} alt={`${alt} - logo dark`} width={320} height={84}/>
+            {/* <Image className="logo-light" src={brandLight?.src} alt={`${alt} - logo light`} width={80} height={80}/> */}
+            <Image className="logo-dark" src={brandDark?.src} alt={`${alt} - logo light`} width={80} height={80}/>
+            {/* <Image className="logo-dark" src={brandDark?.src} alt={`${alt} - logo dark`} width={320} height={84}/> */}
         </MainBrand>
     );
 }

@@ -5,13 +5,13 @@ import {dsnCN} from "../../hooks/helper";
 
 
 const Bg = styled.div`
-        height : ${props => props.theme.height};
+        height : ${(props: any) => props.theme.height};
         position: relative;
 `;
 
 
 interface bgImageProps {
-    src?:string,
+    src:string,
     video?: any,
     height?:string,
     overlay?:number,

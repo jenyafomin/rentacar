@@ -1,7 +1,7 @@
 "use client"
-import  {useEffect, useRef} from 'react'
+import  {ReactNode, useEffect, useRef} from 'react'
 
-import {Swiper, SwiperSlide} from 'swiper/react';
+import {Swiper, SwiperProps, SwiperSlide} from 'swiper/react';
 import MoveTrigger from "../../animation/MoveTrigger";
 import {Controller, Pagination, Parallax, SwiperOptions, Thumbs} from "swiper";
 import {dsnCN} from "../../hooks/helper";
@@ -11,7 +11,7 @@ import {getTestimonialData} from '../../../configs/(ecom)/testimonial';
 import {backgroundColor, styleBox} from "../../hooks/EremiaType";
 
 
-interface TestimonialProps extends SwiperOptions {
+interface TestimonialProps extends SwiperProps {
     className?: string,
     title?: string,
     desktop?: {} | SwiperOptions,
@@ -25,6 +25,7 @@ interface TestimonialProps extends SwiperOptions {
     speed?: any,
     loopedSlides?: any,
     loop?: any,
+    children?: ReactNode,
 }
 
 export default function Testimonial({
@@ -80,7 +81,7 @@ export default function Testimonial({
 
                 {title && <div className="text-left">
                     <MoveTrigger from={{y: 0, opacity: 0}} to={{y: -60, opacity: 1}} tablet={false} mobile={false} >
-                        {(ref) => <h2 className='p-relative section-title' ref={ref} dangerouslySetInnerHTML={{__html: title}}/>}
+                        {(ref: any) => <h2 className='p-relative section-title' ref={ref} dangerouslySetInnerHTML={{__html: title}}/>}
                     </MoveTrigger>
                 </div>
                 }
@@ -123,12 +124,12 @@ export default function Testimonial({
                             >
                                 {TestimonialDetails.map(($item, $index) =>
                                     <SwiperSlide key={$index} className="d-flex align-items-center">
-                                        <div className="box-img" {...parallaxImage}>
+                                        <div className="box-img" {...parallaxImage} style={{width: "70px"}}>
                                             <Image src={$item.src} width={80} height={80} alt={$item.name} sizes="(max-width: 768px) 70px,(max-width: 1200px) 70px,33vw"/>
                                         </div>
                                         <div className="box-text" {...parallaxContent}>
                                             <h4 className="title-block testimonial-name">{$item.name}</h4>
-                                            <h5 className="sm-title-block testimonial-description">{$item.label}</h5>
+                                            <h5 className="sm-title-block testimonial-description gradient-text">{$item.label}</h5>
                                         </div>
                                     </SwiperSlide>)}
                             </Swiper>

@@ -16,3 +16,16 @@ export function getLocaleUrl(locale: Locale, pathname: string) {
     return `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`
 
 }
+
+export function convertToLocaleUrl(locale: Locale, pathname: string) {
+    const isMissingLocale = isUrlMissingLocale(pathname as string);
+    let url: any;
+
+    if(isMissingLocale) {
+        url = getLocaleUrl(locale, pathname);
+    } else {
+        url = pathname;
+    }
+
+    return url
+}

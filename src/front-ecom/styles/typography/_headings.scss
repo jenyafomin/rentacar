@@ -45,6 +45,54 @@ h6, .h6 {
   font-family: $heading-font;
   font-size: 55px;
   letter-spacing: 2px;
+  // background: linear-gradient(90deg, $heading-font, $font-color);
+  // background-clip: text;
+      // -webkit-background-clip: text;
+
+  a {
+    
+    // color: rgba(255, 255, 255, 0.1);
+    // background: linear-gradient(90deg, $theme-color, $theme-color2);
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // z-index: 10;
+    // text-shadow: inset 3px 3px 3px #fff;
+
+    // &:hover {
+      // animation: gradient 3s infinite linear;
+    // }
+
+    // &.neon {
+    //   background: linear-gradient(90deg, $theme-color, $theme-color2);
+    //   background-clip: text;
+    //   -webkit-background-clip: text;
+    //   position: absolute;
+    //   z-index: 1 ;
+    //   left: 0;
+    //   top: 0;
+
+    //   // &::before {
+
+    //   // }
+    // }
+    // &.neon-1 {
+    //   filter: blur(3px);
+    //   opacity: 0.3;
+    // }
+    // &.neon-2 {
+    //   filter: blur(6px);
+    //   opacity: 0.3;
+    // }
+    // &.neon-3 {
+    //   filter: blur(9px);
+    //   opacity: 0.3;
+    // }
+    // &.neon-4 {
+    //   filter: blur(3px);
+    //   opacity: 0.7;
+    // }
+  }
+  // text-shadow: 1px 1px 3px #0009, 3px 3px 9px #0006, 0px 0px 24px #fff3, -10px -10px 12px #fff2, -1px -1px 6px rgb(255 255 255 / 75%);
 
 
   @include media_768 {
@@ -131,6 +179,7 @@ h6, .h6 {
   span {
     position: relative;
     color: $heading-color;
+    text-shadow: 3px 3px 3px #0003;
     font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;

@@ -20,7 +20,8 @@ export interface ParallaxImageProps extends ImageProps {
     caption?: string,
     asBackground?: boolean,
     parallaxFrom?: Object,
-    className?: string
+    className?: string,
+    src: string
 }
 
 export default function ParallaxImage(
@@ -37,6 +38,7 @@ export default function ParallaxImage(
         className,
         asBackground,
         parallaxFrom,
+        src,
         ...restProps
     }: ParallaxImageProps) {
 
@@ -47,7 +49,7 @@ export default function ParallaxImage(
 
     useEffect(() => {
 
-        if (!restProps.src)
+        if (!src)
             return;
 
 
@@ -93,13 +95,13 @@ export default function ParallaxImage(
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        restProps.src &&
+        src &&
         <div className={dsnCN('dsn-parallax-img', animationActive && 'dsn-animate', active , asBackground  && "dsn-bg-parallax", className)}
              data-overlay={overlay}
              ref={target}
              style={{'--height': height, '--height-table': heightTable, '--height-mobile': heightMobile} as CSSProperties}
         >
-            <Image className="cover-bg-img p-absolute" layout={"fill"} alt={""} {...restProps} />
+            <Image src={src} className="cover-bg-img p-absolute" layout={"fill"} alt={""} {...restProps} />
             {caption && <div className="cap"><span>{caption}</span></div>}
         </div>
     );

@@ -3,21 +3,22 @@ import {gsap} from "gsap";
 
 
 export function tdStart(transitionPage: transitionPage): [HTMLDivElement, gsap.core.Timeline] {
-    const svg = (direction) => `<svg class="dsn-separator-${direction} dsn-icon-assistant-color" width="100%" height="100%" viewBox="0 0 100 10"
+    const svg = (direction: any) => `<svg class="dsn-separator-${direction} dsn-icon-assistant-color" width="100%" height="100%" viewBox="0 0 100 10"
          preserveAspectRatio="none">
         <path class="path-anim separator__path" vector-effect="non-scaling-stroke" d="M 0 0 C 40 16 75 10 100 0 L 0 0 Z"></path>
     </svg>`;
+
     const domTransition = document.createElement("div");
     domTransition.className = "dsn-ajax-loader dsn-ajax-normal bg-load background-section d-flex flex-column justify-content-between text-center";
     domTransition.innerHTML = `
             ${svg("top")}
-            <h6 class="d-flex justify-content-center title text-uppercase">${typeof transitionPage === "object" ? transitionPage?.title : "Eremia"}</h6>
+            <h6 class="d-flex justify-content-center title text-uppercase">${typeof transitionPage === "object" ? transitionPage?.title : "Green Age"}</h6>
             ${svg("bottom")}
             `;
 
     gsap.set(domTransition, {yPercent: 100, y: 150});
 
-    document.body.querySelector("#__dsn_content").append(domTransition);
+    document.body.querySelector("#__dsn_content")?.append(domTransition);
 
     const tl = gsap.timeline({defaults: {ease: "Expo.easeInOut"}})
         .to(domTransition, {
@@ -57,6 +58,5 @@ export function tdEnd() : void {
                 el.remove();
             })
         ;
-
     });
 }

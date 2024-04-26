@@ -17,6 +17,7 @@ import DsnWebgelDirction from "./DsnWebgelDirction";
 import { dataProjectProps, justifyContent } from "../../hooks/EremiaType";
 import { SwiperProps } from "swiper/react";
 import { useDictionary } from "@/localization/useDictionary";
+import { useMedia } from "react-use";
 
 export interface SliderPortfolioProps {
   typeBg?: string | "full-image" | "padding-image" | "half-image";
@@ -74,6 +75,10 @@ export default function SliderPortfolio({
     dataProject = data || getPortfolioData(),
     [active, setActive] = useState(0),
     bg = useRef();
+  
+  const breakPointReached = useMedia("(max-width: 768px)", false);
+
+  console.log("breakPointReached", breakPointReached);
 
   const tl = useRef(gsap.timeline());
 
@@ -228,14 +233,22 @@ export default function SliderPortfolio({
             {dataProject.map((item, key) => (
               <SwiperSlide className="over-hidden" key={key} data-dsn-id={key}>
                 {/*// @ts-ignore*/}
-                <BgImage
-                  src={item.src}
+                {breakPointReached ? <BgImage
+                  src={item.srcMobile}
                   video={item.video}
                   alt={item.title}
                   overlay={item.overlay}
                   height={"100%"}
                   {...restProps.parallaxSwiper}
-                />
+                />: <BgImage
+                src={item.src}
+                video={item.video}
+                alt={item.title}
+                overlay={item.overlay}
+                height={"100%"}
+                {...restProps.parallaxSwiper}
+              />}
+                
               </SwiperSlide>
             ))}
 

@@ -1,16 +1,56 @@
 @keyframes gradient {
     0% {
-        filter: hue-rotate(0deg);
+        filter: hue-rotate(-30deg);
     }
     50% {
-        filter: hue-rotate(-60deg);
-    }
-    90% {
         filter: hue-rotate(60deg);
     }
     100% {
-         filter: hue-rotate(0deg);
-     }
+        filter: hue-rotate(-30deg);
+    }
+}
+
+@keyframes gradient-15 {
+    0% {
+        filter: hue-rotate(-5deg);
+    }
+    50% {
+        filter: hue-rotate(25deg);
+    }
+    100% {
+        filter: hue-rotate(-5deg);
+    }
+}
+@keyframes gradient-30 {
+    0% {
+        filter: hue-rotate(-10deg);
+    }
+    50% {
+        filter: hue-rotate(30deg);
+    }
+    100% {
+        filter: hue-rotate(-10deg);
+    }
+}
+@keyframes blur-24 {
+    0% {
+        filter: blur(0px);
+        transform: scale(1);
+        opacity: 1;
+    }
+    20% {
+        // opacity: 1;
+    }
+    70% {
+        filter: blur(48px);
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    100% {
+        filter: blur(0px);
+        transform: scale(1);
+        opacity: 0;
+    }
 }
 
 @keyframes gradient-120 {
@@ -55,7 +95,7 @@
     50% {
         filter: hue-rotate(360deg);
     }
-    // 100% {
-    //      filter: hue-rotate(-0deg);
-    //  }
+    100% {
+         filter: hue-rotate(0deg);
+     }
 }

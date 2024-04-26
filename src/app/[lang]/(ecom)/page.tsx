@@ -170,7 +170,7 @@ export default async function About() {
             {/*End testimonial Section*/}
 
             {/*Start box vertical Section*/}
-            <section className="box-gallery-vertical container section-margin" data-dsn-title="Our Services">
+            {/* <section className="box-gallery-vertical container section-margin" data-dsn-title="Our Services">
                 <DsnGrid col={2} colTablet={1} colGap={0} rowGap={0} rowGapTablet={0} rowGapMobile={0}>
                     <div className="p-relative mb-lg-section">
                         <div className="box-im w-100 h-100 p-absolute">
@@ -221,56 +221,11 @@ export default async function About() {
                         </div>
                     </div>
                 </DsnGrid>
-            </section>
+            </section> */}
             {/*End box vertical Section*/}
 
-            {/*Start Blog*/}
-            {/* <div className="section-margin" data-dsn-title="Lasts post">
-                <TitleSection
-                    className={`container  align-items-center text-center`}
-                    description={"Lasts post"}
-                >
-                    Latest And Greatest <br/>
-                    Post
-                </TitleSection>
-                <BlogSwiper
-                    className="dsn-container"
-                    grabCursor
-                    desktop={{spaceBetween: 50, slidesPerView: 1.5}}
-                    tablet={{spaceBetween: 30, slidesPerView: 1.3}}
-                    mobile={{spaceBetween: 0, slidesPerView: 1}}
-                    centeredSlides
-                    loop
-                    blur
-                    parallax
-                    speed={1200}
-                    watchSlidesProgress
-                    loopedSlides={2}
-                    parallaxImage={{"data-swiper-parallax-scale": "0.85"}}
-                    parallaxContent={{"data-swiper-parallax-opacity": "0.5"}}
-                >
-                    <SwiperPagination
-                        className={`justify-content-between dsn-container mt-30`}
-                    />
-                </BlogSwiper>
-            </div> */}
-            {/*End Blog*/}
-
-            {/*========== team Section ========== */}
-            {/* <section className="container section-margin " data-dsn-title="Our Team">
-                <TitleSection
-                    className={` align-items-center text-center`}
-                    description={"Our Team"}
-                >
-                    The Best Team Ever!
-                </TitleSection>
-
-                <Team col={3} colTablet={2}/>
-            </section> */}
-            {/*========== End team Section ========== */}
-
-            {/*========== End brand-client Section ==========*/}
-            <section className="container section-margin" data-dsn-title="our clients">
+            {/* ========== End brand-client Section ==========*/}
+            {/* <section className="container section-margin" data-dsn-title="our clients">
                 <TitleSection
                     className={`align-items-center text-center`}
                     description={"Our clients"}
@@ -280,8 +235,8 @@ export default async function About() {
                 </TitleSection>
 
                 <BrandClient col={4} colTablet={3} colMobile={2} colGap={0} rowGap={0}/>
-            </section>
-            {/*========== End brand-client Section ==========*/}
+            </section> */}
+            {/*========== End brand-client Section ========== */}
 
             {/*========== Next Page ==========*/}
             <NextPage className="section-padding border-top background-section"/>

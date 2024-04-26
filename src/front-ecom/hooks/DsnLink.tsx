@@ -1,13 +1,12 @@
 "use client"
 import Link from "next/link";
 import {LinkProps} from "next/link";
-import {ReactNode, useEffect, useRef} from "react";
+import {CSSProperties, ReactNode, useEffect, useRef} from "react";
 import {transitionPage} from "./EremiaType";
-import {tdEnd, tdStart} from "./transition/transitionDefalut";
-import {gsap} from "gsap";
 import {useRouter, usePathname} from "next/navigation";
 import { useLocale } from "@/localization/useLocale";
-import { getLocaleUrl, isUrlMissingLocale } from "@/localization/getSetUrlLocale";
+import { convertToLocaleUrl } from "@/localization/getSetUrlLocale";
+import { handleTransitionToUrl } from "./transition/handleTransition";
 
 
 export interface LinkDsnProps extends LinkProps {
@@ -17,12 +16,13 @@ export interface LinkDsnProps extends LinkProps {
     dangerouslySetInnerHTML?: {
         __html: string;
     } | undefined;
-    linkref?: any
+    linkref?: any;
+    style?: Partial<CSSProperties>
 
 }
 
 
-function DsnLink({children, className, href, linkref, transitionPage = true, ...restProps}: LinkDsnProps) {
+function DsnLink({children, className, href, linkref, transitionPage = true, style, ...restProps}: LinkDsnProps) {
 
     if(!linkref)
     linkref = useRef<HTMLAnchorElement>(null);
@@ -35,52 +35,25 @@ function DsnLink({children, className, href, linkref, transitionPage = true, ...
         if (!transitionPage || !href || path === href)
             return;
 
-        const isMissingLocale = isUrlMissingLocale(href as string);
-        let localeHref: any;
-
-        if(isMissingLocale) {
-            localeHref = getLocaleUrl(locale, href as string);
-        } else {
-            localeHref = href;
-        }
-
-
+        const localeHref = convertToLocaleUrl(locale, href as string);
+        
+        const handleClick = handleTransitionToUrl({href: localeHref, router, transitionPage})
+        
         const currentLink = linkref.current;
-        const domTransition: { current: HTMLDivElement | null, tl: gsap.core.Timeline | null } = {
-            current: null,
-            tl: null
-        };
-
-        const handleClick = (e) => {
-            e.preventDefault();
-            if (domTransition.current !== null)
-                return;
-
-            [domTransition.current, domTransition.tl] = tdStart(transitionPage);
-            domTransition.tl.call(() => {
-                console.log("HREF", localeHref);
-
-                router.push(localeHref);
-                domTransition.tl.kill();
-                domTransition.tl = null;
-                domTransition.current = null;
-                
-                setTimeout(() => {
-                    tdEnd()
-                }, 1000)
-            });
-
-
-        }
-
         currentLink.addEventListener("click", handleClick);
         return () => {
             currentLink.removeEventListener("click", handleClick);
         }
     }, [transitionPage, router, href]);
 
-
-    return <Link href={href} className={className} {...restProps} ref={linkref} >{children}</Link>;
+    if(!href) {
+        // console.log("DSN LINK HREF EMPTY:", href);
+        // console.log("DSN LINK HREF EMPTY:", transitionPage, className);
+        // console.log("DSN LINK HREF EMPTY:", children);
+        // return <>Children:{children}</>
+        return <></>
+    }
+    return <Link href={href} style={style} className={className} {...restProps} ref={linkref} >{children}</Link>;
 
 }
 

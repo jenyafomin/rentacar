@@ -7,12 +7,13 @@ import BgImage from "../Image/BgImage";
 import MetaPost from "../meta/MetaPost";
 import DsnLink from "../../hooks/DsnLink";
 import { ICar } from "types/Car";
+import ParallaxImage from "../Image/ParallaxImage";
 
 interface ICarsSwiperItemProps {
   car: ICar;
   styleBox: any;
   height?: string;
-  imageOnly: boolean;
+  imageOnly?: boolean;
   className?: string;
   parallaxContent: any;
   parallaxImage: any;
@@ -22,7 +23,7 @@ function CarsSwiperItem({
     car,
   styleBox,
   height = "100%",
-  imageOnly,
+  imageOnly=true,
   className = "",
   parallaxContent,
   parallaxImage,
@@ -79,6 +80,7 @@ function CarsSwiperItem({
             className={"dsn-swiper-parallax-transform "}
             src={car.images[0]}
             // video={portoDetails.video}
+            
             alt={car.make}
             overlay={3}
             height={height}

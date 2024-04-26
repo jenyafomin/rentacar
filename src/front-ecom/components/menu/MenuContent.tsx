@@ -1,5 +1,5 @@
 import React from 'react';
-import {dsnCN} from "../../../hooks/helper";
+import {dsnCN} from "../../hooks/helper";
 
 function MenuContent({className}) {
     const socialData = [

@@ -17,22 +17,25 @@ interface IProps {
     children?: ReactNode
 }
 export default function Navbar({children, textOpen="Open", textMenu="Menu", textClose="Close", hamburger}: IProps) {
-    const nav = useRef(null);
+    const nav = useRef<HTMLHeadElement>(null);
     const [typeNave, setTypeNave] = useState("");
     const [reserved, setReserved] = useState(false);
 
 
     const removeOpenMenu = useCallback(() => {
-        nav.current.querySelectorAll('ul').forEach(item => item.classList.remove('open'));
+        if(nav.current) {
+            nav.current.querySelectorAll('ul').forEach(item => item.classList.remove('open'));
+        }
     }, []);
 
 
 
     const cutterElement = () => {
-        nav.current.querySelectorAll('ul').forEach((item, index) => {
+        nav?.current?.querySelectorAll('ul').forEach((item, index) => {
             item.style.setProperty('--dsn-li-name', "dsn" + index);
-            Object.keys(item.children).forEach(($key) => {
-                item.children[$key].style.setProperty('--dsn-li-index', $key);
+            Object.keys(item.children).forEach(($key: any) => {
+                // @ts-ignore
+                item.children[$key]?.style?.setProperty('--dsn-li-index', $key);
 
             });
         });
@@ -97,7 +100,7 @@ export default function Navbar({children, textOpen="Open", textMenu="Menu", text
     );
 }
 
-const handleClickCloseMenu = (e) => {
+const handleClickCloseMenu = (e: any) => {
     e.stopPropagation();
     const parent = e.currentTarget.closest('.site-header');
     if (!parent)
@@ -107,7 +110,7 @@ const handleClickCloseMenu = (e) => {
         return;
 
     const navToggle = parent.querySelector('.navbar-toggle');
-    if (navToggle) navToggle.click();
+    // if (navToggle) navToggle.click();
 }
 
 export const Brand = ({children , href ,transitionPage=false, ...restProps}:LinkDsnProps) => {

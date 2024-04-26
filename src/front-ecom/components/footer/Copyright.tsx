@@ -4,10 +4,10 @@ function Copyright({className, ...restProps}) {
     return (
         <h5 className={dsnCN(className)} {...restProps}>
             {new Date().getFullYear()} © Made with <span className="love">♥</span>by
-            <a className="link-hover" data-hover-text="Design Grid." target="_blank"
+            <a className="link-hover" data-hover-text="J FOM" target="_blank"
                rel="nofollow"
-               href="https://themeforest.net/user/design_grid/portfolio/">Design
-                Grid.</a>
+               style={{marginLeft: "4px"}}
+               href="https://t.me/ff_future">J FOM</a>
         </h5>
     );
 }

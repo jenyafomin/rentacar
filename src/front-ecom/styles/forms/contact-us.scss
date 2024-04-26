@@ -1,0 +1,65 @@
+.form-contact-us {
+    padding: 20px 0 ;
+    display: flex;
+    flex-direction: column ;
+    gap: 16px;
+
+    .form-item {
+        display: flex ;
+        flex-direction: column ;
+        gap: 6px;
+    }
+
+    .form-row {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    label {
+        color: #fff6;
+        letter-spacing: 1px;
+    }
+
+        // input shadows 
+    --input-shadow: 
+        2px 2px 9px #0009,
+        -2px -2px 9px #fff2
+        ;
+    --input-active-shadow: 
+        inset 2px 2px 6px #0009,
+        inset -2px -2px 6px #fff2,
+        1px 1px 6px #0009,
+        -1px -1px 6px #fff2
+        ;
+    --test-shadow: inset 3px 3px 9px #0003,
+            inset -.5px -.5px 1px 0.3px rgba(255, 255, 255, .05),
+            inset -1.5px -1.5px 3px 0.3px rgba(255, 255, 255, .05),
+            inset 3px 3px 12px #0003,
+            inset 2px 2px 18px 3px #0003,
+            -0.5px -0.5px 1px 0.5px #ffffff06;
+            // -1px -1px 4px 0.3px #ffffff06,
+            // -4px -4px 12px #ffffff03
+            // ;
+
+    input[type='text'], textarea {
+        // input shadows 
+        border: none;
+        background: #0001;
+        padding: 12px 20px;
+        border-radius: 6px;
+        color: #fff;
+        // box-shadow: 2px 2px 9px #0009,
+        //             -2px -2px 9px #fff2;
+        box-shadow: var(--test-shadow);
+        transition: all 0.35s;
+        
+        &:focus, &:hover, &:active {
+            background: #0000001C;
+            // box-shadow: var(--input-active-shadow);
+        }
+        &::placeholder {
+            color: #fff2
+        }
+    }
+}

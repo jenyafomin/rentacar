@@ -7,6 +7,10 @@
   letter-spacing: 3px;
   text-transform: uppercase;
 
+  &.sm {
+    padding: 8px 12px;
+  }
+
   color: $heading-color;
 
   &:hover .text-button {

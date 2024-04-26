@@ -1,14 +1,14 @@
 import React from "react";
-import Navbar, {Nav} from "../../nav/Navbar";
+import Navbar, {Nav} from "../nav/Navbar";
 import MenuContent from "./MenuContent";
-import Logo from "../../logo/Logo";
+import Logo from "../logo/Logo";
 import { menuContent } from "@/configs/(ecom)/menu";
 
 
-export default function EremiaMenu ({hamburger}: {hamburger: boolean}) {
+export default function FFMenu ({hamburger}: {hamburger: boolean}) {
 
     let $key = 0;
-    const getSubMenu = (items) => {
+    const getSubMenu = (items: any) => {
         $key++;
         if (items.dropdownMenu) {
             return (<Nav.Dropdown name={items.name}
@@ -22,8 +22,8 @@ export default function EremiaMenu ({hamburger}: {hamburger: boolean}) {
 
     return (
         <Navbar hamburger={hamburger}>
-            <Navbar.Brand href={"/"} transitionPage={{title: "Eremia"}}>
-                {/* <Logo width="75px" height="auto"/> */}
+            <Navbar.Brand href={"/"} transitionPage={{title: "GREEN AGE"}}>
+                <Logo width="75px" height="auto"/>
             </Navbar.Brand>
 
             <Navbar.Collapse cover="Menu">

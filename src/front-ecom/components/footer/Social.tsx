@@ -6,6 +6,7 @@ const socialContent = [
     {name: "Behance.", href: "#0"},
     {name: "Linkedin.", href: "#0"},
     {name: "Twitter.", href: "#0"},
+    {name: "Twitter.", href: "#0"},
 ];
 
 

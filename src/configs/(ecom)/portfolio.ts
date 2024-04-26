@@ -1,74 +1,81 @@
+import { transitionPage } from "@/front-ecom/hooks/EremiaType";
+import { EColors } from "types/enum/EGeneral";
 
+type TBtn = {
+    href: string,
+    pageTransition?: transitionPage,
+    title: string,
+    color?: EColors,
+}
+export interface ISliderItemProps {
+    id: number,
+    title: string,
+    slug?: string,
+    category: string[] | [],
+    href: string,
+    description?: string,
+    subtitle?: string,
+    src: string,
+    srcMobile?: string, // todo - not implemented 
+    overlay: number, // 1 - 10
+    btn?: TBtn
+}
 
-const data = [
+const data: Array<ISliderItemProps> = [
     {
         id: 1,
-        title: "Maybe Speaker",
+        title: "Dubai Rent a Car",
         slug: 'maybe-speaker',
-        category: ['Product', 'voice'],
-        description: 'Vin tries to reflect Diesel’s vision and combines.',
-        src: '/img/3D/concept_4(scene).jpg',
-        overlay: 4
+        category: ['from 49 AED', 'all types'],
+        href: "/cars",
+        description: 'Best Rent a Car in UAE.',
+        src: '/img/3D/AI/CyberTruck.jpg',
+        // src: '/img/3D/mobile/bmw-9-16.webp',
+        srcMobile: '/img/3D/mobile/bmw-9-16.webp',
+        overlay: 8,
+        btn: {
+            href: "/cars",
+            pageTransition: {title: "All Cars"},
+            title: "All Cars",
+            color: EColors.DEFAULT,
+        }
     },
     {
         id: 2,
         title: "Yaren Collection",
         slug: 'yaren-collection',
         src: '/img/3D/concept_3(scene).jpg',
+        href: "/cars",
 
         category: ['pen'],
         description: 'symbols through which express themselves.',
-        overlay: 6,
+        overlay: 10,
+        btn: {
+            href: "/cars",
+            pageTransition: {title: "All Cars"},
+            title: "Night shift",
+            color: EColors.CYAN
+        }
 
     },
     {
         id: 3,
-        title: "Huggl Power Pack",
+        title: "Huggle Power Pack",
         slug: 'huggl-power-pack',
-        src: '/img/project/project3/1.jpg',
+        src: '/img/3D/AI/BMW-4-Series.webp',
+        href: "/cars",
 
         category: ['induction'],
         description: 'Huggl is an induction charging.',
-        overlay: 6
-    },
-    {
-        id: 4,
-        title: "Principal Garden",
-        slug: 'principal-garden',
-        category: ['Architecture'],
-        src: '/img/project/project4/1.jpg',
-        description: 'We are thrilled to share our new reel with you all.',
-        overlay: 2
-    },
-    {
-        id: 5,
-        title: "Small Silver Car",
-        slug: 'small-silver-car',
-        src: '/img/project/project5/1.jpg',
+        overlay: 6,
 
-        category: ['Photography', 'Car'],
-        description: 'Cal was first. The first public university in the great state of California.',
-        overlay: 5
+        btn: {
+            href: "/cars",
+            pageTransition: {title: "All Cars"},
+            title: "CONTACT US",
+            color: EColors.YELLOW
+        }
     },
-    {
-        id: 6,
-        title: "Lengshuikeng",
-        slug: 'lengshuikeng',
-        category: ['Photography'],
-        src: '/img/project/project6/1.jpg',
-        description: 'Sometimes, we need to check the time.',
-        overlay: 4
-    }
 ]
 
 export const getPortfolioData = () => data;
-
-export const getPortfolioItem = (value, whereName = "slug") => {
-    return data.find(item => item[whereName] === value);
-};
-export const getPortfolioLink = (item) => {
-    if (item)
-        return item.slug && '/portfolio/' + item.slug;
-
-    return '';
-};

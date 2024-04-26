@@ -22,7 +22,7 @@ import dsnEffect, {
   textAnimation,
 } from "@front-ecom/animation/dsnEffect";
 import { RootState, store } from "@front-ecom/features/store";
-import EremiaMenu from "@front-ecom/components/header/menu/EremiaMenu";
+import EremiaMenu from "@/front-ecom/components/menu/Menu";
 import OptionTheme from "@front-ecom/components/option-theme/OptionTheme";
 import RightScrollTop from "@front-ecom/components/option-theme/RightScrollTop";
 import { checkMobile, parallaxIt } from "@front-ecom/hooks/helper";
@@ -148,10 +148,10 @@ export default function RootLayout({ children, session, ...pageProps }: any) {
                 options={{ duration: 1.5, ease: "power4.inOut" }}
               />
               <CustomCursor
-                duration={0.5}
+                duration={0.1}
                 durationChangeSize={0.3}
-                size={20}
-                scale={50}
+                size={10}
+                scale={30}
                 ease="power2.out"
               />
             </SessionProvider>
