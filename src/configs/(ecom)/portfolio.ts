@@ -2,10 +2,11 @@ import { transitionPage } from "@/front-ecom/hooks/EremiaType";
 import { EColors } from "types/enum/EGeneral";
 
 type TBtn = {
-    href: string,
+    href?: string,
     pageTransition?: transitionPage,
     title: string,
     color?: EColors,
+    method?: "modal-contacts" | "none"
 }
 export interface ISliderItemProps {
     id: number,
@@ -38,6 +39,7 @@ const data: Array<ISliderItemProps> = [
             pageTransition: {title: "All Cars"},
             title: "All Cars",
             color: EColors.DEFAULT,
+
         }
     },
     {
@@ -51,8 +53,9 @@ const data: Array<ISliderItemProps> = [
         description: 'symbols through which express themselves.',
         overlay: 10,
         btn: {
-            href: "/cars",
-            pageTransition: {title: "All Cars"},
+            method: "modal-contacts",
+            // href: "/cars",
+            // pageTransition: {title: "All Cars"},
             title: "Night shift",
             color: EColors.CYAN
         }

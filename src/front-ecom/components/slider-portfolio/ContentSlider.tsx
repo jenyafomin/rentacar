@@ -2,11 +2,13 @@ import MetaPost from "../meta/MetaPost";
 import {dsnCN} from "../../hooks/helper";
 import { ISliderItemProps } from '../../../configs/(ecom)/portfolio';
 import Button from "../button/Button";
-import {forwardRef} from "react";
+import {forwardRef, useState} from "react";
 import DsnLink from "../../hooks/DsnLink";
 import ButtonGradient from "../button/ButtonGradeint";
 import { handleTransitionToUrl } from "@/front-ecom/hooks/transition/handleTransition";
 import { useRouter } from "next/navigation";
+import DialogWrapper from "../dialog/Dialog";
+import ContactUsForm from "../form/contact-us.form";
 
 interface IContentSliderProps {
     data: Array<ISliderItemProps>,
@@ -30,46 +32,63 @@ function ContentSlider({
                        }: IContentSliderProps, ref: any) {
 
     const router = useRouter()
-    
+    const [open, setOpen] = useState(false)
     return (
-        <div className={dsnCN("dsn-slider-content hero-content dsn-container d-flex", className)} {...restProps}>
+        <>
+            <div className={dsnCN("dsn-slider-content hero-content dsn-container d-flex", className)} {...restProps}>
 
-            {data.map((item: ISliderItemProps, key) =>{
+                {data.map((item: ISliderItemProps, key) =>{
 
-                console.log("INDEX: ", key, "ITEM", item);
-                const btn = item.btn
-                const handleButtonClick = handleTransitionToUrl({router, href: btn?.href!, transitionPage: btn?.pageTransition})
-                const isBtnDefined = (item.btn && item.btn.title && item.btn.href && true) || false;
+                    console.log("INDEX: ", key, "ITEM", item);
+                    const btn = item.btn
+                    // const handleButtonClick = handleTransitionToUrl({router, href: btn?.href!, transitionPage: btn?.pageTransition})
+                    const isBtnDefined = (item.btn && item.btn.title && (item.btn.href || item.btn?.method)) || false;
 
-                return <div className={`slide-content ${activeClass === key ? 'dsn-active' : ''}`} key={key} data-dsn-id={key}
-                     ref={ref}>
-                    {(item.subtitle) && <p className="description max-w570 mb-15">{item.subtitle}</p>}
-                    {(item.category && hasCategory) && <MetaPost category={item.category} separate={separateCat}/>}
-
-                    <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-                    <h1 className="title" >
-                        {
-                            item.title ? <DsnLink  href={item.href}
-                                    transitionPage={{title : item.title}}
-                                >{item.title}</DsnLink>
-                                : <>Hello</>
-                                // <span dangerouslySetInnerHTML={{__html: item.title}}/>
+                    function handleButtonClick() {
+                        if(btn?.method === "modal-contacts") {
+                            return () => setOpen(true)
+                        } else {
+                            return handleTransitionToUrl({router, href: btn?.href!, transitionPage: btn?.pageTransition})
                         }
-                    {/* <a className="neon neon-1">{item.title}</a> */}
-                        {/* <a className="neon neon-2">{item.title}</a>
-                        <a className="neon neon-3">{item.title}</a> */}
-                    </h1>
-                        {isBtnDefined && <ButtonGradient className={`${btn?.color} animate`} onClick={handleButtonClick as any}>{btn?.title}</ButtonGradient>}
-                     
-                    </div>
+                    }
 
-                    {(hasSeparator && hasDescription) && <hr className="mt-20"/>}
-                    {(item.description && hasDescription) &&
-                    <div className="max-w570 mt-20 description">{item.description}</div>}
-                    {/* {<Button className={"link-custom mt-20"} {...item.href} >{item.buttonText}</Button>} */}
-                </div>}
+
+                    return <div className={`slide-content ${activeClass === key ? 'dsn-active' : ''}`} key={key} data-dsn-id={key}
+                        ref={ref}>
+                        {(item.subtitle) && <p className="description max-w570 mb-15">{item.subtitle}</p>}
+                        {(item.category && hasCategory) && <MetaPost category={item.category} separate={separateCat}/>}
+
+                        <div className="title-wrapper">
+                            <h1 className="title" >
+                                {
+                                    item.title ? <DsnLink  href={item.href}
+                                            transitionPage={{title : item.title}}
+                                        >{item.title}</DsnLink>
+                                        : <>Hello</>
+                                        // <span dangerouslySetInnerHTML={{__html: item.title}}/>
+                                }
+                            {/* <a className="neon neon-1">{item.title}</a> */}
+                                {/* <a className="neon neon-2">{item.title}</a>
+                                <a className="neon neon-3">{item.title}</a> */}
+                            </h1>
+                            {isBtnDefined && <ButtonGradient className={`${btn?.color} animate desktop`} onClick={handleButtonClick() as any}>{btn?.title}</ButtonGradient>}
+                        
+                        </div>
+
+                        {(hasSeparator && hasDescription) && <hr className="mt-20"/>}
+                        {(item.description && hasDescription) &&
+                        <div className="max-w570 mt-20 description">{item.description}</div>}
+                        {/* {<Button className={"link-custom mt-20"} {...item.href} >{item.buttonText}</Button>} */}
+                        {isBtnDefined && <ButtonGradient className={`${btn?.color} animate mobile`} onClick={handleButtonClick() as any}>{btn?.title}</ButtonGradient>}
+                    </div>}
+                )}
+            </div>
+            {open && (
+                <DialogWrapper open={open} setOpen={setOpen}>
+                    <ContactUsForm onClose={() => setOpen(false)} onSubmit={() => {setOpen(false); console.log("Submit")}} />
+                </DialogWrapper>
             )}
-        </div>
+        </>
     );
 }
 

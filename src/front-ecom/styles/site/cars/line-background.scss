@@ -1,7 +1,3 @@
-$padding: 33%;
-$padding-laptop: 25%;
-$padding-mobile: 15%;
-
 .line-container {
     width: 100%;
     height: 100%;
@@ -41,6 +37,19 @@ $padding-mobile: 15%;
     @include media_575 {
         padding-left: $padding-mobile;
         padding-right: $padding-mobile;
+    }
+    
+    &.large {
+        padding-left: $lg-padding;
+        padding-right: $lg-padding;
+        @include media_1400 {
+            padding-left: $lg-padding-laptop;
+            padding-right: $lg-padding-laptop;
+        }
+        @include media_575 {
+            padding-left: $lg-padding-mobile;
+            padding-right: $lg-padding-mobile;
+        }
     }
 
     div, .vertical-line {

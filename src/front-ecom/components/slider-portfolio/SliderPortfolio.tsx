@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Controller, Parallax } from "swiper";
 import { dsnCN } from "../../hooks/helper";
 import { useArrayRef } from "../../hooks/dsnHooks";
-import { getPortfolioData } from "../../../configs/(ecom)/portfolio";
+import { ISliderItemProps, getPortfolioData } from "../../../configs/(ecom)/portfolio";
 import dsnSplitting from "../../hooks/spltting";
 import { gsap } from "gsap";
 
@@ -49,7 +49,7 @@ export interface SliderPortfolioProps {
     hasDescription?: boolean;
     separateCat?: string | null;
   };
-  data?: [dataProjectProps];
+  data?: ISliderItemProps[];
   alignControlNav?: justifyContent;
   optionSlider?: SwiperProps;
   tag?: React.ElementType;

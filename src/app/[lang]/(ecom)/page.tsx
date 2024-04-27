@@ -29,17 +29,20 @@ import { ICar } from "types/Car";
 import { Methods_Get_Cars } from "@/app/api/cars/route";
 import BgDot from "@/front-ecom/components/header/BgDot";
 import Facts from "@/front-ecom/components/facts/Facts";
+import { getPortfolioData } from "@/configs/(ecom)/portfolio";
 
 
 export default async function About() {
     const locale = getServerLocale()
     const featuredCars = await makeApiCall<Array<ICar>>(locale, `/api/cars?method=${Methods_Get_Cars.FEATURED}`)
+    const sliderData = getPortfolioData()
     console.log("featuredCars", featuredCars?.length);
     return (
         <>
-            <LineBackground />
+            <LineBackground classNameWrapper="large" />
             <SliderPortfolio
                 webgel
+                data={sliderData}
                 fullWidth
                 className={"align-items-end pb-80"}
                 webgelOptions={{
@@ -49,22 +52,9 @@ export default async function About() {
                 metaData={{hasSeparator: true}}
             />
 
-            {/* <HeroSection className="container section-margin container fill-right-container"
-                         data-dsn-title="How We Are"/> */}
-
-            {/*<!-- ========== facts-section ==========*/}
-            {/* <div className="section-margin p-relative">
-                <BgDot/>
-                <BgDot rightPosition/>
-                <div className="container">
-                    <Facts className="text-center" col={4} colTablet={2}/>
-                </div>
-            </div> */}
-            {/*<!-- ========== end facts-section ========== */}
-
             {/*Start Service*/}
             <div className="container section-margin" data-dsn-title="our Services">
-                <TitleSection description={"WHY CHOOSE US?"}>
+                <TitleSection description={"WHY CHOOSE US?"} className="align-items-center text-center">
                     We are delivering beautiful <br/> digital products for you.
                 </TitleSection>
                 <ServiceSwiperOne/>
@@ -72,55 +62,10 @@ export default async function About() {
             {/*End Service*/}
 
 
-            {/*Start Service*/}
-            {/* <div className="container section-margin" data-dsn-title="Our Services">
-                <TitleSection
-                    className="align-items-center text-center"
-                    description={"Our Services"}
-                >
-                    We are delivering beautiful <br/> digital products for you.
-                </TitleSection>
-                <ServiceOne/>
-            </div> */}
-            {/*End Service*/}
-
-            {/*Start Box Info Move Content*/}
-            {/* <div className="p-relative section-margin">
-                <ParallaxImage className="full-width" src="/img/project/project3/2.jpg" overlay={2} alt={""}/>
-                <MoveBox tablet={false}>
-                    <TitleSection
-                        className={`align-items-start mb-30`}
-                        description={"Build perfect websites"}
-                        defaultSpace={false}
-                    >
-                        Unlimited power
-                    </TitleSection>
-
-                    <p className="mb-10">
-                        Most of our writings have centered on implementing strategies for
-                        business units, with their unique
-                    </p>
-                    <p className="mb-30">
-                        geeza arse it’s your round grub sloshed burke, my good sir chancer
-                        he legged it he lost his bottle pear shaped bugger all mate
-                    </p>
-
-                    <Button href={"work-classic-2-col"} className={"image-zoom"} data-dsn="parallax" transitionPage={{title:"Our Portfolio"}}>
-                        More Projects <span>⟶</span>
-                    </Button>
-
-                    <p className={`sm-p mt-15 theme-color`}>
-                        NOTE : Some details are very important.
-                    </p>
-                </MoveBox>
-            </div> */}
-            {/*End Box Info Move Content*/}
-
-
             {/*Start Portfolio*/}
             <div className="section-margin" data-dsn-title="Our Portfolio">
                 <TitleSection
-                    className={`container align-items-center text-center`}
+                    className="container align-items-center text-center"
                     description={"Our Works"}
                 >
                     Creative Portfolio <br/>
@@ -165,78 +110,6 @@ export default async function About() {
                     <SwiperPagination className={`justify-content-between dsn-container mt-30`}/>
                 </Testimonial>
             </div>
-
-
-            {/*End testimonial Section*/}
-
-            {/*Start box vertical Section*/}
-            {/* <section className="box-gallery-vertical container section-margin" data-dsn-title="Our Services">
-                <DsnGrid col={2} colTablet={1} colGap={0} rowGap={0} rowGapTablet={0} rowGapMobile={0}>
-                    <div className="p-relative mb-lg-section">
-                        <div className="box-im w-100 h-100 p-absolute">
-                            <ParallaxImage
-                                alt={""}
-                                src={"/img/plan-project.jpg"}
-                                overlay={3}
-                                height="100%"
-                                heightTable={"70vh"}
-                                heightMobile={"70vh"}
-                                sizes="(max-width: 768px) 100vw,(max-width: 1200px) 70vw,33vw"
-                            />
-                        </div>
-                    </div>
-                    <div className="p-relative pt-lg-section">
-                        <div className="box-info h-100 box-padding background-section ">
-                            <DsnGrid className="box-info-inner" col={1} colGap={0}>
-                                <TitleCover>BRO RENT</TitleCover>
-                                <TitleSection
-                                    className={"text-uppercase"}
-                                    description={"OUR PURPOSE"}
-                                    defaultSpace={false}
-                                >
-                                    We Plan Your Project
-                                </TitleSection>
-                                <Accordion>
-                                    <AccordionItem title="Extensive Employment" active number={1}>
-                                        <p>
-                                            Quisque placerat vitae lacus ut sceleris queusce luctus
-                                            odio ac nibh luctus, in porttitor.
-                                        </p>
-                                    </AccordionItem>
-                                    <AccordionItem title="Dedicated Staff" number={2}>
-                                        <p>
-                                            Quisque placerat vitae lacus ut sceleris queusce luctus
-                                            odio ac nibh luctus, in porttitor.
-                                        </p>
-                                    </AccordionItem>
-                                    <AccordionItem title="User Experience" number={3}>
-                                        <p>
-                                            Cepteur sint occaecat cupidatat proident, taken possession
-                                            of my entire soul, like these sweet mornings of spring
-                                            which I enjoy with my whole.
-                                        </p>
-                                    </AccordionItem>
-                                </Accordion>
-                            </DsnGrid>
-                        </div>
-                    </div>
-                </DsnGrid>
-            </section> */}
-            {/*End box vertical Section*/}
-
-            {/* ========== End brand-client Section ==========*/}
-            {/* <section className="container section-margin" data-dsn-title="our clients">
-                <TitleSection
-                    className={`align-items-center text-center`}
-                    description={"Our clients"}
-                >
-                    Your successful, our <br/>
-                    reputation
-                </TitleSection>
-
-                <BrandClient col={4} colTablet={3} colMobile={2} colGap={0} rowGap={0}/>
-            </section> */}
-            {/*========== End brand-client Section ========== */}
 
             {/*========== Next Page ==========*/}
             <NextPage className="section-padding border-top background-section"/>

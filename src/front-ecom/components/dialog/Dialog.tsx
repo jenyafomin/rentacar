@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { ReactNode, useEffect } from "react"
 
 interface IProps {
   children: ReactNode;
@@ -7,6 +7,13 @@ interface IProps {
   className?: string;
 }
 export default function DialogWrapper({children, open, setOpen, className}: IProps) {
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+        document.body.style.overflow = "scroll"
+    };
+  }, [])
     return <div className={`dialog-wrapper ${className}`}>
     <div className="dialog-overlay" />
     <div className="dialog-content-wrapper">

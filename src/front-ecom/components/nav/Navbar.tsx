@@ -110,7 +110,7 @@ const handleClickCloseMenu = (e: any) => {
         return;
 
     const navToggle = parent.querySelector('.navbar-toggle');
-    // if (navToggle) navToggle.click();
+    if (navToggle) navToggle.click();
 }
 
 export const Brand = ({children , href ,transitionPage=false, ...restProps}:LinkDsnProps) => {
