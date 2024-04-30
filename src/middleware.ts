@@ -9,11 +9,11 @@ import { match as matchLocale } from '@formatjs/intl-localematcher'
 import type { NextRequestWithAuth } from 'next-auth/middleware'
 
 // Config Imports
-import { i18n } from '../i18n-config'
+import { Locale, i18n } from '../i18n-config'
+import { getLocaleUrl, isUrlMissingLocale } from './localization/getSetUrlLocale'
 
 
 // Constants
-const HOME_PAGE_URL = '/dashboards'
 
 const getLocale = (request: NextRequest): string | undefined => {
   // Try to get locale from URL
@@ -40,22 +40,8 @@ const getLocale = (request: NextRequest): string | undefined => {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
-  // // If you have one
-  // if (
-  //   [
-  //     '/manifest.json',
-  //     '/favicon.ico',
-  //     // Your other files in `public`
-  //   ].includes(pathname)
-  // )
-  //   return
-
   // Check if there is any supported locale in the pathname
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
-  );
+  const pathnameIsMissingLocale = isUrlMissingLocale(pathname);
 
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
@@ -64,7 +50,7 @@ export function middleware(request: NextRequest) {
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
     // if(!pathname.startsWith("/dashboard"))
-    const url = `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`
+    const url = getLocaleUrl(locale as Locale, pathname);
     const response = NextResponse.redirect(
       new URL(
         url,

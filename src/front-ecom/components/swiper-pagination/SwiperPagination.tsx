@@ -2,7 +2,12 @@
 import {useSwiper} from "swiper/react";
 import {dsnCN} from "../../hooks/helper";
 
-function SwiperPagination({className, showNavigation = true, showPagination = true}) {
+interface IProps {
+    className?: string;
+    showNavigation?: boolean;
+    showPagination?: boolean
+}
+function SwiperPagination({className, showNavigation = true, showPagination = true}: IProps) {
     const swiper = useSwiper();
 
     return (

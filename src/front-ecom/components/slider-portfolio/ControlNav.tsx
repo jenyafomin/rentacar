@@ -20,7 +20,7 @@ export interface ControlNavProps {
 
 
 function ControlNav({className, timeline, activeClass, parent, length, ...restProps}: ControlNavProps) {
-    const [swiper, setSwiper] = useState(null);
+    const [swiper, setSwiper] = useState<any>(null);
 
     useEffect(() => {
         setSwiper(parent?.current.querySelector('.bg-container > .swiper')?.swiper);
@@ -44,7 +44,7 @@ function ControlNav({className, timeline, activeClass, parent, length, ...restPr
                         className="slider-current-index">{activeClass > 8 ? activeClass + 1 : `0${activeClass + 1}`}</span>
                     <span className="slider-counter-delimiter"/>
                     <span
-                        className="slider-total-index">{swiper?.slides.length > 9 ? swiper?.slides.length : `0${length || swiper?.slides.length}`}</span>
+                        className="slider-total-index">{swiper?.slides?.length > 9 ? swiper?.slides.length : `0${length || swiper?.slides.length}`}</span>
                 </div>
 
                 <div className="next-container" onClick={() => !timeline.current?.isActive() && swiper?.slideNext()} style={{marginLeft:0}}>
