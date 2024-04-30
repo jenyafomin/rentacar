@@ -38,7 +38,7 @@ export function CustomCheckBox5({label, value, onChange, classNameDiv, styleDiv,
         console.log("CLICK")
         onChange(!value)
         }}>
-        <input id="check-5" type="checkbox" checked={value} />
+        <input id="check-5" type="checkbox" checked={value} onChange={() => {}} />
         <label/>
       </div>
       <label className={`${classNameLabel}`} style={styleLabel}>{label}</label>

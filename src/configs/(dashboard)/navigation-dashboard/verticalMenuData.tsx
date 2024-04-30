@@ -13,10 +13,15 @@ const verticalMenuData = (): VerticalMenuDataType[] => [
     icon: "tabler-car"
   },
   {
-    label: 'Excel Cars',
-    href: '/dashboard/excel-cars',
-    icon: "tabler-truck"
-  }
+    label: 'Requests',
+    href: '/dashboard/requests',
+    icon: 'tabler-bell'
+  },
+  // {
+  //   label: 'Excel Cars',
+  //   href: '/dashboard/excel-cars',
+  //   icon: "tabler-truck"
+  // }
 ]
 
 export default verticalMenuData

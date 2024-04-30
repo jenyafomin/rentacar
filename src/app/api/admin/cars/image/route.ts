@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { removeCarImages, saveCarImages } from "./carImage.service";
+import { removeCarImages, saveCarImages } from "@/back/models/car.image";
 import { getErrorMessage } from "@/back/utils/getErrorMessage";
 import { getCarById, updateCar } from "@/back/models/car.model";
 

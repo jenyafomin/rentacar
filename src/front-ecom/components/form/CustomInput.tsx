@@ -39,9 +39,9 @@ export default function CustomInput({
         style={style}
         value={value || ""}
         onChange={(e) => {
-            console.log("EVENT INPUT", e);
+            // console.log("EVENT INPUT", e);
             const value = e.target.value;
-            console.log("EVENT value", value);
+            // console.log("EVENT value", value);
             onChange(value);
         }}
         type={type}

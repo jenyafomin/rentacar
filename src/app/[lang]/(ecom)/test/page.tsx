@@ -11,6 +11,7 @@ import { faTelegram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import ButtonGradientIcon from "@/front-ecom/components/button/ButtonGradientIcon";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import ContactUsForm from "@/front-ecom/components/form/contact-us.form";
+import { handleSubmitRequest } from "@/front-ecom/providers/handleSubmitRequest";
 
 export default function TestPage() {
   const [open, setOpen] = useState(false);
@@ -48,7 +49,7 @@ export default function TestPage() {
 
       {open && (
         <DialogWrapper open={open} setOpen={setOpen}>
-            <ContactUsForm onClose={() => setOpen(false)} onSubmit={() => {setOpen(false); console.log("Submit")}} />
+            <ContactUsForm onClose={() => setOpen(false)} onSubmit={handleSubmitRequest} />
         </DialogWrapper>
       )}
     </>

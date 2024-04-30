@@ -1,10 +1,9 @@
 import { prisma } from "@/back/prismaConnect";
-import { saveImage } from "@/back/utils/saveImage";
 import { ICar } from "types/Car";
 import { ECarStatus } from "types/enum/ECar";
 
 export async function getAllCars() {
-    const cars = await prisma.car.findMany();
+    const cars = await prisma.car.findMany({orderBy: {createdAt: "desc"}});
     return cars;
 }
 

@@ -17,9 +17,4 @@ export enum EColors {
     WARNING = "warning",
  }
 
- export enum EConType {
-   TELEGRAM = "telegram",
-   WHATSAPP = "whatsapp",
-   PHONE = "phone",
-   MAIL = "mail",
- }
+ 

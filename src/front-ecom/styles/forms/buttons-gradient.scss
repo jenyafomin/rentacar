@@ -26,8 +26,9 @@ $gradient-bg-rainbow: linear-gradient(
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: $gradient-bg;
   padding: 8px 20px;
+  
+  background: $gradient-bg;
   border-radius: $border-radius;
 
   box-shadow:
@@ -174,7 +175,11 @@ $gradient-bg-rainbow: linear-gradient(
 
     &:hover {
       // background: #0004;
-      opacity: 0.8;
+      opacity: 0.7;
+
+      &:not(:hover) {
+        opacity: 0.3;
+      }
     }
 
     &::before,

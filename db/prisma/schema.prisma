@@ -70,6 +70,9 @@ model Car {
   carExcelId String?
   carExcel CarExcel? @relation(fields: [carExcelId], references: [id])
 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   vin String?
   plateNumber String?
 
@@ -126,4 +129,18 @@ model CarExcel {
 	
 	status String?
 	availableFrom String?
+}
+
+model Request {
+  id String @id @default(cuid())
+  status String @default("new")
+  descriptionStatus String? 
+  nextAction String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  client Json
+  car Json?
+  other Json?
 }

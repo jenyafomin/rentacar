@@ -1,41 +1,101 @@
+"use client";
 import { poppins } from "@/front/fonts";
 import { ICar } from "types/Car";
 import CarContentCreater from "../utils/carContentCreator";
+import { useMemo, useState } from "react";
 
-function PriceItem({priceType, amount, isActive, discount="0"}: {priceType: string, amount: string, isActive: boolean, discount?: string}) {
-    return <div className="price-item-wrapper">
-    <div className={`price-item container-bg ${isActive && "active"}`}>
+function PriceItem({
+  priceType,
+  amount,
+  isActive,
+  discount = "0",
+  onClick,
+}: {
+  priceType: string;
+  amount?: string;
+  isActive: boolean;
+  discount?: string;
+  onClick: () => any;
+}) {
+  return (
+    <div className="price-item-wrapper" onClick={onClick}>
+      <div className={`price-item container-bg ${isActive && "active"}`}>
         <div className="circle-check" />
         <div className={`price-type ${poppins.className}`}>{priceType}</div>
         <div className={`price ${poppins.className}`}>
-        <span className="price-amount">{amount}</span>
-        <span className="currency">AED</span>
+          <span className="price-amount">{amount}</span>
+          <span className="currency">AED</span>
         </div>
+      </div>
+      <div className={`discount container-bg ${discount !== "0" && "active"} `}>
+        {discount}%
+      </div>
     </div>
-    <div className={`discount container-bg ${discount !== "0" && "active"} `}>{discount}%</div>
-</div>
+  );
 }
 
-export default function CarPriceContent({ car }: { car: ICar }) {
-    const date = new Date();
-    const date2 = date.setDate(date.getTime()+7);
+export default function CarPriceContent({
+  car,
+  priceType,
+  setPriceType,
+}: {
+  car: ICar;
+  priceType: "daily" | "monthly";
+  setPriceType: (newValue: "daily" | "monthly") => any;
+}) {
+  const priceMonthly = useMemo(() => {
+    if (car.priceMonthly) {
+      return car.priceMonthly / 30;
+    } else return 0;
+  }, []);
+
+  const onClickPrice = (_priceType: "daily" | "monthly") => () =>
+    setPriceType(_priceType);
   return (
     <div className="price-content">
-      <h3 className={poppins.className}>
-        PRICE
-      </h3>
+      <h3 className={poppins.className}>PRICE</h3>
 
-        <PriceItem priceType="DAILY" amount="28" isActive={true} />
-        <PriceItem priceType="MONTHLY" amount="22" isActive={false} discount="-25" />
-        
-        {/* <div className="dates-wrapper">
+      <PriceItem
+        priceType="DAILY"
+        amount={car.priceDaily?.toFixed(0)}
+        isActive={priceType === "daily"}
+        onClick={onClickPrice("daily")}
+      />
+      <PriceItem
+        priceType="MONTHLY"
+        amount={priceMonthly.toFixed(0)}
+        isActive={priceType === "monthly"}
+        discount="-25"
+        onClick={onClickPrice("monthly")}
+      />
+
+      {/* <div className="dates-wrapper">
             <div className="date-item container-bg">{date.toLocaleDateString()}</div>
             <div className="date-item container-bg">{date.toLocaleDateString()}</div>
         </div> */}
 
-        <CarContentCreater items={[["Extra Miles", car.extraMiles], ["Extra Miles Price", `${car.extraMilesPrice} AED`]]}/>
-        <CarContentCreater items={[["Days", "7"], ["Total", "2800"]]}/>
-
+      <CarContentCreater
+        items={[
+          ["Extra Miles", car.extraMiles],
+          ["Extra Miles Price", `${car.extraMilesPrice} AED`],
+        ]}
+      />
+      {priceType === "daily" && (
+        <CarContentCreater
+          items={[
+            ["Days", "3+"],
+            ["Total", `${(car.priceDaily || 0) * 3} AED`],
+          ]}
+        />
+      )}
+      {priceType === "monthly" && (
+        <CarContentCreater
+          items={[
+            ["Days", "30+"],
+            ["Total", `${priceMonthly * 30} AED`],
+          ]}
+        />
+      )}
     </div>
   );
 }

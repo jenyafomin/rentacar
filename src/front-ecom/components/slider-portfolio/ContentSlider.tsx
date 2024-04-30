@@ -9,6 +9,7 @@ import { handleTransitionToUrl } from "@/front-ecom/hooks/transition/handleTrans
 import { useRouter } from "next/navigation";
 import DialogWrapper from "../dialog/Dialog";
 import ContactUsForm from "../form/contact-us.form";
+import { handleSubmitRequest } from "@/front-ecom/providers/handleSubmitRequest";
 
 interface IContentSliderProps {
     data: Array<ISliderItemProps>,
@@ -33,6 +34,7 @@ function ContentSlider({
 
     const router = useRouter()
     const [open, setOpen] = useState(false)
+
     return (
         <>
             <div className={dsnCN("dsn-slider-content hero-content dsn-container d-flex", className)} {...restProps}>
@@ -85,7 +87,7 @@ function ContentSlider({
             </div>
             {open && (
                 <DialogWrapper open={open} setOpen={setOpen}>
-                    <ContactUsForm onClose={() => setOpen(false)} onSubmit={() => {setOpen(false); console.log("Submit")}} />
+                    <ContactUsForm onClose={() => setOpen(false)} onSubmit={handleSubmitRequest} />
                 </DialogWrapper>
             )}
         </>

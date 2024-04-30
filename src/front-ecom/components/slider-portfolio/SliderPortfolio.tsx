@@ -229,25 +229,18 @@ export default function SliderPortfolio({
     >
       <div className="content-slider">
         <div className="bg-container" ref={bg}>
-          <Swiper {...optionSwiper} grabCursor>
+          <Swiper {...optionSwiper} loop grabCursor>
             {dataProject.map((item, key) => (
               <SwiperSlide className="over-hidden" key={key} data-dsn-id={key}>
                 {/*// @ts-ignore*/}
-                {breakPointReached ? <BgImage
-                  src={item.srcMobile}
-                  video={item.video}
-                  alt={item.title}
-                  overlay={item.overlay}
-                  height={"100%"}
-                  {...restProps.parallaxSwiper}
-                />: <BgImage
+                <BgImage
                 src={item.src}
                 video={item.video}
                 alt={item.title}
                 overlay={item.overlay}
                 height={"100%"}
                 {...restProps.parallaxSwiper}
-              />}
+              />
                 
               </SwiperSlide>
             ))}
@@ -274,6 +267,7 @@ export default function SliderPortfolio({
           timeline={tl}
           activeClass={active}
           parent={rootSlider}
+          length={data?.length}
         />
 
         <ContentSlider

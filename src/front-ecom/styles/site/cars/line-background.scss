@@ -67,27 +67,32 @@
             // background: linear-gradient(#Fff, #fff0);
             background: linear-gradient(#Fff0, #fff);
 
-            animation: starDown-100 15s infinite cubic-bezier(1, 0, 0, 1);
+            // animation: starDown-100 15s infinite cubic-bezier(1, 0, 0, 1);
+        }
+
+        &.start-60 {
+            &::before {
+                animation: starDown-60 3s infinite linear;
+            }
         }
 
         &:nth-child(1) {
             &::before {
-                animation: starDown-100 5s infinite cubic-bezier(1, 0, 0, 1);
-                animation-delay: 5s;
+                animation-delay: 1s;
             }
         }
+
         &:nth-child(2) {
             &::before {
-                // animation: starDown-60 1s infinite cubic-bezier(1, 0, 0, 1);
-                animation: starDown-60 3s infinite linear;
-                animation-delay: 5s;
+                animation-delay: 2s;
             }
         }
+
         &:nth-child(3) {
             &::before {
                 // animation: starDown-60 1s infinite cubic-bezier(1, 0, 0, 1);
-                animation: starDown-reverse 3s infinite ease-in-out;
-                animation-delay: 5s;
+                // animation: starDown-reverse 3s infinite ease-in-out;
+                animation-delay: 3s;
             }
         }
     }

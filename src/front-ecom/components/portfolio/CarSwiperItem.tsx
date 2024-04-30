@@ -8,6 +8,7 @@ import MetaPost from "../meta/MetaPost";
 import DsnLink from "../../hooks/DsnLink";
 import { ICar } from "types/Car";
 import ParallaxImage from "../Image/ParallaxImage";
+import PriceContainer from "@/front-ecom/views/cars/carCard/priceContainer";
 
 interface ICarsSwiperItemProps {
   car: ICar;
@@ -86,6 +87,7 @@ function CarsSwiperItem({
             height={height}
             imageOnly={imageOnly}
           />
+          <PriceContainer car={car} className="car-featured" />
         </DsnLink>
       </div>
       <div className="info-text box-content" {...parallaxContent}>

@@ -3,14 +3,14 @@ import ButtonGradient from "../button/ButtonGradeint";
 import ButtonTemplate from "../button/ButtonTemplate";
 import CustomInput from "./CustomInput";
 import ConnectionIcons from "./contuct-us/ConnectionIcons";
-import { EConType } from "types/enum/EGeneral";
+import { EConType } from "types/enum/ERequest";
 import ConnectionInput from "./contuct-us/ConnectionInputs";
 import { CustomCheckBox5 } from "./CustomCheckBox";
 import CustomTextArea from "./CustomTextArea";
 
 interface IProps {
-  onClose: (initialValues: any, values: any) => any;
-  onSubmit: (initialValues: any, values: any) => any;
+  onClose: (values: any) => any;
+  onSubmit: (values: any) => Promise<boolean>;
   initialValues?: any;
 }
 
@@ -19,14 +19,27 @@ export default function ContactUsForm({
   onSubmit,
   initialValues = {},
 }: IProps) {
-  const [connectionType, setConnectionType] = useState(EConType.WHATSAPP);
+  // const [connectionType, setConnectionType] = useState(EConType.WHATSAPP);
   const [moreInfo, setMoreInfo] = useState(false);
-  const [state, setState] = useState<any>({});
+  const [state, setState] = useState<any>({connectionType: EConType.TELEGRAM, ...initialValues});
+  const [success, setSuccess] = useState<boolean | null>(null);
 
   function handleChange(name: string) {
     return function (value: any) {
       setState((oldValue: any) => ({ ...state, [name]: value }));
     };
+  }
+
+  async function handleSubmit() {
+    // console.log("SUBMIT REQUEST");
+    const success = await onSubmit(state)
+    console.log("REQUEST COMPLETED WITH", success);
+    setSuccess(success)
+    if(success) {
+      setTimeout(() => {
+        onClose(state);
+      }, 3000)
+    }
   }
 
   return (
@@ -39,13 +52,13 @@ export default function ContactUsForm({
 
       {/* CONNECTIONS RADIO */}
       <ConnectionIcons
-        connectionType={connectionType}
-        setConnectionType={setConnectionType}
+        connectionType={state.connectionType}
+        setConnectionType={handleChange("connectionType")}
         
       />
 
       <ConnectionInput
-        connectionType={connectionType}
+        connectionType={state.connectionType}
         state={state}
         handleChange={handleChange}
       />
@@ -82,12 +95,14 @@ export default function ContactUsForm({
         className="form-row"
         style={{ justifyContent: "space-between", marginTop: "12px" }}
       >
-        <ButtonTemplate onClick={() => onClose(initialValues, state)}>Cancel</ButtonTemplate>
+        <ButtonTemplate onClick={() => onClose(state)}>Cancel</ButtonTemplate>
 
-        <ButtonGradient onClick={() => onSubmit(initialValues, state)}>
+        <ButtonGradient onClick={handleSubmit}>
           Submit
         </ButtonGradient>
       </div>
+
+      {success && <p>Successfully send request</p>}
     </div>
   );
 }

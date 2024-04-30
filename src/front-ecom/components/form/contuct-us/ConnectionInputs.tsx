@@ -1,4 +1,4 @@
-import { EConType } from "types/enum/EGeneral";
+import { EConType, EConTypeId } from "types/enum/ERequest";
 import CustomInput from "../CustomInput";
 
 interface IProps {
@@ -10,33 +10,28 @@ export default function ConnectionInput({connectionType, state, handleChange}: I
     // return useMemo(() => {
       let label: string = "";
       let placeholder: string = "";
-      let name: string = "";
+      let name: string = EConTypeId[connectionType] || "";
 
       switch (connectionType) {
         case EConType.TELEGRAM:
           label = "Telegram ID";
           placeholder = "@GreenAgeAuto";
-          name = "telegramId";
           break;
         case EConType.WHATSAPP:
           label = "WhatsApp phone number";
           placeholder = "+971 55 3344 969";
-          name = "whatsappId";
           break;
-        case EConType.MAIL:
+        case EConType.EMAIL:
           label = "Your email address";
           placeholder = "gogreenage@gmail.com";
-          name = "email";
           break;
         case EConType.PHONE:
           label = "Your phone number";
           placeholder = "+971 55 3344 969";
-          name = "phone";
           break;
         default:
           label = "";
           placeholder = "";
-          name = "";
           break;
       }
 

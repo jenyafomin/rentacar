@@ -114,6 +114,11 @@
 
 .site-header {
   pointer-events: none;
+
+  .main-logo, .main-navigation, .navbar-toggle {
+    pointer-events: visible;
+  }
+
   @include body-line() {
     padding-left: 0;
     &.dsn-hamburger{

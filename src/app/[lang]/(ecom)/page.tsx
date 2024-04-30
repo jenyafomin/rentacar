@@ -63,7 +63,7 @@ export default async function About() {
 
 
             {/*Start Portfolio*/}
-            <div className="section-margin" data-dsn-title="Our Portfolio">
+            {featuredCars.length !== 0 && <div className="section-margin" data-dsn-title="Our Portfolio">
                 <TitleSection
                     className="container align-items-center text-center"
                     description={"Our Works"}
@@ -93,7 +93,7 @@ export default async function About() {
                         className={`justify-content-between dsn-container mt-30`}
                     />
                 </CarsSwiper>
-            </div>
+            </div>}
             {/*End Portfolio*/}
 
             {/*Start testimonial Section*/}

@@ -110,7 +110,7 @@ export default function Layout({
            <div className="after"/> 
         </div>
         <SocialOne />
-        <div className="dsn-paginate-right-page" ref={paginateRight} />
+        {/* <div className="dsn-paginate-right-page" ref={paginateRight} /> */}
         {modelRight && (
           <ModalRight {...modelRight.propsModal}>
             {modelRight.children}

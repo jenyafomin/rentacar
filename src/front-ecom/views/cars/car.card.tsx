@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ICar } from "types/Car";
+import PriceContainer from "./carCard/priceContainer";
 
 export default function CarCard({
   car,
@@ -74,27 +75,7 @@ export default function CarCard({
 
         <div className="car-card-image-over" />
 
-        {/* PRICE CONTAINER */}
-        <div className="car-card-price-container">
-          {/* PRICE WRAPPER */}
-          <div className={`price-wrapper ${roboto.className}`}>
-            <span className="transparent-border-white text-small" style={{}}>
-              FROM
-            </span>
-            <span className="price">{car.priceDaily}</span>
-            <span className="transparent-border-white">AED</span>
-          </div>
-          {/* PRICE WRAPPER END */}
-
-          {/* NEON UNDERLINE */}
-          <div className={`neon-wrapper ${car.isFeatured && "featured"}`}>
-            {/* <div className="neon-1"/>
-            <div className="neon-2"/>
-            <div/> */}
-          </div>
-          {/* NEON UNDERLINE END */}
-        </div>
-        {/* PRICE CONTAINER END */}
+        <PriceContainer car={car} />
       </div>
       {/* IMAGE CONTAINER = END */}
       {/* FOOTER */}

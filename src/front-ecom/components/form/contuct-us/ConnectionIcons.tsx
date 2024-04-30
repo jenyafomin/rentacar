@@ -1,7 +1,7 @@
 import { IconDefinition, SizeProp } from "@fortawesome/fontawesome-svg-core";
 import { faTelegram, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
-import { EConType } from "types/enum/EGeneral";
+import { EConType } from "types/enum/ERequest";
 import ButtonGradientIcon from "../../button/ButtonGradientIcon";
 
 const iconsConnection: {
@@ -9,10 +9,10 @@ const iconsConnection: {
   name: EConType;
   size?: SizeProp;
 }[] = [
+  { icon: faPhone, name: EConType.PHONE, size: "lg" },
   { icon: faTelegram, name: EConType.TELEGRAM },
   { icon: faWhatsapp, name: EConType.WHATSAPP },
-  { icon: faPhone, name: EConType.PHONE, size: "lg" },
-  { icon: faEnvelope, name: EConType.MAIL, size: "lg" },
+  { icon: faEnvelope, name: EConType.EMAIL, size: "lg" },
 ];
 
 export default function ConnectionIcons({
@@ -31,8 +31,9 @@ export default function ConnectionIcons({
   }
 
   function AllIcons() {
-    return iconsConnection.map((item) => (
+    return iconsConnection.map((item, index) => (
       <ButtonGradientIcon
+        key={index}
         className={`rounded ${isActive(item.name)}`}
         onClick={() => setConnectionType(item.name)}
         icon={item.icon}

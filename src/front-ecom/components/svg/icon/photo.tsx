@@ -11,8 +11,8 @@ export function PhotoIcon({ size, color }: IIconProps) {
       stroke-width="1.5"
       stroke={color}
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M15 8h.01" />

@@ -22,13 +22,17 @@ $maxWidthRight: 340px;
   h1 {
     font-weight: 900;
     line-height: 44px;
+    background: linear-gradient(135deg, #fff, #CCC);
+    background-clip: text;
+    color: #0000;
+    -webkit-text-stroke: 0.5px #0006;
   }
 
   h3 {
     // margin-left: 12px;
     margin-bottom: -8px;
     font-weight: 900;
-    -webkit-text-stroke: 1.5px #fffA;
+    -webkit-text-stroke: 1px #0003;
     color: #fff9;
     letter-spacing: 4px;
   }
@@ -78,6 +82,12 @@ $maxWidthRight: 340px;
       flex-direction: row;
       align-items: center;
       gap: 4px;
+      cursor: pointer;
+      &:hover {
+        .price-item {
+          background: #0006;
+        }
+      }
 
       .discount {
         height: 100%;
@@ -100,6 +110,7 @@ $maxWidthRight: 340px;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      transition: all 0.3s;
 
       .circle-check {
         width: 16px;
@@ -108,6 +119,7 @@ $maxWidthRight: 340px;
         border: 1px solid #fff3;
         border-radius: 50%;
         position: relative;
+        transition: all 0.3s;
       }
 
       .price-type {
@@ -115,6 +127,7 @@ $maxWidthRight: 340px;
         -webkit-text-stroke: 1px #fff6;
         font-weight: 900;
         letter-spacing: 2px;
+        transition: all 0.3s;
       }
 
       .price {
@@ -253,4 +266,64 @@ $maxWidthRight: 340px;
             // display: none;
         }
     }
+}
+
+.image-slider-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0009;
+  backdrop-filter: blur(24px);
+  z-index: 999999;
+
+  .swiper {
+    .swiper-pagination {
+      bottom: 10px;
+      width: 100%;
+    }
+    .close-btn {
+      cursor: pointer;
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      top: 5px;
+      right: 5px;
+      background: #0001;
+      border: 1px solid #0004;
+      z-index: 2;
+      transition: all 0.3s;
+
+      @include media_991 {
+        top: calc(100% - 35px);
+      }
+
+      &:hover {
+        background: #0003;
+        transform: scale(1.1);
+      }
+
+      &::before, &::after {
+        content: "";
+        position: absolute;
+        width: 60%;
+        height: 3px;
+        background: #fff;
+        border-radius: 4px;
+        top: 50%;
+        left: 50%;
+      }
+      &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+  }
 }
