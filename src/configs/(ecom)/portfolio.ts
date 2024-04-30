@@ -17,6 +17,7 @@ export interface ISliderItemProps {
     description?: string,
     subtitle?: string,
     src: string,
+    video?: any,
     srcMobile?: string, // todo - not implemented 
     overlay: number, // 1 - 10
     btn?: TBtn

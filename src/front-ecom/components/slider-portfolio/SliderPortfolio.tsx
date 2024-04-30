@@ -47,7 +47,7 @@ export interface SliderPortfolioProps {
     hasSeparator?: boolean;
     hasCategory?: boolean;
     hasDescription?: boolean;
-    separateCat?: string | null;
+    separateCat?: string | undefined;
   };
   data?: ISliderItemProps[];
   alignControlNav?: justifyContent;
@@ -100,7 +100,7 @@ export default function SliderPortfolio({
       },
     });
 
-    contentRef.current.forEach((item) => {
+    contentRef.current.forEach((item: any) => {
       const title = item.querySelector(".title");
       // if (title) console.log("title", title);
       dsnSplitting.Char(title);
@@ -108,7 +108,7 @@ export default function SliderPortfolio({
 
     if (!parallax) return;
 
-    gsap.to(bg.current, {
+    gsap.to(bg.current!, {
       ...parallax,
       ease: "none",
       scrollTrigger: {
@@ -119,20 +119,20 @@ export default function SliderPortfolio({
     });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const init = (swiper) => {
-    swiper.slides.forEach((item) => {
+  const init = (swiper: any) => {
+    swiper.slides.forEach((item: any) => {
       const video = item.querySelectorAll(
         ".swiper-slide:not(.swiper-slide-active) video"
       );
 
       if (video)
-        video.forEach(($item) => {
+        video.forEach(($item: any) => {
           $item.pause();
         });
     });
   };
 
-  const getContent = (swiper) => {
+  const getContent = (swiper: any) => {
     const oldNum =
       swiper.slides[swiper.previousIndex].getAttribute("data-dsn-id");
     const newNum =
@@ -146,7 +146,7 @@ export default function SliderPortfolio({
     ];
   };
 
-  const activeVideo = (swiper) => {
+  const activeVideo = (swiper: any) => {
     const newVideo = swiper.slides[swiper.activeIndex].querySelector("video");
     const oldVideo = swiper.slides[swiper.previousIndex].querySelector("video");
 
@@ -154,7 +154,7 @@ export default function SliderPortfolio({
     if (oldVideo) oldVideo.pause();
   };
 
-  const swiperChange = (swiper) => {
+  const swiperChange = (swiper: any) => {
     const [newNum, oldNum, newContent, oldContent] = getContent(swiper);
     const [newTitle, oldTitle] = [
       newContent(".title .char"),
@@ -228,7 +228,7 @@ export default function SliderPortfolio({
       ref={rootSlider}
     >
       <div className="content-slider">
-        <div className="bg-container" ref={bg}>
+        <div className="bg-container" ref={bg as any}>
           <Swiper {...optionSwiper} loop grabCursor>
             {dataProject.map((item, key) => (
               <SwiperSlide className="over-hidden" key={key} data-dsn-id={key}>
