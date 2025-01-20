@@ -2,6 +2,7 @@ import { getActiveCars, getCarById, getFeaturedCars,  } from "@/back/models/car.
 import { createNewRequest } from "@/back/models/request.model";
 import { prisma } from "@/back/prismaConnect";
 import { getApiLocale } from "@/localization/getServerLocale";
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 import { IRequest } from "types/Request";
 
@@ -11,5 +12,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
     console.log("CREATE CLIENT REQUEST");
     const body = await req.json() as IRequest;
     const success = await createNewRequest(body);
+    revalidateTag("requests")
     return NextResponse.json({success});
 }

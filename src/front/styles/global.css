@@ -53,6 +53,10 @@
   border-color: theme('borderColor.DEFAULT', currentColor);
 }
 
+/* * {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+} */
+
 html {
   display: flex;
   inline-size: 100%;

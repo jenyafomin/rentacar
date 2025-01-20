@@ -8,6 +8,7 @@ import CarsList from "../../../../front-ecom/views/cars/cars.list";
 import CarCard from "../../../../front-ecom/views/cars/car.card";
 import NextPage2 from "@/front-ecom/components/next/NextPage2";
 import Footer from "@/front-ecom/components/footer/Footer";
+import NextPage from "@/front-ecom/components/next/NextPage";
 
 export default async function Cars() {
   const locale = getServerLocale();
@@ -30,7 +31,7 @@ export default async function Cars() {
       </div>
 
       {/*========== Next Page ==========*/}
-      <NextPage2 className="section-padding border-top background-section" />
+      <NextPage className="section-padding border-top background-section" />
       {/*========== End Next Page ==========*/}
 
       {/*========== Footer ==========*/}

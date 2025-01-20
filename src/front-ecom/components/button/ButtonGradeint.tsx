@@ -8,6 +8,7 @@ interface IProps {
   onClick: () => any;
   children?: ReactNode;
 }
+
 export default function ButtonGradient({
   children,
   className,

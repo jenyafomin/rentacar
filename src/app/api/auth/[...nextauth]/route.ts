@@ -1,16 +1,43 @@
 import NextAuth from "next-auth"
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import { prisma } from "../../../../../db/prisma/connection"
+import dotenv from 'dotenv'
+dotenv.config()
+
+const adminUser = {
+    login: process.env.ADMIN_LOGIN,
+    password: process.env.ADMIN_PASSWORD
+}
+if (!adminUser.login || !adminUser.password) {
+    throw new Error("ADMIN_LOGIN or ADMIN_PASSWORD is not set")
+}
+// console.log("ADMIN USER ::", adminUser)
 
 export const OPTIONS: NextAuthOptions = {
     // adapter: PrismaAdapter(prisma),
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
+        signIn: '/login',
+        signOut: '/signout',
+        newUser: "/"
         // signIn: '/login',
         // newUser: "/"
     },
+    // jwt: {
+    //     secret: process.env.JWT_SECRET,
+    // },
+    // callbacks: {
+    //     async jwt(token, user, account, profile, isNewUser) {
+    //         if (user) {
+    //             token.id = user.id
+    //         }
+    //         return token
+    //     },
+    //     async session(session, token) {
+    //         session.id = token.id
+    //         return session
+    //     }
+    // },
     // adapter: Adapter(prisma)"",
     providers: [
         CredentialsProvider({
@@ -27,9 +54,9 @@ export const OPTIONS: NextAuthOptions = {
                     placeholder: "your-awesome-password"
                 },
             },
-            async authorize(credentials): Promise<any> {
-                console.log("AUTHORISING")
-                const user = {id: 42, username: "John", password: "next-auth"}
+            async authorize(credentials: any): Promise<any> {
+                console.log("AUTHORISING ::", credentials)
+                const user = {id: 42, username: adminUser.login, password: adminUser.password }
 
                 if(credentials?.username === user.username && credentials.password === user.password) {
                     return true

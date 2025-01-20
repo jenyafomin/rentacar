@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 // Third-party Imports
-import Negotiator from 'negotiator'
+import Negotiator from 'negotiator' // @ts-ignore
 import { withAuth } from 'next-auth/middleware'
 import { match as matchLocale } from '@formatjs/intl-localematcher'
 import type { NextRequestWithAuth } from 'next-auth/middleware'
@@ -11,6 +11,8 @@ import type { NextRequestWithAuth } from 'next-auth/middleware'
 // Config Imports
 import { Locale, i18n } from '../i18n-config'
 import { getLocaleUrl, isUrlMissingLocale } from './localization/getSetUrlLocale'
+import { getSession } from 'next-auth/react'
+import { getToken } from 'next-auth/jwt'
 
 
 // Constants
@@ -37,8 +39,13 @@ const getLocale = (request: NextRequest): string | undefined => {
   return locale
 }
 
-export function middleware(request: NextRequest) {
+function middleware(request: NextRequest) {
+  // const session = getSession().then((session) => session);
   const pathname = request.nextUrl.pathname;
+  let session;
+  const token = getToken({ req: request }).then((t) => {session = t; return t});
+  getSession().then((s) => session = s);
+  console.log(`:: middleware :: ${pathname} :: ${session}`);
 
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = isUrlMissingLocale(pathname);
@@ -65,6 +72,31 @@ export function middleware(request: NextRequest) {
   response.headers.set("x-pathname", pathname);
   return response
 }
+
+export default withAuth(middleware, {
+  callbacks: {
+    authorized: (params) => {
+      const { token, req } = params;
+      console.log(`[withAuth] authorized :: Token :`, token);
+      
+      const { pathname } = req.nextUrl;
+      console.log(`[withAuth] authorized :: Pathname :`, pathname);
+
+      if (pathname.includes('/dashboard')) {
+
+        return !!token;
+      }
+
+      return true;
+      // Always allow the user to reach /login or /api/auth/** routes
+      // If it's the sign-in page or sign-out page, let them in
+      if (pathname.includes('/login') || pathname.includes('/signin')) {
+        return true;
+      }
+
+    }
+  }
+})
 
 /*
 const localizedRedirect = (url: string, locale: string | undefined, request: NextRequestWithAuth) => {
