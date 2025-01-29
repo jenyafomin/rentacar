@@ -19,7 +19,7 @@ export interface ServiceProps {
     isSwiper?: boolean,
     targetRef?: any,
     iconOption?: any,
-    parallaxContent?: Object | ParallaxOption
+    parallaxContent?: object | ParallaxOption
 
 }
 

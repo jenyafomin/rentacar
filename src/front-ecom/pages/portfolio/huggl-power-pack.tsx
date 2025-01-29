@@ -6,12 +6,12 @@ import ParallaxImage from "../../components/Image/ParallaxImage";
 import DsnGrid from "../../layout/DsnGrid";
 import Layout from "../../layout/Layout";
 import NextProject from "../../components/next/NextProject";
-import {getPortfolioItem} from "../../../configs/(ecom)/portfolio";
+import { getPortfolioData } from "../../../configs/(ecom)/portfolio";
 import HeaderFull from "../../components/header/HeaderFull";
 import Image from "next/legacy/image";
 
 function Project3(params) {
-  const heroData = getPortfolioItem('huggl-power-pack');
+  const heroData = getPortfolioData('huggl-power-pack');
   return (
       <Layout>
         <HeaderFull className="dsn-container"

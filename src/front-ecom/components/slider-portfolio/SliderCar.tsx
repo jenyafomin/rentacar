@@ -23,10 +23,10 @@ export interface SliderPortfolioProps {
   typeBg?: string | "full-image" | "padding-image" | "half-image";
   className?: string;
   classNameSlider?: string;
-  parallax?: Object;
+  parallax?: object;
   fullWidth?: boolean;
   parallaxSwiper?:
-    | Object
+    | object
     | {
         "data-swiper-parallax"?: string;
         "data-swiper-parallax-x"?: string;

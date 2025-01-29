@@ -3,7 +3,7 @@ import {ScrollbarOptions} from "smooth-scrollbar/interfaces";
 import Scrollbar from "smooth-scrollbar";
 
 export interface SmoothScrollbarState {
-    scrollbar?: Scrollbar | null | Object,
+    scrollbar?: Scrollbar | null | object,
     option?: Partial<ScrollbarOptions>,
     current?:any
 }

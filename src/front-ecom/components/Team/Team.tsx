@@ -5,7 +5,7 @@ import TeamItem from "./TeamItem";
 
 interface TeamProps extends DsnGridProps {
     data?: [{
-        id: Number,
+        id: number,
         name: string,
         position: string,
         src: string,

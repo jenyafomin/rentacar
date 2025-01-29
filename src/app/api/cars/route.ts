@@ -2,11 +2,7 @@ import { getActiveCars, getCarById, getFeaturedCars,  } from "@/back/models/car.
 import { prisma } from "@/back/prismaConnect";
 import { getApiLocale } from "@/localization/getServerLocale";
 import { NextRequest, NextResponse } from "next/server";
-
-export enum Methods_Get_Cars {
-  FEATURED = "featured",
-  GET_ALL_SHORT = "get_all_short",
-}
+import { Methods_Get_Cars } from "./methods.enum";
 
 export async function GET(req: NextRequest, res: NextResponse) {
   const locale = getApiLocale(req)

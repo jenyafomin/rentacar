@@ -3,18 +3,19 @@ import {dsnCN} from "../../hooks/helper";
 import {LinkProps} from "next/dist/client/link";
 import DsnLink from "../../hooks/DsnLink";
 import {transitionPage} from "../../hooks/EremiaType";
-import { CSSProperties } from "react";
+import React, { CSSProperties } from "react";
 
 
 interface ButtonProps {
     className?: string,
     href: string,
     borderRadius?: boolean,
-    linkProps?: Object | LinkProps,
+    linkProps?: object | LinkProps,
     transitionPage?: transitionPage,
     borderStyle?: false |string | "border-color-default" | "border-color-theme-color" | "border-color-heading-color" | "border-color-body-color" | "border-color-main" | "border-color-assistant" | "border-color-gradient",
     style?: Partial<CSSProperties>,
     styleBorder?: Partial<CSSProperties>,
+    children?: React.ReactNode,
 }
 
 

@@ -60,7 +60,7 @@ export default function About() {
 
             {/*Start Box Info Move Content*/}
             <div className="p-relative section-margin">
-                <ParallaxImage src="/img/project/project3/2.jpg" overlay={2} alt={""}/>
+                <ParallaxImage src="/img/project/project3/2.jpg" overlay={2}/>
                 <MoveBox tablet={false}>
                     <TitleSection
                         className={`align-items-start mb-30`}
@@ -102,6 +102,7 @@ export default function About() {
                 </TitleSection>
                 <PortfolioSwiper
                     grabCursor
+                    cars={[]}
                     desktop={{spaceBetween: 50, slidesPerView: 1.5}}
                     tablet={{spaceBetween: 0, slidesPerView: 1.3}}
                     mobile={{slidesPerView: 1}}
@@ -148,20 +149,20 @@ export default function About() {
                     <div className="p-relative mb-lg-section">
                         <div className="box-im w-100 h-100 p-absolute">
                             <ParallaxImage
-                                alt={""}
+                                // alt={""}
                                 src={"/img/plan-project.jpg"}
                                 overlay={3}
                                 height="100%"
                                 heightTable={"70vh"}
                                 heightMobile={"70vh"}
-                                sizes="(max-width: 768px) 100vw,(max-width: 1200px) 70vw,33vw"
+                                // sizes="(max-width: 768px) 100vw,(max-width: 1200px) 70vw,33vw"
                             />
                         </div>
                     </div>
                     <div className="p-relative pt-lg-section">
                         <div className="box-info h-100 box-padding background-section ">
                             <DsnGrid className="box-info-inner" col={1} colGap={0}>
-                                <TitleCover>BRO RENT</TitleCover>
+                                {/* <TitleCover>BRO RENT</TitleCover> */}
                                 <TitleSection
                                     className={"text-uppercase"}
                                     description={"OUR PURPOSE"}
@@ -169,7 +170,7 @@ export default function About() {
                                 >
                                     We Plan Your Project
                                 </TitleSection>
-                                <Accordion>
+                                {/* <Accordion>
                                     <AccordionItem title="Extensive Employment" active number={1}>
                                         <p>
                                             Quisque placerat vitae lacus ut sceleris queusce luctus
@@ -189,7 +190,7 @@ export default function About() {
                                             which I enjoy with my whole.
                                         </p>
                                     </AccordionItem>
-                                </Accordion>
+                                </Accordion> */}
                             </DsnGrid>
                         </div>
                     </div>

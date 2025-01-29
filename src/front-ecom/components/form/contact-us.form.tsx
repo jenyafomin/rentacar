@@ -48,7 +48,7 @@ export default function ContactUsForm({
     <div className="form-contact-us">
       {/* TITLE */}
       <div className="form-item">
-        <h3>Let's get in touch</h3>
+        <h3>Let&apos;s get in touch</h3>
         {/* <h6 style={{opacity: .4}}>Choose form of connection</h6> */}
       </div>
 

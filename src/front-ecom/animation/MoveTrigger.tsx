@@ -4,8 +4,8 @@ import { gsap } from "gsap";
 import { useArrayRef } from "../hooks/dsnHooks";
 
 export interface MoveTriggerProps {
-  from?: Object | { y: 0 };
-  to: Object | { y: 100 };
+  from?: object | { y: 0 };
+  to?: object | { y: 100 };
   ease?: string | "none";
   start?: string | number | "100%";
   end?: string | number | "0%";
@@ -13,7 +13,7 @@ export interface MoveTriggerProps {
   markers?: boolean | true | false;
   mobile?: boolean | true | false;
   tablet?: boolean | true | false;
-  stagger?: Object | Number | null;
+  stagger?: object | number | null;
   children?: any;
 }
 

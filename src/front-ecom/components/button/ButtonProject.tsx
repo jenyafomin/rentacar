@@ -6,7 +6,7 @@ import {LinkProps} from "next/dist/client/link";
 interface ButtonProps {
     className?: string,
     href: string,
-    linkProps?: Object | LinkProps
+    linkProps?: object | LinkProps
 
 }
 

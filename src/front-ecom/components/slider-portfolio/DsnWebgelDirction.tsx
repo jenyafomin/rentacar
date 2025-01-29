@@ -5,7 +5,7 @@ import {gsap ,Expo} from "gsap";
 
 export interface DsnWebgelDirctionParams {
     parent: any,
-    data: Object[] | string[],
+    data: object[] | string[],
     direction: "vertical" | "horizontal",
     displacement?:  string,
     nextEl?: HTMLElement,
@@ -455,3 +455,4 @@ function DsnWebgelDirction(props: DsnWebgelDirctionParams) {
 }
 
 export default memo(DsnWebgelDirction);
+export const runtime = 'edge'; // или 'nodejs' или 'edge'

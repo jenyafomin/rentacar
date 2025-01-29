@@ -21,7 +21,7 @@ export interface BrandClientProps extends SwiperOptions {
     mobile?: {} | SwiperOptions,
     tablet?: {} | SwiperOptions,
     className?: string,
-    parallaxContent?: Object | ParallaxOption,
+    parallaxContent?: object | ParallaxOption,
     blur?: boolean,
 
 }

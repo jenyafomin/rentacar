@@ -3,7 +3,7 @@ import PrevNextSubmitBtns from "./prevNextSubmitBtns";
 
 function NotFoundStep({activeStep, restProps}: {activeStep: number, restProps: any}): any {
     return <div className="flex flex-col">
-      <div className="mb-4">404 Component not found by index: '{activeStep}'</div>
+      <div className="mb-4">404 Component not found by index: {activeStep}</div>
       <PrevNextSubmitBtns activeStep={activeStep} {...restProps} />
     </div>
 }

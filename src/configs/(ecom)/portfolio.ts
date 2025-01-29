@@ -83,3 +83,7 @@ const data: Array<ISliderItemProps> = [
 ]
 
 export const getPortfolioData = () => data;
+
+export const getPortfolioItem = (slug: string) => {
+    return data.find(item => item.slug === slug)
+}

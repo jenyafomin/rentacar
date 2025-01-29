@@ -38,12 +38,7 @@ import {
 import type { ColumnDef, FilterFn } from '@tanstack/react-table'
 import type { RankingInfo } from '@tanstack/match-sorter-utils'
 
-// Type Imports
-import type { Locale } from '@configs/i18n'
-
-import TablePaginationComponent from '@components/TablePaginationComponent'
-
-import { getLocalizedUrl } from '@front//utils/i18n'
+// import TablePaginationComponent from '@components/TablePaginationComponent'
 
 import tableStyles from '@core/styles/table.module.css'
 
@@ -244,7 +239,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
               <i className='tabler-trash text-[22px] text-textSecondary' />
             </IconButton>
             <IconButton>
-              <Link href={getLocalizedUrl('apps/user/view', locale as Locale)} className='flex'>
+              <Link href={'apps/user/view'} className='flex'>
                 <i className='tabler-eye text-[22px] text-textSecondary' />
               </Link>
             </IconButton>
@@ -407,7 +402,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
             )}
           </table>
         </div>
-        <TablePagination
+        {/* <TablePagination
           component={() => <TablePaginationComponent table={table} />}
           count={table.getFilteredRowModel().rows.length}
           rowsPerPage={table.getState().pagination.pageSize}
@@ -415,7 +410,7 @@ const UserListTable = ({ tableData }: { tableData?: UsersType[] }) => {
           onPageChange={(_, page) => {
             table.setPageIndex(page)
           }}
-        />
+        /> */}
       </Card>
       <AddUserDrawer open={addUserOpen} handleClose={() => setAddUserOpen(!addUserOpen)} />
     </>

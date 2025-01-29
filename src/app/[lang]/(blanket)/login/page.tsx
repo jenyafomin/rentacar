@@ -2,13 +2,12 @@
 import React, { CSSProperties, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { getServerSession } from "next-auth/next";
-import { OPTIONS } from "../../../api/auth/[...nextauth]/route";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
   // const [usernam, setUsername] = useState("");
   // const [password, setPassword] = useState("");
-  // const session = await getServerSession(OPTIONS)
+  // const session = await getServerSession(authOptions)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

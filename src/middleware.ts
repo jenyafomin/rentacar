@@ -200,5 +200,9 @@ export const config = {
      *    - vercel.svg (Vercel logo)
      */
     '/((?!api|_next/static|_next/image|favicon.ico|.+?/hook-examples|.+?/menu-examples|images|img|js|next.svg|vercel.svg).*)'
-  ]
+  ],
+  unstable_allowDynamic: [
+    '/node_modules/@babel/runtime/regenerator/index.js',
+    '/node_modules/next-auth/react/index.js',
+  ],
 }

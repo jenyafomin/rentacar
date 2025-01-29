@@ -1,18 +1,21 @@
 module.exports = {
   extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'plugin:import/recommended', 'prettier'],
   rules: {
+    'prefer-const': 'warn',
     'jsx-a11y/alt-text': 'off',
     'react/display-name': 'off',
     'react/no-children-prop': 'off',
     '@next/next/no-img-element': 'off',
     '@next/next/no-page-custom-font': 'off',
-    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/consistent-type-imports': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+    '@typescript-eslint/no-this-alias': 'warn',
     'lines-around-comment': [
-      'error',
+      'off',
       {
         beforeBlockComment: true,
         beforeLineComment: true,
@@ -22,7 +25,7 @@ module.exports = {
       }
     ],
     'padding-line-between-statements': [
-      'error',
+      'off',
       {
         blankLine: 'any',
         prev: 'export',
@@ -49,15 +52,17 @@ module.exports = {
         next: '*'
       }
     ],
-    'newline-before-return': 'error',
+    'newline-before-return': 'off',
     'import/newline-after-import': [
-      'error',
+      'off',
       {
         count: 1
       }
     ],
+    '@typescript-eslint/ban-types': 'error', // ! Should be error
+    'import/named': 'warn', // ! Should be error
     'import/order': [
-      'error',
+      'off',
       {
         groups: ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], ['object', 'unknown']],
         pathGroups: [

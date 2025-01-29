@@ -1,14 +1,9 @@
-import { getServerLocale } from "@/localization/getServerLocale";
 import { serverApiFetch } from "@/utils/fetchServer";
-import { Box, Card, CardContent, CardHeader, Chip, Divider, Stack, Typography } from "@mui/material";
-import { IClientRequest, IRequest } from "types/Request";
-import { EConTypeId } from "types/enum/ERequest";
+import { Chip } from "@mui/material";
+import { IRequest } from "types/Request";
 import InfoIcon from "@mui/icons-material/Info";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import PendingIcon from "@mui/icons-material/Pending";
-import IconButton from "@mui/material/IconButton";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { format } from "date-fns";
 import { RequestCard } from "@/front/components/cards/req.card";
 
 export default async function RequestPage() {
@@ -20,7 +15,7 @@ export default async function RequestPage() {
   console.log("requests", requests.length);
 
   return (
-    <div style={{ display: "flex", flexDirection: "wrap", gap: "12px" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
       {requests.map((req, i) => {
         return <RequestCard key={i} request={req} />;
       })}

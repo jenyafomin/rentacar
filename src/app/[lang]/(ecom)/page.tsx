@@ -26,10 +26,10 @@ import ServiceSwiperOne from "@/front-ecom/components/services/swiper/ServiceSwi
 import { makeApiCall } from "@/utils/fetch";
 import { getServerLocale } from "@/localization/getServerLocale";
 import { ICar } from "types/Car";
-import { Methods_Get_Cars } from "@/app/api/cars/route";
 import BgDot from "@/front-ecom/components/header/BgDot";
 import Facts from "@/front-ecom/components/facts/Facts";
 import { getPortfolioData } from "@/configs/(ecom)/portfolio";
+import { Methods_Get_Cars } from "@/app/api/cars/methods.enum";
 
 
 export default async function About() {

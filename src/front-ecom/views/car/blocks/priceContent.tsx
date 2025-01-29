@@ -1,8 +1,8 @@
 "use client";
+import { useMemo, useState } from "react";
 import { poppins } from "@/front/fonts";
 import { ICar } from "types/Car";
 import CarContentCreater from "../utils/carContentCreator";
-import { useMemo, useState } from "react";
 
 function PriceItem({
   priceType,
