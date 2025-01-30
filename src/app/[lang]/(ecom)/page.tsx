@@ -34,7 +34,7 @@ import { Methods_Get_Cars } from "@/app/api/cars/methods.enum";
 
 export default async function About() {
     const locale = getServerLocale()
-    const featuredCars = await makeApiCall<Array<ICar>>(locale, `/api/cars?method=${Methods_Get_Cars.FEATURED}`)
+    const featuredCars = await makeApiCall<Array<ICar>>(locale!, `/api/cars?method=${Methods_Get_Cars.FEATURED}`)
     const sliderData = getPortfolioData()
     console.log("featuredCars", featuredCars?.length);
     return (

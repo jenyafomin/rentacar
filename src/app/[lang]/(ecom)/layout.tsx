@@ -36,6 +36,7 @@ import Layout from "@/front-ecom/layout/Layout";
 import ModalContact from "@/front-ecom/components/model-right/ModalContact";
 import { poppins, roboto } from "@/front/fonts";
 
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 dsnEffect.registerEffect(moveSection, fade, textAnimation);
@@ -133,7 +134,7 @@ export default function RootLayout({ children, session, ...pageProps }: any) {
         <body className="">
           <div id="__dsn_content" className={colorPage}>
             <SessionProvider session={session}>
-              {/* <LoadingPage /> */}
+              <LoadingPage />
               <EremiaMenu hamburger={true} />
               
               <Layout modelRight={{children: <ModalContact/>, propsModal: {textBtn: "Contact"}}}>
