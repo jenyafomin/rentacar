@@ -1,18 +1,28 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    // For experimental decorators support
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    // 
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "target": "ES2020",
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
+    // "module": "esnext",
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "outDir": "dist",
     "plugins": [
       {
         "name": "next"
@@ -20,14 +30,33 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"],
-      "@front-ecom/*": ["./src/front-ecom/*"],
-      "@front/*": ["./src/front/*"],
-      "@core/*": ["./src/front/@core/*"],
-      "@layout/*": ["./src/front-ecom/@layout/*"],
-      "@menu/*": ["./src/front-ecom/@menu/*"],
+      "@/*": [
+        "./src/*"
+      ],
+      "@front-ecom/*": [
+        "./src/front-ecom/*"
+      ],
+      "@front/*": [
+        "./src/front/*"
+      ],
+      "@core/*": [
+        "./src/front/@core/*"
+      ],
+      "@layout/*": [
+        "./src/front-ecom/@layout/*"
+      ],
+      "@menu/*": [
+        "./src/front-ecom/@menu/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

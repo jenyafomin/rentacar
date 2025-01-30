@@ -25,25 +25,6 @@ export interface ISliderItemProps {
 
 const data: Array<ISliderItemProps> = [
     {
-        id: 1,
-        title: "Dubai Rent a Car",
-        slug: 'maybe-speaker',
-        category: ['from 49 AED', 'all types'],
-        href: "/cars",
-        description: 'Best Rent a Car in UAE.',
-        src: '/img/3D/AI/CyberTruck.jpg',
-        // src: '/img/3D/mobile/bmw-9-16.webp',
-        srcMobile: '/img/3D/mobile/bmw-9-16.webp',
-        overlay: 8,
-        btn: {
-            href: "/cars",
-            pageTransition: {title: "All Cars"},
-            title: "All Cars",
-            color: EColors.DEFAULT,
-
-        }
-    },
-    {
         id: 2,
         title: "Yaren Collection",
         slug: 'yaren-collection',
@@ -61,6 +42,25 @@ const data: Array<ISliderItemProps> = [
             color: EColors.CYAN
         }
 
+    },
+    {
+        id: 1,
+        title: "Dubai Rent a Car",
+        slug: 'maybe-speaker',
+        category: ['from 49 AED', 'all types'],
+        href: "/cars",
+        description: 'Best Rent a Car in UAE.',
+        src: '/img/3D/AI/CyberTruck.jpg',
+        // src: '/img/3D/mobile/bmw-9-16.webp',
+        srcMobile: '/img/3D/mobile/bmw-9-16.webp',
+        overlay: 8,
+        btn: {
+            href: "/cars",
+            pageTransition: {title: "All Cars"},
+            title: "All Cars",
+            color: EColors.DEFAULT,
+
+        }
     },
     {
         id: 3,
@@ -83,3 +83,7 @@ const data: Array<ISliderItemProps> = [
 ]
 
 export const getPortfolioData = () => data;
+
+export const getPortfolioItem = (slug: string) => {
+    return data.find(item => item.slug === slug)
+}

@@ -11,7 +11,7 @@ import NextPage2 from "../components/next/NextPage2";
 import Footer from "../components/footer/Footer";
 import Head from "next/head";
 
-function About() {
+export default function About() {
     TitleSection.defaultProps = {
         classDesc: "line-shape line-shape-before",
         classDesInner: "line-bg-right",
@@ -64,5 +64,3 @@ function About() {
         </Layout>
     );
 }
-
-export default About;

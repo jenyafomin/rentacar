@@ -29,7 +29,7 @@ function LoadingPage({className, glitchLogo = true}: LoadingProps) {
     const present = {value: 0};
 
     useEffect(() => {
-        console.log("USE EFFECT MOUNTED")
+        console.log("[LoadingPage] USE EFFECT MOUNTED")
         const tl = gsap.timeline();
 
         document.body.style.overflow = "hidden";
@@ -62,7 +62,7 @@ function LoadingPage({className, glitchLogo = true}: LoadingProps) {
 
         }
 
-        const timer = pageLoad(0, 100, 300, function (val) {
+        const timer = pageLoad(0, 100, 300, function (val: any) {
             setProgressValue(val);
             present.value = val;
             if (val >= 100)

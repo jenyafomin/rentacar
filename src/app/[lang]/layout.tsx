@@ -10,11 +10,24 @@ export const metadata = {
     'Admin Dashboard for proffesional usage'
 }
 
-const RootLayout = async ({ children, params, session }: {
-    children: React.ReactNode
-    params: { lang: Locale },
-    session: any
-  }) => {
+// This is needed to avoid error - Layout "src/app/[lang]/layout.tsx" has an invalid "default" export:
+  // Type "{ children: ReactNode; params: { lang: "en" | "ru"; }; session: any; }" is not valid.
+type LayoutProps = {
+  children?: React.ReactNode
+}
+
+type LayoutPropsExtended = {
+  children: React.ReactNode
+  params: { lang: Locale }
+  session: any
+}
+
+export default async function RootLayout(props: LayoutProps | LayoutPropsExtended) {
+  const { params, children, session } = {
+    params: { lang: 'en' as any },
+    session: undefined,
+    ...props,
+  }
   // Vars
   const direction = 'ltr'
   const dictionary = await getDictionary(params.lang)
@@ -39,5 +52,3 @@ const RootLayout = async ({ children, params, session }: {
     </html>
   )
 }
-
-export default RootLayout

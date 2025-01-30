@@ -16,8 +16,8 @@ interface HeaderFullProps {
     className?: string,
     separate?: string,
     overlay?: number,
-    parallax?: Object,
-    parallaxContent?: Object,
+    parallax?: object,
+    parallaxContent?: object,
     heroContent: { category?: [], title?: string, src?: string, video?: string, subtitle?: string },
     children?: any,
     justifyContent?: justifyContent

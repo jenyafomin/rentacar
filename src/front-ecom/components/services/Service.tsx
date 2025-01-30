@@ -19,7 +19,7 @@ export interface ServiceProps {
     isSwiper?: boolean,
     targetRef?: any,
     iconOption?: any,
-    parallaxContent?: Object | ParallaxOption
+    parallaxContent?: object | ParallaxOption
 
 }
 
@@ -42,11 +42,12 @@ export default function Service({
 
 
     return (
+        // @ts-ignore
         <Tag
             className={dsnCN("services  p-relative ",
                 isLine ? "with-line with-number" : "",
                 isList ? "service-list" : "",
-                isCorner ? "with-line" : "", className)}
+                isCorner ? "with-line" : "", className || "")}
             {...restProps} >
             {
                 (!isSwiper && data) && data.map((item, index) => <ServiceItem key={index} data={item}

@@ -15,7 +15,7 @@ interface ServiceSwiperProps extends SwiperOptions {
     tablet?: {} | SwiperOptions,
     blur?: boolean,
     backgroundColor?: backgroundColor,
-    parallaxContent?: Object | ParallaxOption,
+    parallaxContent?: object | ParallaxOption,
     styleBox?: styleBox
 
 }

@@ -17,8 +17,8 @@ export interface PortfolioSwiperProps extends SwiperOptions {
     mobile?: {} | SwiperOptions,
     tablet?: {} | SwiperOptions,
     className?: string,
-    parallaxImage?: Object | ParallaxOption,
-    parallaxContent?: Object | ParallaxOption,
+    parallaxImage?: object | ParallaxOption,
+    parallaxContent?: object | ParallaxOption,
     blur?: boolean,
     hideMetaData?: MetaData,
     children?: ReactChild | ReactChild[]

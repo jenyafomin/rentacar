@@ -16,7 +16,7 @@ export function moveSection() {
             scrub: true,
             markers: false
         },
-        effect: (target, config) => {
+        effect: (target: any, config: any) => {
             return gsap.fromTo(target, config.from, {
                 ease: config.ease,
                 ...config.to,

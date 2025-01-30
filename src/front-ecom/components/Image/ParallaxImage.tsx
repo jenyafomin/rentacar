@@ -2,15 +2,15 @@
 import {CSSProperties, useEffect, useRef, useState} from 'react';
 import {gsap} from "gsap";
 import {ScrollTrigger} from 'gsap/dist/ScrollTrigger';
-import {ImageProps} from "next/dist/client/image";
+// import { ImageProps } from "next/dist/client/image";
 import Image from "next/legacy/image";
 
 import {dsnCN} from "../../hooks/helper";
 
 // @ts-ignore
-export interface ParallaxImageProps extends ImageProps {
+export interface ParallaxImageProps {
     speed?: number ,
-    parallax?: Object,
+    parallax?: object,
     overlay?: number,
     height?: string,
     heightTable?: string,
@@ -19,7 +19,7 @@ export interface ParallaxImageProps extends ImageProps {
     animationActive?: boolean,
     caption?: string,
     asBackground?: boolean,
-    parallaxFrom?: Object,
+    parallaxFrom?: object,
     className?: string,
     src: string
 }
@@ -42,18 +42,18 @@ export default function ParallaxImage(
         ...restProps
     }: ParallaxImageProps) {
 
-    const target = useRef(null);
-    const activeAnimateTrigger = useRef(null);
+    const target = useRef<any>(null);
+    const activeAnimateTrigger = useRef<any>(null);
     const [active, setActive] = useState('');
 
 
     useEffect(() => {
 
-        if (!src)
+        if (!src || !target.current)
             return;
 
 
-        const img = {current : target.current.querySelector('.cover-bg-img')};
+        const img = { current : target.current.querySelector('.cover-bg-img')};
 
 
         if (triggerHook === 'bottom')
@@ -87,7 +87,7 @@ export default function ParallaxImage(
 
         return () => {
             gsap.set(img.current, {clearProps : "height,yPercent"});
-            image.scrollTrigger.kill();
+            image?.scrollTrigger?.kill();
             image.kill();
             activeAnimateTrigger.current?.kill();
         }

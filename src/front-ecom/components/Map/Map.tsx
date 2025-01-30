@@ -1,5 +1,8 @@
+"use client"
 import {useEffect, useRef} from "react";
 import {dsnCN} from "../../hooks/helper";
+import { mapStyle } from "./map.style";
+// import icon from "/public/img/map-marker.png";
 
 declare const google: any;
 
@@ -12,259 +15,66 @@ interface MapProps {
     mapIcon?: string
 }
 
+export default function Map({mapKey, defaultCenter, mapIcon="public/img/map-marker.png", className, zoom=14, height="80vh", ...restProps}: MapProps) {
 
-function Map({mapKey, defaultCenter, mapIcon, className, zoom, height, ...restProps}: MapProps) {
-
-    const ref = useRef(null);
+    const ref = useRef<HTMLDivElement>(null);
     const effects = useRef(false);
 
 
     useEffect(() => {
-
-
-        if (effects.current) {
+        if (effects.current || !mapKey) {
             return;
         }
-
+    
         effects.current = true;
-
-
-        if (!mapKey)
-            return;
-
-
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.id = "map_id";
-        script.src = "https://maps.googleapis.com/maps/api/js?key=" + mapKey; //& needed
-        document.body.appendChild(script);
-
-
-        script.addEventListener("load", () => {
+    
+        const existingScript = document.getElementById('googleMapsScript');
+        const loadMap = () => {
             const map = new google.maps.Map(ref.current, {
-                center: {
-                    lat: defaultCenter.lat,
-                    lng: defaultCenter.lng,
-                },
+                center: { lat: defaultCenter.lat, lng: defaultCenter.lng },
+                zoom: zoom,
+                styles: mapStyle,
                 mapTypeControl: false,
                 scrollwheel: false,
                 draggable: true,
                 streetViewControl: false,
                 navigationControl: false,
-                zoom: zoom,
-                styles: [
-                    {
-                        "featureType": "water",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "color": "#e9e9e9",
-                            },
-                            {
-                                "lightness": 17,
-                            },
-                        ],
-                    },
-                    {
-                        "featureType": "landscape",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "color": "#f5f5f5",
-                            },
-                            {
-                                "lightness": 20,
-                            },
-                        ],
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "color": "#ffffff",
-                            },
-                            {
-                                "lightness": 17,
-                            },
-                        ],
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
-                            {
-                                "color": "#ffffff",
-                            },
-                            {
-                                "lightness": 29,
-                            },
-                            {
-                                "weight": 0.2,
-                            },
-                        ],
-                    },
-                    {
-                        "featureType": "road.arterial",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "color": "#ffffff",
-                            },
-                            {
-                                "lightness": 18,
-                            },
-                        ],
-                    },
-                    {
-                        "featureType": "road.local",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "color": "#ffffff",
-                            },
-                            {
-                                "lightness": 16,
-                            },
-                        ],
-                    },
-                    {
-                        "featureType": "poi",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "color": "#f5f5f5",
-                            },
-                            {
-                                "lightness": 21,
-                            },
-                        ],
-                    },
-                    {
-                        "featureType": "poi.park",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "color": "#dedede",
-                            },
-                            {
-                                "lightness": 21,
-                            },
-                        ],
-                    },
-                    {
-                        "elementType": "labels.text.stroke",
-                        "stylers": [
-                            {
-                                "visibility": "on",
-                            },
-                            {
-                                "color": "#ffffff",
-                            },
-                            {
-                                "lightness": 16,
-                            },
-                        ],
-                    },
-                    {
-                        "elementType": "labels.text.fill",
-                        "stylers": [
-                            {
-                                "saturation": 36,
-                            },
-                            {
-                                "color": "#333333",
-                            },
-                            {
-                                "lightness": 40,
-                            },
-                        ],
-                    },
-                    {
-                        "elementType": "labels.icon",
-                        "stylers": [
-                            {
-                                "visibility": "off",
-                            },
-                        ],
-                    },
-                    {
-                        "featureType": "transit",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "color": "#f2f2f2",
-                            },
-                            {
-                                "lightness": 19,
-                            },
-                        ],
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "color": "#fefefe",
-                            },
-                            {
-                                "lightness": 20,
-                            },
-                        ],
-                    },
-                    {
-                        "featureType": "administrative",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
-                            {
-                                "color": "#fefefe",
-                            },
-                            {
-                                "lightness": 17,
-                            },
-                            {
-                                "weight": 1.2,
-                            },
-                        ],
-                    },
-                ],
             });
-
-            ref.current.addEventListener("resize", function () {
-                google.maps.event.trigger(map, "resize");
-                map.setCenter(map.getCenter());
-            });
-
-
+            
+            console.log("google:",google);
             new google.maps.Marker({
                 position: new google.maps.LatLng(defaultCenter.lat, defaultCenter.lng),
-                animation: google.maps.Animation.BOUNCE,
-                icon: mapIcon,
-                title: "ASL",
                 map: map,
+                animation: google.maps.Animation.BOUNCE,
+                // icon: mapIcon,
+                title: "ASL",
             });
-        })
-
-        return () => {
-            script.remove();
         };
-
-
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    
+        if (!existingScript) {
+            const script = document.createElement("script");
+            script.id = 'googleMapsScript';
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${mapKey}`;
+            document.body.appendChild(script);
+            script.addEventListener('load', loadMap);
+        } else {
+            loadMap();
+        }
+    
+        return () => {
+            if (existingScript) {
+                existingScript.removeEventListener('load', loadMap);
+            }
+        };
+    }, [mapKey, defaultCenter, mapIcon, zoom, className, height]);
 
 
     return (
-        <div className={dsnCN("w-100", className)} style={{height: height}} ref={ref} {...restProps} />
+        <>
+            <div className={dsnCN("w-100", className)} style={{height: height}} ref={ref} {...restProps} />
+        </>
     );
 }
-
-Map.defaultProps = {
-    height: "80vh",
-    zoom: 14,
-    mapIcon: "img/map-marker.png"
-}
-
-export default Map;
 
 
 

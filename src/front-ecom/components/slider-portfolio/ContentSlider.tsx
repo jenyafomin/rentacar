@@ -41,7 +41,7 @@ function ContentSlider({
 
                 {data.map((item: ISliderItemProps, key) =>{
 
-                    console.log("INDEX: ", key, "ITEM", item);
+                    console.log("[ContentSlider] INDEX: ", key, "ITEM", item);
                     const btn = item.btn
                     // const handleButtonClick = handleTransitionToUrl({router, href: btn?.href!, transitionPage: btn?.pageTransition})
                     const isBtnDefined = (item.btn && item.btn.title && (item.btn.href || item.btn?.method)) || false;
@@ -63,15 +63,12 @@ function ContentSlider({
                         <div className="title-wrapper">
                             <h1 className="title" >
                                 {
-                                    item.title ? <DsnLink  href={item.href}
+                                    <DsnLink  href={item.href}
                                             transitionPage={{title : item.title}}
-                                        >{item.title}</DsnLink>
-                                        : <>Hello</>
-                                        // <span dangerouslySetInnerHTML={{__html: item.title}}/>
+                                    >
+                                        {item.title}
+                                    </DsnLink>
                                 }
-                            {/* <a className="neon neon-1">{item.title}</a> */}
-                                {/* <a className="neon neon-2">{item.title}</a>
-                                <a className="neon neon-3">{item.title}</a> */}
                             </h1>
                             {isBtnDefined && <ButtonGradient className={`${btn?.color} animate desktop`} onClick={handleButtonClick() as any}>{btn?.title}</ButtonGradient>}
                         

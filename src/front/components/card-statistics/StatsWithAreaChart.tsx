@@ -11,7 +11,7 @@ import { useTheme } from '@mui/material/styles'
 
 // Third-party Imports
 import classnames from 'classnames'
-import type { ApexOptions } from 'apexcharts'
+// import type { ApexOptions } from 'apexcharts'
 
 // Type Imports
 import type { CardStatsWithAreaChartProps } from '@/front/types/pages/widgetTypes'
@@ -20,7 +20,7 @@ import type { CardStatsWithAreaChartProps } from '@/front/types/pages/widgetType
 import CustomAvatar from '@/front/@core/components/mui/Avatar'
 
 // Styled Component Imports
-const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
+// const AppReactApexCharts = dynamic(() => import('@/libs/styles/AppReactApexCharts'))
 
 const CardStatsWithAreaChart = (props: CardStatsWithAreaChartProps) => {
   // Props
@@ -39,7 +39,8 @@ const CardStatsWithAreaChart = (props: CardStatsWithAreaChartProps) => {
   // Hook
   const theme = useTheme()
 
-  const options: ApexOptions = {
+  // const options: ApexOptions = {
+  const options = {
     chart: {
       parentHeightOffset: 0,
       toolbar: { show: false },
@@ -107,7 +108,7 @@ const CardStatsWithAreaChart = (props: CardStatsWithAreaChartProps) => {
           <Typography variant='body2'>{title}</Typography>
         </div>
       </CardContent>
-      <AppReactApexCharts type='area' height={100} options={options} series={chartSeries} />
+      {/* <AppReactApexCharts type='area' height={100} options={options} series={chartSeries} /> */}
     </Card>
   )
 }

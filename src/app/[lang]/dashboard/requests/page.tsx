@@ -1,26 +1,68 @@
-import { getAllRequests } from "@/back/models/request.model"
-import { Card } from "@mui/material";
-import { IClientRequest } from "types/Request";
-import { EConTypeId } from "types/enum/ERequest";
+import { serverApiFetch } from "@/utils/fetchServer";
+import { Chip } from "@mui/material";
+import { IRequest } from "types/Request";
+import InfoIcon from "@mui/icons-material/Info";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import PendingIcon from "@mui/icons-material/Pending";
+import { RequestCard } from "@/front/components/cards/req.card";
 
 export default async function RequestPage() {
-    const requests = await getAllRequests();
-    console.log("requests",requests.length);
+  const requests = await serverApiFetch<IRequest[]>(
+    "/api/admin/request",
+    { next: { tags: ["requests"] } }
+  );
 
-    return <div style={{display: "flex", flexDirection: "column", gap: "12px"}}>
-        {requests.map((req, i) => {
-            // @ts-ignore
-            const client = req.client as IClientRequest
-            const conType = client.connectionType;
-            const conId = EConTypeId[conType];
+  console.log("requests", requests.length);
 
-            return <Card className="flex gap-4 px-4 py-2" key={i}>
-                    <span>{req.status}</span>
-                    <span>{client.name}</span>
-                    <span>{client.connectionType}</span>
-                    <span>{conId}</span>
-                </Card>
-        })}
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+      {requests.map((req, i) => {
+        return <RequestCard key={i} request={req} />;
+      })}
     </div>
-    // return {requests.map(())}
+  );
+}
+
+const getStatusChip = (status: string) => {
+  switch (status) {
+    case "new":
+      return (
+        <Chip
+          label="New"
+          color="primary"
+          variant="outlined"
+          size="small"
+          icon={<InfoIcon fontSize="small" />}
+        />
+      )
+    case "approved":
+      return (
+        <Chip
+          label="Approved"
+          color="success"
+          variant="outlined"
+          size="small"
+          icon={<CheckCircleIcon fontSize="small" />}
+        />
+      )
+    case "pending":
+      return (
+        <Chip
+          label="Pending"
+          color="warning"
+          variant="outlined"
+          size="small"
+          icon={<PendingIcon fontSize="small" />}
+        />
+      )
+    default:
+      return (
+        <Chip
+          label={status}
+          color="default"
+          variant="outlined"
+          size="small"
+        />
+      )
+  }
 }

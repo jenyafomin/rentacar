@@ -65,6 +65,6 @@ const data = [
 
 export const getTeamData = () => data;
 
-export const getTeamItem = (value, whereName = "id") => {
+export const getTeamItem = (value: any, whereName: "id" | "position" = "id") => {
     return data.find(item => item[whereName] === value);
 };

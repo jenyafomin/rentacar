@@ -4,7 +4,7 @@ import {Fancybox as NativeFancybox} from "@fancyapps/ui";
 import Image from "next/legacy/image";
 
 export interface FJustifiedGalleryProps {
-    gutter?: number | Object | { horizontal: 10, vertical: 10 },
+    gutter?: number | object | { horizontal: 10, vertical: 10 },
     rowHeight?: number,
     rowHeightTolerance?: number,
     lastRow?: 'left' | 'center' | 'right' | 'hide',

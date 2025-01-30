@@ -24,7 +24,7 @@ export interface LinkDsnProps extends LinkProps {
 
 function DsnLink({children, className, href, linkref, transitionPage = true, style, ...restProps}: LinkDsnProps) {
 
-    if(!linkref)
+    // if(!linkref)
     linkref = useRef<HTMLAnchorElement>(null);
     const locale = useLocale();
     const router = useRouter();

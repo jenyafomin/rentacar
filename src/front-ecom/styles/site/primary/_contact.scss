@@ -45,6 +45,7 @@
 
     &::placeholder {
       color: $body-color;
+      opacity: 0.4;
       font-size: 16px;
       letter-spacing: -0.5px;
     }
@@ -56,7 +57,10 @@
 }
 
 label {
-  color: $theme-color;
+  // background: linear-gradient(90deg, $theme-color, $theme-color2);
+  // background-clip: text;
+  // color: $theme-color;
+  color: #fff;
 }
 
 .box-info-contact {

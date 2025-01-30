@@ -54,8 +54,7 @@ const data = [
         title: "Relationships Aren’t Easy, But They’re Worth It",
         slug: 'single-blog',
         author: "Dsn Grid",
-        date: "March , 17th 2020",
-        category: ['Health'],
+        date: "March , 17th 2020",        category: ['Health'],
         description: `Whoever said “It’s not about the destination. It’s the journey” never flew on a long ...`,
         src: '/img/blog/6.jpg',
         overlay: 4
@@ -65,10 +64,11 @@ const data = [
 
 export const getBlogData = () => data;
 
-export const getBlogItem = (value, whereName = "slug") => {
+export const getBlogItem = (value: string, whereName: "slug" = "slug") => {
     return data.find(item => item[whereName] === value);
 };
-export const getBlogLink = (item) => {
+
+export const getBlogLink = (item: any) => {
     if (item)
         return item.slug && '/' + item.slug;
 

@@ -19,6 +19,7 @@ export function getServerLocale(): Locale {
         return getLocaleFromPath(path)
     }
     else {
-        throw new Error("header 'x-pathname' is empty")
+        // ! In standalone application throw an error
+        // throw new Error("header 'x-pathname' is empty")
     }
 }

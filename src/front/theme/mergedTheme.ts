@@ -36,7 +36,9 @@ const mergedTheme = (settings: Settings, mode: SystemMode, direction: Theme['dir
             dark: "#80004E",
           },
           warning: {
-            ...
+            main: "#FF9CF2",
+            light: "#FF9CF2",
+            dark: "#80004E",
           },
         },
       },

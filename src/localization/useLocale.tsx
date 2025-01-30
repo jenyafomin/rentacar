@@ -3,9 +3,8 @@ import { Locale, i18n } from "i18n-config";
 import { usePathname } from "next/navigation";
 
 export function useLocale(): Locale {
+    const path = usePathname()
     try {
-        let path: string | null;
-        path = usePathname()
 
         const locale = path.split("/")[1] || i18n.defaultLocale
         return locale as Locale;
