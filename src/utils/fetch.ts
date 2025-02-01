@@ -1,6 +1,6 @@
 import { Locale } from "i18n-config";
-import dotenv from "dotenv";
-dotenv.config();
+import { config } from "dotenv";
+config();
 
 export async function makeApiCall<T>(locale: Locale, endpoint: string, options?: RequestInit): Promise<T> {
     endpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`
