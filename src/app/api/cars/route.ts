@@ -11,24 +11,28 @@ export async function GET(req: NextRequest, res: NextResponse) {
   const method = params.get("method");
 
   console.log("method:", method);
-  
-  if(id) {
-    const car = await getCarById(id);
-    if(!car) {
-      return NextResponse.json({error: "Car Not Found"}, {status: 404})
+  try {
+    if(id) {
+      const car = await getCarById(id);
+      if(!car) {
+        return NextResponse.json({error: "Car Not Found"}, {status: 404})
+      } else {
+        return NextResponse.json(car)
+      }
     } else {
-      return NextResponse.json(car)
+      let cars: Array<any>;
+      switch (method) {
+        case Methods_Get_Cars.FEATURED:
+          cars = await getFeaturedCars();
+          break
+        case Methods_Get_Cars.GET_ALL_SHORT:
+        default:
+          cars = await getActiveCars();
+      }
+      return NextResponse.json(cars)
     }
-  } else {
-    let cars: Array<any>;
-    switch (method) {
-      case Methods_Get_Cars.FEATURED:
-        cars = await getFeaturedCars();
-        break
-      case Methods_Get_Cars.GET_ALL_SHORT:
-      default:
-        cars = await getActiveCars();
-    }
-    return NextResponse.json(cars)
+  } catch (error) {
+    console.error("[GET /api/cars] error:", error);
+    return NextResponse.json({error: "Internal Server Error" }, {status: 500})
   }
 }
