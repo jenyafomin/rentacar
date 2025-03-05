@@ -11,7 +11,7 @@ export function UploadForm({
   // Hooks
   const { getRootProps, getInputProps } = useDropzone({
     // maxFiles: 2,
-    maxSize: 2000000,
+    maxSize: 2000000, // TODO: move to props or default value
     accept: {
       "image/*": [".png", ".jpg", ".jpeg", ".gif"],
     },
