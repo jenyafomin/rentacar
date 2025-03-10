@@ -32,6 +32,17 @@
         filter: hue-rotate(-10deg);
     }
 }
+@keyframes gradient-60 {
+    0% {
+        filter: hue-rotate(-30deg);
+    }
+    50% {
+        filter: hue-rotate(60deg);
+    }
+    100% {
+        filter: hue-rotate(-30deg);
+    }
+}
 @keyframes blur-24 {
     0% {
         filter: blur(0px);

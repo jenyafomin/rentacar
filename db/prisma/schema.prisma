@@ -96,6 +96,7 @@ model Car {
 	amountOfSeats Int? @default(5)
 	amountOfLaguage Int? @default(2)
 
+  price Json? // {daily: Int, monthly: Int, weekly: Int, 6months: Int, 1year: Int }
 	priceDaily Int?
 	priceMonthly Int?
 	extraMiles Int?

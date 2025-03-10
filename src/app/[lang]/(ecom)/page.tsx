@@ -16,6 +16,8 @@ import TitleCover from "@front-ecom/components/heading/TitleCover";
 import BlogSwiper from "@front-ecom/components/bolg/BlogSwiper";
 import Team from "@front-ecom/components/Team/Team";
 import BrandClient from "@front-ecom/components/brand-client/BrandClient";
+import VideoTestimonials from "@front-ecom/components/testimonial/VideoTestimonials";
+import { getVideoTestimonialsData } from "@/configs/(ecom)/videoTestimonials";
 
 import NextPage from "@front-ecom/components/next/NextPage";
 import Footer from "@front-ecom/components/footer/Footer";
@@ -36,7 +38,8 @@ export default async function About() {
     const locale = getServerLocale()
     const featuredCars = await makeApiCall<Array<ICar>>(locale!, `/api/cars?method=${Methods_Get_Cars.FEATURED}`)
     const sliderData = getPortfolioData()
-    console.log("featuredCars", featuredCars?.length);
+    const videoTestimonials = getVideoTestimonialsData();
+    
     return (
         <>
             <LineBackground classNameWrapper="large" />
@@ -110,6 +113,13 @@ export default async function About() {
                     <SwiperPagination className={`justify-content-between dsn-container mt-30`}/>
                 </Testimonial>
             </div>
+            
+            {/*Start Video Testimonials Section*/}
+            <VideoTestimonials 
+                videos={videoTestimonials}
+                className="section-margin"
+            />
+            {/*End Video Testimonials Section*/}
 
             {/*========== Next Page ==========*/}
             <NextPage className="section-padding border-top background-section"/>
@@ -118,7 +128,6 @@ export default async function About() {
             {/*========== Footer ==========*/}
             <Footer className="background-section"/>
             {/*========== End Footer ==========*/}
-        {/* // </Layout> */}
         </>
     );
 }

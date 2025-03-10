@@ -178,6 +178,9 @@
 @import "site/_site.scss";
 @import "media/_dsn-captions.scss";
 
+@import "components/video-testimonials";
+@import "components/header-actions";
+
 .full-width {
   position: relative;
   width: calc(100vw - var(--dsn-width-scroll, 0px));

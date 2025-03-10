@@ -1,0 +1,116 @@
+.header-actions {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 24px;
+  right: var(--margin-padding);
+  margin-right: 30px;
+  z-index: 50;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 1px solid $border-color;
+  padding: 5px;
+  
+  &--scrolled {
+    top: 15px;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  &__booking-btn {
+    border-radius: 30px;
+    padding: 0 20px;
+    height: 40px;
+    font-size: 14px;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+  
+  &__separator {
+    width: 1px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 10px;
+  }
+  
+  &__social {
+    display: flex;
+    gap: 8px;
+    // margin-right: 15px;
+  }
+  
+  &__social button {
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+  
+  &__phone {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: var(--theme-color);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    right: 15px;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: flex-end;
+    
+    &__booking-btn {
+      padding: 0 15px;
+      font-size: 12px;
+    }
+    
+    &__phone {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    &__separator {
+      display: none;
+    }
+    
+    &__social {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 380px) {
+    &__booking-btn {
+      font-size: 0;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &::before {
+        content: "\f073"; /* Иконка календаря из FontAwesome */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 16px;
+      }
+    }
+  }
+  
+  &:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+} 

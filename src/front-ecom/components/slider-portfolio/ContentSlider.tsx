@@ -70,7 +70,7 @@ function ContentSlider({
                                     </DsnLink>
                                 }
                             </h1>
-                            {isBtnDefined && <ButtonGradient className={`${btn?.color} animate desktop`} onClick={handleButtonClick() as any}>{btn?.title}</ButtonGradient>}
+                            {isBtnDefined && <ButtonGradient className={`${btn?.color} desktop`} onClick={handleButtonClick() as any}>{btn?.title}</ButtonGradient>}
                         
                         </div>
 

@@ -12,7 +12,7 @@ interface ButtonProps {
     borderRadius?: boolean,
     linkProps?: object | LinkProps,
     transitionPage?: transitionPage,
-    borderStyle?: false |string | "border-color-default" | "border-color-theme-color" | "border-color-heading-color" | "border-color-body-color" | "border-color-main" | "border-color-assistant" | "border-color-gradient",
+    borderStyle?: false | "border-color-default" | "border-color-theme-color" | "border-color-heading-color" | "border-color-body-color" | "border-color-main" | "border-color-assistant" | "border-color-gradient",
     style?: Partial<CSSProperties>,
     styleBorder?: Partial<CSSProperties>,
     children?: React.ReactNode,

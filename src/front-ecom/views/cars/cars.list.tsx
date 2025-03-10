@@ -24,9 +24,6 @@ export default function CarsList({
   style?: CSSProperties;
 }) {
   const [cars, setCars] = useState(allCars);
-  // console.log("ALL CARS", allCars);
-  // console.log("CARS", cars);
-
   
   useEffect(() => {
     const animation = gsap.to(".car-card-container", {

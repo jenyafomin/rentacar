@@ -3,7 +3,7 @@ $gradient-bg: linear-gradient(45deg, #d4f2ae, #00ffb3);
 $gradient-bg-blue: linear-gradient(45deg, #aec7f2, #00fffb);
 $gradient-bg-cyan: linear-gradient(45deg, #00fffb, #00f9b2);
 $gradient-bg-red: linear-gradient(45deg, #fb4b00, #ec5992);
-$gradient-bg-yellow: linear-gradient(45deg, #e85252, #646fea);
+$gradient-bg-yellow: linear-gradient(45deg, #e8cf52, #eab464);
 // $gradient-bg-yellow: radial-gradient(at 0% 0%, rgba(237,115,4,1) 1.9%, rgba(237,208,4,1) 19.6%, rgba(255,255,255,1) 70.5%, rgba(0,204,255,1) 100.3% );
 $gradient-bg-rainbow: linear-gradient(
   90deg,
@@ -59,6 +59,10 @@ $gradient-bg-rainbow: linear-gradient(
       // animation: blur-24 1.4s infinite ease-in-out;
     }
   }
+
+  &.animate-60 {
+    animation: gradient-60 1.4s infinite ease;
+  }
   &.rounded {
     border-radius: 50%;
     &::before,
@@ -97,7 +101,7 @@ $gradient-bg-rainbow: linear-gradient(
   }
   &.yellow {
     background: $gradient-bg-yellow;
-    color: #fff;
+    color: #000;
     // box-shadow: none;
     // text-shadow: none;
     &::before,
@@ -142,6 +146,13 @@ $gradient-bg-rainbow: linear-gradient(
     display: none;
   }
 
+  &.opacity-3 {
+    &::before,
+    &::after {
+      opacity: 0.3;
+    }
+  }
+
   &::before {
     display: block;
     filter: blur(4px);
@@ -150,6 +161,16 @@ $gradient-bg-rainbow: linear-gradient(
   &::after {
     display: block;
     filter: blur(12px);
+  }
+
+  &.blur-12 {
+    &::before {
+      filter: blur(12px);
+    }
+
+    &::after {
+      filter: blur(36px);
+    }
   }
 
   &.lg {
