@@ -38,7 +38,7 @@ export default function CarCard({
     //         const newValue = maxValue * (1-e.progress)
     //         console.log(`${car.make}-${car.model}`, newValue, e.progress.toFixed(3))
     //         setBlur(newValue)
-    //     },
+    //     }
     //     scrub: 2,
     //     markers: true,
     //     toggleActions: "restart none reverse none"
@@ -74,6 +74,7 @@ export default function CarCard({
           src={car.images[0]}
           fill
           alt={`${car.make}-${car.model}-${car.year}-${car.color}`}
+          objectFit="cover"
         />
 
         <div className="car-card-image-over" />
