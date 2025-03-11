@@ -10,14 +10,16 @@ import PriceContainer from "./carCard/priceContainer";
 
 export default function CarCard({
   car,
-  isVissible = false, // for animation
+  isVissible = true, // for animation
   aspectRatio = "16 / 9",
   width = "28%",
+  style = {},
 }: {
   car: ICar;
   isVissible?: boolean;
   aspectRatio?: string;
   width?: string;
+  style?: React.CSSProperties;
 }) {
   const locale = useLocale();
   const carRef = useRef(null);
@@ -63,6 +65,7 @@ export default function CarCard({
       href={`/${locale}/cars/${car.id}`}
       linkref={carRef}
       transitionPage={{title: `${car.make} ${car.model}`}}
+      style={style}
     >
       {/* <a className={`car-card-container`} ref={carRef}> */}
       {/* IMAGE CONTAINER */}

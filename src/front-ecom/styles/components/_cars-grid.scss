@@ -1,0 +1,17 @@
+.cars-grid {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    
+    @include media_768 {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+} 

@@ -32,11 +32,13 @@ import BgDot from "@/front-ecom/components/header/BgDot";
 import Facts from "@/front-ecom/components/facts/Facts";
 import { getPortfolioData } from "@/configs/(ecom)/portfolio";
 import { Methods_Get_Cars } from "@/app/api/cars/methods.enum";
+import CarsGrid from "@/front-ecom/components/cars-grid/CarsGrid";
 
 
 export default async function About() {
     const locale = getServerLocale()
     const featuredCars = await makeApiCall<Array<ICar>>(locale!, `/api/cars?method=${Methods_Get_Cars.FEATURED}`)
+    const allCars = await makeApiCall<Array<ICar>>(locale!, `/api/cars`)
     const sliderData = getPortfolioData()
     const videoTestimonials = getVideoTestimonialsData();
     
@@ -64,15 +66,16 @@ export default async function About() {
             </div>
             {/*End Service*/}
 
+            {/*Start Cars Grid*/}
+            {/*End Cars Grid*/}
 
             {/*Start Portfolio*/}
             {featuredCars.length !== 0 && <div className="section-margin" data-dsn-title="Our Portfolio">
                 <TitleSection
                     className="container align-items-center text-center"
-                    description={"Our Works"}
+                    description={"Cars"}
                 >
-                    Creative Portfolio <br/>
-                    Designs
+                    Featured Cars
                 </TitleSection>
                 <CarsSwiper
                     cars={featuredCars}
@@ -97,6 +100,12 @@ export default async function About() {
                     />
                 </CarsSwiper>
             </div>}
+
+            <CarsGrid 
+                cars={allCars.slice(0, 4)} 
+                className="section-margin"
+                title="Featured Cars"
+            />
             {/*End Portfolio*/}
 
             {/*Start testimonial Section*/}

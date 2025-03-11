@@ -68,7 +68,7 @@ export default function CarsList({
         }}
       >
         {cars.map((car, index) => {
-          return <CarCard car={car} key={index} />;
+          return <CarCard car={car} key={index} isVissible={false} />;
         })}
       </div>
     </div>
