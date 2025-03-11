@@ -87,7 +87,7 @@ export default function ContactUsForm({
         <CustomTextArea
           // type="textarea"
           label="Message"
-          placeholder="Luxury car like Mercedes, BMW and Geneses..."
+          placeholder="Luxury car like Mercedes, BMW and Genesis..."
           value={state["description"]}
           onChange={handleChange("description")}
         />

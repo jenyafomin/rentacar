@@ -115,10 +115,11 @@ export default async function About() {
             </div>
             
             {/*Start Video Testimonials Section*/}
-            <VideoTestimonials 
+            {/* <VideoTestimonials 
                 videos={videoTestimonials}
                 className="section-margin"
-            />
+                title="Feedback from our clients in video format"
+            /> */}
             {/*End Video Testimonials Section*/}
 
             {/*========== Next Page ==========*/}

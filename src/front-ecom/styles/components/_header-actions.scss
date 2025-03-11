@@ -64,9 +64,20 @@
       color: var(--theme-color);
     }
   }
+
+  @include media_991() {
+    right: unset;
+    top: 36px;
+    margin-right: 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    &__phone {
+      display: none;
+    }
+  }
   
-  @media (max-width: 768px) {
-    right: 15px;
+  @include media_768() {
     flex-wrap: wrap;
     width: auto;
     justify-content: flex-end;
@@ -76,17 +87,7 @@
       font-size: 12px;
     }
     
-    &__phone {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    &__separator {
-      display: none;
-    }
-    
-    &__social {
+    &__phone, &__social, &__separator {
       display: none;
     }
   }

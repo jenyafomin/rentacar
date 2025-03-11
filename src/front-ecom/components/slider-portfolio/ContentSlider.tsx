@@ -78,7 +78,7 @@ function ContentSlider({
                         {(item.description && hasDescription) &&
                         <div className="max-w570 mt-20 description">{item.description}</div>}
                         {/* {<Button className={"link-custom mt-20"} {...item.href} >{item.buttonText}</Button>} */}
-                        {isBtnDefined && <ButtonGradient className={`${btn?.color} animate mobile`} onClick={handleButtonClick() as any}>{btn?.title}</ButtonGradient>}
+                        {isBtnDefined && <ButtonGradient className={`${btn?.color} mobile`} onClick={handleButtonClick() as any}>{btn?.title}</ButtonGradient>}
                     </div>}
                 )}
             </div>

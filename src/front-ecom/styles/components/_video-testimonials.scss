@@ -1,123 +1,157 @@
 .video-testimonials {
-  padding: 60px 0;
-  background-color: var(--bg-section);
   position: relative;
-  overflow: hidden;
   
-  .section-title {
-    margin-bottom: 40px;
+  .video-testimonials-container {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1400px;
   }
   
-  &-navigation {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-bottom: 20px;
-    padding-right: 15px;
+  .video-testimonials-swiper {
+    padding-bottom: 50px;
     
-    .video-nav {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--assistant-color);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: white;
-      transition: background 0.3s ease;
+    .swiper-slide {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: scale(0.95);
+      opacity: 0.7;
       
-      &:hover {
-        background: var(--theme-color);
+      &-active {
+        transform: scale(1);
+        opacity: 1;
       }
-    }
-  }
-  
-  &-container {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding: 20px 0;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    cursor: grab;
-    
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    
-    &:active {
-      cursor: grabbing;
     }
   }
   
   .video-testimonial-item {
-    flex: 0 0 auto;
-    width: 264px; // ~9:16 соотношение при высоте ~470px
-    margin-bottom: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .video-wrapper {
+    background: var(--bg-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+    height: 100%;
     
-    .video-wrapper {
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .video-container {
+      position: relative;
       width: 100%;
-      height: 470px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+      aspect-ratio: 9/16;
       background: #000;
+      overflow: hidden;
       
-      video {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        display: block;
+        pointer-events: none;
+        box-shadow: inset 0 -20px 20px -20px rgba(0, 0, 0, 0.6);
       }
     }
     
-    .video-author {
-      padding: 15px 5px;
-      
-      .author-name {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 5px;
-      }
-      
-      .author-position {
-        font-size: 14px;
-        color: var(--heading-color-opacity);
-      }
+    .video-player {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     
-    &.video-cta {
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
       display: flex;
       align-items: center;
       justify-content: center;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 5;
+      transition: all 0.3s ease;
       
-      .video-cta-content {
-        padding: 30px;
-        text-align: center;
-        
-        h4 {
-          margin-bottom: 10px;
-          font-size: 20px;
-        }
-        
-        p {
-          margin-bottom: 20px;
-          font-size: 14px;
-          color: var(--heading-color-opacity);
-        }
+      &:hover {
+        background: var(--theme-color);
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+      
+      svg {
+        font-size: 20px;
+        margin-left: 3px;
+      }
+    }
+    
+    .video-info {
+      padding: 15px;
+      text-align: center;
+      
+      h4 {
+        margin: 0 0 5px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      
+      p.gradient-text {
+        margin: 0;
+        font-size: 14px;
+        background: linear-gradient(to right, var(--theme-color), var(--theme-color2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     }
   }
   
-  @media (max-width: 768px) {
-    .video-testimonial-item {
-      width: 220px;
-      
-      .video-wrapper {
-        height: 390px;
+  // Стилизация навигации слайдера
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: var(--theme-color);
+    
+    &::after {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    &:hover {
+      color: var(--theme-color2);
+    }
+  }
+  
+  .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5);
+    
+    &-active {
+      background: var(--theme-color);
+    }
+  }
+  
+  // Мобильные стили
+  @media (max-width: 767px) {
+    .video-testimonials-swiper {
+      .swiper-slide-active {
+        .video-testimonial-item {
+          .video-wrapper {
+            .video-container {
+              aspect-ratio: 9/19; // Полноэкранное соотношение для мобильных
+            }
+          }
+        }
       }
     }
   }
-} 
+}

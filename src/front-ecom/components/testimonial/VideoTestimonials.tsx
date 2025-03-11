@@ -1,8 +1,12 @@
-"use client";
-import { useRef, useState } from "react";
+'use client'
+import React, { useState, useRef, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper';
 import { dsnCN } from "../../hooks/helper";
-import FadeUpTrigger from "../../animation/FadeUpTrigger";
-import Button from "../button/Button";
+import MoveTrigger from "../../animation/MoveTrigger";
+import Image from "next/legacy/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 
 interface VideoTestimonialProps {
   className?: string;
@@ -10,7 +14,6 @@ interface VideoTestimonialProps {
   videos: {
     id: number;
     src: string;
-    poster: string;
     name: string;
     position: string;
   }[];
@@ -18,91 +21,126 @@ interface VideoTestimonialProps {
 
 export default function VideoTestimonials({
   className,
-  title = "Видео отзывы наших клиентов",
+  title = "Video testimonials",
   videos,
 }: VideoTestimonialProps) {
-  const scrollContainer = useRef<HTMLDivElement>(null);
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  // Горизонтальный скролл при нажатии на кнопки
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollContainer.current) return;
-    
-    const container = scrollContainer.current;
-    const scrollAmount = direction === "left" 
-      ? -container.offsetWidth / 2
-      : container.offsetWidth / 2;
+  const [activeVideoId, setActiveVideoId] = useState<number | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRefs = useRef<{[key: number]: HTMLVideoElement | null}>({});
+  
+  useEffect(() => {
+    // Проверяем и логируем доступность видео при монтировании
+    videos.forEach(video => {
+      const videoPath = video.src.startsWith('/') ? video.src : `/${video.src}`;
+      console.log('Checking video path:', videoPath);
       
-    container.scrollBy({
-      left: scrollAmount,
-      behavior: "smooth",
+      fetch(videoPath, { method: 'HEAD' })
+        .then(response => {
+          if (!response.ok) {
+            console.error(`Video not found: ${videoPath}`);
+          } else {
+            console.log(`Video found: ${videoPath}`);
+          }
+        })
+        .catch(error => {
+          console.error(`Error checking video ${videoPath}:`, error);
+        });
     });
+  }, [videos]);
+
+  const togglePlay = (id: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    
+    if (activeVideoId !== null && activeVideoId !== id) {
+      const prevVideo = videoRefs.current[activeVideoId];
+      if (prevVideo) {
+        prevVideo.pause();
+      }
+    }
+    
+    const video = videoRefs.current[id];
+    if (!video) return;
+    
+    if (video.paused) {
+      video.play()
+        .then(() => {
+          setActiveVideoId(id);
+          setIsPlaying(true);
+          console.log(`Playing video: ${id}`);
+        })
+        .catch(error => {
+          console.error(`Error playing video ${id}:`, error);
+        });
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleVideoEnd = () => {
+    setActiveVideoId(null);
+    setIsPlaying(false);
   };
 
   return (
-    <div className={dsnCN("video-testimonials", className)}>
-      <div className="container section-margin">
-        <FadeUpTrigger>
-          <h2 className="section-title text-center mb-70">{title}</h2>
-        </FadeUpTrigger>
-        
-        <div className="video-testimonials-navigation">
-          <button 
-            className="video-nav video-nav-prev" 
-            onClick={() => scroll("left")}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          <button 
-            className="video-nav video-nav-next" 
-            onClick={() => scroll("right")}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+    <section className={dsnCN("video-testimonials section-margin", className)}>
+      <div className="container">
+        <div className="section-title text-center mb-70">
+          <MoveTrigger from={{ y: 0 }} to={{ y: -30 }} mobile={false}>
+            <h2 className="title-section">{title}</h2>
+          </MoveTrigger>
         </div>
 
-        <div 
-          className="video-testimonials-container" 
-          ref={scrollContainer}
-          onMouseDown={() => setIsScrolling(true)}
-          onMouseUp={() => setIsScrolling(false)}
-          onMouseLeave={() => setIsScrolling(false)}
-          onMouseMove={(e) => {
-            if (!isScrolling || !scrollContainer.current) return;
-            scrollContainer.current.scrollLeft -= e.movementX;
-          }}
-        >
-          {videos.map((video) => (
-            <div key={video.id} className="video-testimonial-item">
-              <div className="video-wrapper">
-                <video 
-                  src={video.src} 
-                  poster={video.poster}
-                  controls
-                  playsInline
-                  preload="none"
-                />
-              </div>
-              <div className="video-author">
-                <h5 className="author-name">{video.name}</h5>
-                <p className="author-position">{video.position}</p>
-              </div>
-            </div>
-          ))}
-          
-          <div className="video-testimonial-item video-cta">
-            <div className="video-cta-content">
-              <h4>Оставьте свой отзыв</h4>
-              <p>Поделитесь вашими впечатлениями от аренды автомобиля</p>
-              <Button className="mt-20" href="/contact">
-                Оставить отзыв
-              </Button>
-            </div>
-          </div>
+        <div className="video-testimonials-container">
+          <Swiper
+            modules={[Pagination, Navigation]}
+            spaceBetween={30}
+            slidesPerView={1}
+            breakpoints={{
+              768: { slidesPerView: 2 },
+              992: { slidesPerView: 3 }
+            }}
+            pagination={{ clickable: true }}
+            navigation
+            className="video-testimonials-swiper"
+          >
+            {videos.map((video) => (
+              <SwiperSlide key={video.id}>
+                <div className="video-testimonial-item">
+                  <div className="video-wrapper">
+                    <div className="video-container">
+                      <video
+                        ref={(el) => { videoRefs.current[video.id] = el; }}
+                        // src={video.src.startsWith('/') ? video.src : `/${video.src}`}
+                        preload="metadata"
+                        playsInline
+                        onEnded={handleVideoEnd}
+                        muted={false}
+                        className="video-player"
+                      />
+                      <source src={video.src} type="video/mp4" />
+                      
+                      <button 
+                        className="play-button" 
+                        onClick={(e) => togglePlay(video.id, e)}
+                      >
+                        <FontAwesomeIcon 
+                          icon={activeVideoId === video.id && isPlaying ? faPause : faPlay} 
+                        />
+                      </button>
+                    </div>
+                    
+                    <div className="video-info">
+                      <h4>{video.name}</h4>
+                      <p className="gradient-text">{video.position}</p>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
-    </div>
+    </section>
   );
-} 
+}

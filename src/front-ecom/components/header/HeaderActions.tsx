@@ -46,7 +46,7 @@ export default function HeaderActions() {
             icon={faTelegram}
             rounded
             onClick={() =>
-              window.open("https://t.me/YourTelegramUsername", "_blank")
+              window.open("https://t.me/GreenAgeDubai", "_blank")
             }
             className="opacity-3"
             size="36px"
@@ -56,7 +56,7 @@ export default function HeaderActions() {
             icon={faWhatsapp}
             rounded
             className="opacity-3"
-            onClick={() => window.open("https://wa.me/71234567890", "_blank")}
+            onClick={() => window.open("https://wa.me/971553344969", "_blank")}
             size="36px"
             iconSize="lg"
           />
