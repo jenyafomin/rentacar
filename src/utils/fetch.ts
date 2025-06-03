@@ -4,7 +4,22 @@ config();
 
 export async function makeApiCall<T>(locale: Locale, endpoint: string, options?: RequestInit): Promise<T> {
     endpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`
-    const url = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+    
+    // Get base URL - use environment variable if set, otherwise determine automatically
+    let url = process.env.NEXT_PUBLIC_API_URL;
+    
+    if (!url) {
+        // Auto-detect URL based on environment
+        if (typeof window !== 'undefined') {
+            // Client-side: use current origin
+            url = window.location.origin;
+        } else {
+            // Server-side: use Vercel URL if available, otherwise localhost
+            url = process.env.VERCEL_URL 
+                ? `https://${process.env.VERCEL_URL}` 
+                : "http://localhost:3000";
+        }
+    }
 
     console.log(`[makeApiCall] :: URL :`, `${url}${endpoint}`);
     const result = await fetch(`${url}${endpoint}`, {

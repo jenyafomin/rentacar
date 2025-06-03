@@ -12,6 +12,7 @@ interface FaqData {
   categories: FaqCategory[];
 }
 
+
 export const faqData: FaqData = {
   categories: [
     {
