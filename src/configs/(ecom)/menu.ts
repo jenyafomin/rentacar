@@ -13,7 +13,11 @@ export const menuContent = [
     },
     {
         name: "FAQ",
-        href: "/faqs"
+        href: "/faq"
+    },
+    {
+        name: "Contact",
+        href: "/contact"
     }
 ]
 // export const menuContent = [

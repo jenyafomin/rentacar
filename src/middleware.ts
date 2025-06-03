@@ -47,6 +47,11 @@ function middleware(request: NextRequest) {
   getSession().then((s) => session = s);
   console.log(`:: middleware :: ${pathname} :: ${session}`);
 
+  // Skip middleware for API routes
+  if (pathname.startsWith('/api')) {
+    return NextResponse.next();
+  }
+
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = isUrlMissingLocale(pathname);
 
@@ -199,7 +204,7 @@ export const config = {
      *    - next.svg (Next.js logo)
      *    - vercel.svg (Vercel logo)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|.+?/hook-examples|.+?/menu-examples|images|img|js|next.svg|vercel.svg).*)'
+    '/((?!api/|_next/static|_next/image|favicon.ico|.+?/hook-examples|.+?/menu-examples|images|img|js|next.svg|vercel.svg).*)'
   ],
   unstable_allowDynamic: [
     '/node_modules/@babel/runtime/regenerator/index.js',

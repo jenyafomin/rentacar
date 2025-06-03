@@ -52,7 +52,7 @@ export default function FileUploaderMultiple({
   }
 
   const onDropRejected = () => {
-    toast.error("You can only upload 2 files & maximum size of 2 MB.", {
+    toast.error("You can only upload 2 files & maximum size of 10 MB.", {
       autoClose: 3000,
     });
   }
@@ -102,7 +102,7 @@ export default function FileUploaderMultiple({
   return (
     <>
       {/* //## ## UPLOAD FILES */}
-      <UploadForm onDrop={onDrop} onDropRejected={onDropRejected} />
+      <UploadForm onDrop={onDrop} onDropRejected={onDropRejected} maxSize={10000000} />
 
       {/* //** SELECTED IMAGES */}
       {selectedImages.length !== 0 && (

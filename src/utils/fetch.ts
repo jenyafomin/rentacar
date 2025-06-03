@@ -6,7 +6,7 @@ export async function makeApiCall<T>(locale: Locale, endpoint: string, options?:
     endpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`
     const url = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
-    console.log(`[makeApiCall] :: URL :`, url);
+    console.log(`[makeApiCall] :: URL :`, `${url}${endpoint}`);
     const result = await fetch(`${url}${endpoint}`, {
         ...options,
         headers: {

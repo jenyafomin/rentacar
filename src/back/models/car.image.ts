@@ -42,7 +42,7 @@ export async function saveCarImages(formData: FormData, namePrefix: string) {
                 const fileName = `${sanitizedPrefix}-${uuidv4()}.${extension}`;
                 const uploadDir = '/img/cars';
 
-                // Загрузка файла в S3
+                // *** Загрузка файла в S3 ***
                 const fileUrl = await uploadToS3(fileStream, fileName, uploadDir);
                 fileUrls.push(fileUrl);
             }

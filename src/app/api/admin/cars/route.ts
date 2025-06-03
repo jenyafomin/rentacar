@@ -8,6 +8,7 @@ import { createCar, deleteCarById, getAllCars, updateCar } from "@/back/models/c
 
 
 export async function GET(req: NextRequest, res: NextResponse) {
+    console.log(`[GET] /api/admin/cars`);
     const locale = getApiLocale(req)
     const cars = await getAllCars();
     return NextResponse.json(cars)

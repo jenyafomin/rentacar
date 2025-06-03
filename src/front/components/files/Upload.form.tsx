@@ -4,14 +4,16 @@ import { useDropzone } from "react-dropzone";
 export function UploadForm({
   onDrop,
   onDropRejected,
+  maxSize = 2000000,
 }: {
   onDrop: (acceptedFiles: File[]) => void;
   onDropRejected: () => void;
+  maxSize?: number;
 }) {
   // Hooks
   const { getRootProps, getInputProps } = useDropzone({
     // maxFiles: 2,
-    maxSize: 2000000, // TODO: move to props or default value
+    maxSize: maxSize,
     accept: {
       "image/*": [".png", ".jpg", ".jpeg", ".gif"],
     },

@@ -84,7 +84,7 @@ export default async function About() {
                     tablet={{spaceBetween: 0, slidesPerView: 1.3}}
                     mobile={{slidesPerView: 1}}
                     stylePortfolio="work-section"
-                    className="text-left v-dark-head title-inherit h4"
+                    className="text-left v-dark-head title-inherit h4 full-width"
                     centeredSlides
                     loop
                     blur
