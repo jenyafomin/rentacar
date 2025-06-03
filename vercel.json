@@ -1,0 +1,9 @@
+{
+  "functions": {
+    "src/app/api/admin/cars/image/route.ts": {
+      "maxDuration": 60
+    }
+  },
+  "regions": ["fra1"],
+  "framework": "nextjs"
+} 

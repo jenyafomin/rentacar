@@ -3,6 +3,20 @@ import { removeCarImages, saveCarImages } from "@/back/models/car.image";
 import { getErrorMessage } from "@/back/utils/getErrorMessage";
 import { getCarById, updateCar } from "@/back/models/car.model";
 
+// Конфигурация для увеличения лимита размера файлов
+export const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '50mb',
+        },
+        responseLimit: '50mb',
+    },
+}
+
+// Для App Router - экспортируем максимальную длительность выполнения
+export const maxDuration = 60; // 60 секунд
+
+// * CREATE files/images
 export async function POST(req: NextRequest) {
     try {
         const formData = await req.formData();

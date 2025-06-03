@@ -40,7 +40,7 @@ export function UploadForm({
           Drop files here or click to upload.
         </Typography>
         <Typography>Allowed *.jpeg, *.jpg, *.png, *.gif</Typography>
-        <Typography>Max 2 files and max size of 2 MB</Typography>
+        <Typography>Max size of 10 MB per file</Typography>
       </div>
     </div>
   );

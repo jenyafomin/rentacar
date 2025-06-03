@@ -25,6 +25,7 @@ export default function CarsList({
 }) {
   const [cars, setCars] = useState(allCars);
   
+
   useEffect(() => {
     const animation = gsap.to(".car-card-container", {
       // scrollTrigger: {
@@ -47,6 +48,10 @@ export default function CarsList({
     
     return () => {animation.revert()}
   }, []);
+
+  useEffect(() => {
+    console.log(`[CarsList] :: cars`, cars);
+  }, [cars]);
 
   return (
     <div

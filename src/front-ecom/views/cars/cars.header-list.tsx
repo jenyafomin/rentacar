@@ -10,7 +10,7 @@ export default function CarsHeaderList({ cars }: { cars: ICar[] }) {
     textAlign: "center",
     alignContent: "center",
     padding: "0 8px",
-    alignSelf: "stretch"
+    alignSelf: "stretch",
   };
 
   return (
@@ -22,17 +22,27 @@ export default function CarsHeaderList({ cars }: { cars: ICar[] }) {
         justifyContent: "space-between",
         // margin: "0 2%", // 3 column
         margin: "0 5%", // 2 column
-        alignItems: "flex-end"
+        alignItems: "flex-end",
         // margin: "0 7.5%", // 1 column
       }}
     >
       {/* LEFT SIDE */}
       <div>
-        Total cars:<strong style={{marginLeft: "8px", color: "#fff"}}>{cars.length}</strong>
+        Total cars:
+        <strong style={{ marginLeft: "8px", color: "#fff" }}>
+          {cars.length}
+        </strong>
       </div>
 
       {/* RIGHT SIDE */}
-      <div style={{ display: "flex", gap: "4px", flex: 1, justifyContent: "flex-end" }}>
+      {/* <div
+        style={{
+          display: "flex",
+          gap: "4px",
+          flex: 1,
+          justifyContent: "flex-end",
+        }}
+      >
         <div
           style={{
             padding: "4px 12px",
@@ -46,19 +56,10 @@ export default function CarsHeaderList({ cars }: { cars: ICar[] }) {
         >
           search...
         </div>
-        {/* prettier-ignore */}
-        <div style={styleBtn}>
-                btn1
-            </div>
-        {/* prettier-ignore */}
-        <div style={styleBtn}>
-                btn2
-            </div>
-        {/* prettier-ignore */}
-        <div style={styleBtn}>
-                btn3
-            </div>
-      </div>
+        <div style={styleBtn}>btn1</div>
+        <div style={styleBtn}>btn2</div>
+        <div style={styleBtn}>btn3</div>
+      </div> */}
     </div>
   );
 }

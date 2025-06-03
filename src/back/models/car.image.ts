@@ -11,6 +11,9 @@ export async function saveCarImages(formData: FormData, namePrefix: string) {
     // Обработка ошибок при загрузке нескольких файлов
     const uploadErrors: string[] = [];
     
+    // Максимальный размер файла (50 МБ)
+    const MAX_FILE_SIZE = 50 * 1024 * 1024;
+    
     for (const fileStream of filesStreams) {
         try {
             if (typeof fileStream === "string") {
@@ -18,7 +21,13 @@ export async function saveCarImages(formData: FormData, namePrefix: string) {
                 console.log("Существующий файл URL:", fileStream);
                 fileUrls.push(fileStream);
             } else {
-                console.log("Загрузка нового файла:", fileStream.name);
+                console.log("Загрузка нового файла:", fileStream.name, "Размер:", fileStream.size);
+                
+                // Проверка размера файла
+                if (fileStream.size > MAX_FILE_SIZE) {
+                    uploadErrors.push(`Файл ${fileStream.name} слишком большой (${Math.round(fileStream.size / 1024 / 1024)}MB). Максимальный размер: 50MB`);
+                    continue;
+                }
                 
                 // Проверка, что файл является изображением
                 if (!fileStream.type.startsWith('image/')) {
@@ -48,14 +57,20 @@ export async function saveCarImages(formData: FormData, namePrefix: string) {
             }
         } catch (error: any) {
             console.error(`Ошибка при загрузке файла:`, error);
-            uploadErrors.push(`Ошибка загрузки: ${error?.message || error}`);
-            return;
+            
+            // Проверяем специфические ошибки
+            if (error.message && error.message.includes('413')) {
+                uploadErrors.push(`Файл слишком большой для загрузки. Попробуйте сжать изображение.`);
+            } else {
+                uploadErrors.push(`Ошибка загрузки: ${error?.message || error}`);
+            }
+            continue; // Продолжаем обработку других файлов вместо return
         }
     }
     
-    // Если есть ошибки, но некоторые файлы загружены успешно, продолжаем
+    // Если есть ошибки, выбрасываем исключение с детальной информацией
     if (uploadErrors.length > 0) {
-        console.warn('Предупреждения при загрузке файлов:', uploadErrors);
+        throw new Error(`Ошибки при загрузке файлов: ${uploadErrors.join('; ')}`);
     }
     
     return fileUrls;
