@@ -17,6 +17,7 @@ interface ServiceSwiperProps extends SwiperOptions {
     backgroundColor?: backgroundColor,
     parallaxContent?: object | ParallaxOption,
     styleBox?: styleBox
+    children?: React.ReactNode
 
 }
 

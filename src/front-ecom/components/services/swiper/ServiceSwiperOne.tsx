@@ -18,7 +18,8 @@ function ServiceSwiperOne({className, ...restProps}: {className?: string}) {
         spaceBetween={0}
         parallax
         centeredSlides
-        className={className} data={getServiceData() as any}
+        className={className} 
+        data={getServiceData() as any}
         {...restProps}
     >
         <SwiperPagination className={"mt-30 dsn-container justify-content-between"} />

@@ -124,9 +124,11 @@ export default function Testimonial({
                             >
                                 {TestimonialDetails.map(($item, $index) =>
                                     <SwiperSlide key={$index} className="d-flex align-items-center">
+                                        { $item?.src ?
                                         <div className="box-img" {...parallaxImage} style={{width: "70px"}}>
                                             <Image src={$item.src} width={80} height={80} alt={$item.name} sizes="(max-width: 768px) 70px,(max-width: 1200px) 70px,33vw"/>
                                         </div>
+                                        : null}
                                         <div className="box-text" {...parallaxContent}>
                                             <h4 className="title-block testimonial-name">{$item.name}</h4>
                                             <h5 className="sm-title-block testimonial-description gradient-text">{$item.label}</h5>

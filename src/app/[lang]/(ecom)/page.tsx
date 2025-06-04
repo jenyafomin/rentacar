@@ -1,35 +1,18 @@
 import React from "react";
-import Layout from "@front-ecom/layout/Layout";
 import SliderPortfolio from "@front-ecom/components/slider-portfolio/SliderPortfolio";
-import HeroSection from "@front-ecom/components/hero-section/HeroSection";
 import TitleSection from "@front-ecom/components/heading/TitleSection";
-import ServiceOne from "@front-ecom/components/services/grid/ServiceOne";
-import ParallaxImage from "@front-ecom/components/Image/ParallaxImage";
-import MoveBox from "@front-ecom/components/move-box/MoveBox";
-import Button from "@front-ecom/components/button/Button";
 import CarsSwiper from "@/front-ecom/components/portfolio/CarsSwiper";
 import SwiperPagination from "@front-ecom/components/swiper-pagination/SwiperPagination";
 import Testimonial from "@front-ecom/components/testimonial/Testimonial";
-import Accordion, {AccordionItem} from "@front-ecom/components/accordion/Accordion";
-import DsnGrid from "@front-ecom/layout/DsnGrid";
-import TitleCover from "@front-ecom/components/heading/TitleCover";
-import BlogSwiper from "@front-ecom/components/bolg/BlogSwiper";
-import Team from "@front-ecom/components/Team/Team";
-import BrandClient from "@front-ecom/components/brand-client/BrandClient";
-import VideoTestimonials from "@front-ecom/components/testimonial/VideoTestimonials";
 import { getVideoTestimonialsData } from "@/configs/(ecom)/videoTestimonials";
 
 import NextPage from "@front-ecom/components/next/NextPage";
 import Footer from "@front-ecom/components/footer/Footer";
-import ModalContact from "@front-ecom/components/model-right/ModalContact";
-import Head from "next/head";
 import LineBackground from "../../../front-ecom/layout/LineBackground";
 import ServiceSwiperOne from "@/front-ecom/components/services/swiper/ServiceSwiperOne";
 import { makeApiCall } from "@/utils/fetch";
 import { getServerLocale } from "@/localization/getServerLocale";
 import { ICar } from "types/Car";
-import BgDot from "@/front-ecom/components/header/BgDot";
-import Facts from "@/front-ecom/components/facts/Facts";
 import { getPortfolioData } from "@/configs/(ecom)/portfolio";
 import { Methods_Get_Cars } from "@/app/api/cars/methods.enum";
 import CarsGrid from "@/front-ecom/components/cars-grid/CarsGrid";
@@ -60,7 +43,7 @@ export default async function About() {
             {/*Start Service*/}
             <div className="container section-margin" data-dsn-title="our Services">
                 <TitleSection description={"WHY CHOOSE US?"} className="align-items-center text-center">
-                    We are delivering beautiful <br/> digital products for you.
+                Your hassle-free <br/> car rental journey starts here.
                 </TitleSection>
                 <ServiceSwiperOne/>
             </div>
