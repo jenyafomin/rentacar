@@ -5,7 +5,6 @@ import {Pagination, Parallax, SwiperOptions} from "swiper";
 
 
 import CarSwiperItem from './CarSwiperItem';
-import {getPortfolioData} from "../../../configs/(ecom)/portfolio";
 import {dsnCN} from "../../hooks/helper";
 import {ParallaxOption} from "../../../../types/DsnSwiper";
 import {styleBox, stylePortfolio} from "../../hooks/EremiaType";

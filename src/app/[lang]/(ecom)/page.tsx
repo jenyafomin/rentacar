@@ -75,7 +75,7 @@ export default async function About() {
                     className="container align-items-center text-center"
                     description={"Cars"}
                 >
-                    Featured Cars
+                    Featured
                 </TitleSection>
                 <CarsSwiper
                     cars={featuredCars}
@@ -104,7 +104,7 @@ export default async function About() {
             <CarsGrid 
                 cars={allCars.slice(0, 4)} 
                 className="section-margin"
-                title="Featured Cars"
+                title="Popular Cars"
             />
             {/*End Portfolio*/}
 

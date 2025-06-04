@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 
-import { getPortfolioLink } from "../../../configs/(ecom)/portfolio";
 import { dsnCN } from "../../hooks/helper";
 import BgImage from "../Image/BgImage";
 import MetaPost from "../meta/MetaPost";
@@ -9,6 +8,7 @@ import DsnLink from "../../hooks/DsnLink";
 import { ICar } from "types/Car";
 import ParallaxImage from "../Image/ParallaxImage";
 import PriceContainer from "@/front-ecom/views/cars/carCard/priceContainer";
+import Button from "../button/Button";
 
 interface ICarsSwiperItemProps {
   car: ICar;
@@ -93,16 +93,22 @@ function CarsSwiperItem({
       <div className="info-text box-content" {...parallaxContent}>
         {car.categories && <MetaPost category={car.categories} />}
 
-        {car.make && (
-          <h4 className="title-block sec-title">
-            <DsnLink
-              href={carUrl}
-              transitionPage={{ title: `${car.make} ${car.model}` }}
-            >
-              {car.make} {car.model} {car.option} {car.year}
-            </DsnLink>
-          </h4>
-        )}
+        <div className="flex justify-between flex-row" style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start" }}>
+          {car.make && (
+            <h4 className="title-block sec-title">
+              <DsnLink
+                href={carUrl}
+                transitionPage={{ title: `${car.make} ${car.model}` }}
+              >
+                {car.make} {car.model} {car.option} {car.year}
+              </DsnLink>
+            </h4>
+            
+          )}
+          <Button   href={carUrl} transitionPage={{ title: `${car.make} ${car.model}` }} style={{ padding: "12px 24px" }}>
+            View
+          </Button>
+        </div>
       </div>
     </div>
   );
