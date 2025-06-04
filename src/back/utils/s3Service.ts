@@ -24,21 +24,48 @@ const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
  */
 async function optimizeImage(file: Buffer, fileType: string): Promise<Buffer> {
   try {
+    console.log('🔄 Обработка изображения с автокоррекцией ориентации EXIF...');
+    
+    // Получаем метаданные изображения для отладки
+    const metadata = await sharp(file).metadata();
+    console.log('📊 Метаданные изображения:', {
+      width: metadata.width,
+      height: metadata.height,
+      orientation: metadata.orientation,
+      format: metadata.format,
+      exif: metadata.exif ? 'присутствует' : 'отсутствует'
+    });
+    
+    // Базовая обработка с автоматической коррекцией ориентации
+    let sharpInstance = sharp(file)
+      .rotate() // Автоматически поворачивает изображение согласно EXIF ориентации
+      .withMetadata({ orientation: 1 }); // Сбрасываем EXIF ориентацию на нормальную
+
     // Для JPEG и PNG файлов используем сжатие
     if (fileType === 'image/jpeg') {
-      return await sharp(file)
+      const result = await sharpInstance
         .jpeg({ quality: 80, progressive: true })
         .toBuffer();
+      console.log('✅ JPEG обработан и сохранен с правильной ориентацией');
+      return result;
     } else if (fileType === 'image/png') {
-      return await sharp(file)
+      const result = await sharpInstance
         .png({ quality: 80, progressive: true })
         .toBuffer();
+      console.log('✅ PNG обработан и сохранен с правильной ориентацией');
+      return result;
     } else if (fileType === 'image/webp') {
-      return await sharp(file)
+      const result = await sharpInstance
         .webp({ quality: 80 })
         .toBuffer();
+      console.log('✅ WebP обработан и сохранен с правильной ориентацией');
+      return result;
     }
-    return file;
+    
+    // Для других типов все равно применяем коррекцию ориентации
+    const result = await sharpInstance.toBuffer();
+    console.log('✅ Изображение обработано с коррекцией ориентации');
+    return result;
   } catch (error) {
     console.error('Ошибка при оптимизации изображения:', error);
     return file; // Возвращаем оригинальный файл в случае ошибки

@@ -10,12 +10,16 @@ import NextPage2 from "@/front-ecom/components/next/NextPage2";
 import Footer from "@/front-ecom/components/footer/Footer";
 import NextPage from "@/front-ecom/components/next/NextPage";
 
-export default async function Cars() {
+export default async function Cars({ searchParams }: { searchParams: { available: string } }) {
   const locale = getServerLocale();
-  const cars = await makeApiCall<ICar[]>(locale, "/api/cars", {
+
+  const { available } = searchParams;
+  
+  const cars = await makeApiCall<ICar[]>(locale, `/api/cars`, {
     next: { tags: ["cars"] },
+    params: { available },
   });
-  console.log("TOTAL CARS:", cars.length, cars);
+  // console.log("TOTAL CARS:", cars.length, cars);
 
   return (
     <>

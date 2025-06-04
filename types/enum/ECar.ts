@@ -1,4 +1,5 @@
 export enum ECarStatus {
+    // AVAILABLE = "Available",
     ACTIVE = "Active",
     BOOKED = "Booked",
     IN_ACTIVE = "Not Active"

@@ -26,13 +26,6 @@ const nextConfig = {
         // Увеличиваем максимальный размер тела запроса до 50MB
         serverComponentsExternalPackages: ['sharp'],
     },
-    // Настройки для API routes
-    api: {
-        bodyParser: {
-            sizeLimit: '50mb',
-        },
-        responseLimit: '50mb',
-    },
 };
 
 // export const runtime = 'nodejs';

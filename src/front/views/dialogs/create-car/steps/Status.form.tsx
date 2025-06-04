@@ -115,6 +115,23 @@ export default function Status({
           />
         </Grid>
 
+        {/* 4 ROW */}
+        <Grid item xs={12}>
+          <FormControlLabel
+            onClick={(e: any) => {
+              const isAvailable = e.target.checked;
+              // @ts-ignore
+              setState((oldValue: ICar) => {
+                return {...oldValue, isAvailable }
+              })
+              console.log(e.target.checked);              
+            }}
+            control={<Switch color="success" />}
+            checked={state.isAvailable || false}
+            label="isAvailable"
+          />
+        </Grid>
+
       </Grid>
 
       <PrevNextSubmitBtns

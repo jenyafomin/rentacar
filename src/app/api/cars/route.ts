@@ -9,8 +9,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
   const params = req.nextUrl.searchParams;
   const id = params.get("id");
   const method = params.get("method");
+  const isAvailable = params.get("available");
 
-  console.log("method:", method);
   try {
     if(id) {
       const car = await getCarById(id);
@@ -23,11 +23,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
       let cars: Array<any>;
       switch (method) {
         case Methods_Get_Cars.FEATURED:
-          cars = await getFeaturedCars();
+          cars = await getFeaturedCars({ isAvailable });
           break
         case Methods_Get_Cars.GET_ALL_SHORT:
         default:
-          cars = await getActiveCars();
+          cars = await getActiveCars({ isAvailable });
       }
       return NextResponse.json(cars)
     }

@@ -87,6 +87,7 @@ model Car {
   features String[] @default([])
 
 	status String? @default("Active")
+  isAvailable Boolean? @default(false)
 	isFeatured Boolean? @default(false)
 	useExcelStatus Boolean? @default(false)
 

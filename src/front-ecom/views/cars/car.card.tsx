@@ -58,7 +58,7 @@ export default function CarCard({
     // }
   }, []);
 
-  console.log("CAR_CARD", car);
+  // console.log("CAR_CARD", car);
   return (
     <DsnLink
       className={`car-card-container ${!isVissible && "animate-on-mount"}`}

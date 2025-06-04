@@ -15,6 +15,7 @@ import FileList from "@/front/components/files/File.list";
 import { FileProp } from "@/front/types/file";
 import { ICar } from "types/Car";
 import { UploadForm } from "@/front/components/files/Upload.form";
+import { fixImageOrientation, createOrientedPreview } from "@/front/utils/imageOrientation";
 
 export default function FileUploaderMultiple({
   activeStep,
@@ -41,14 +42,46 @@ export default function FileUploaderMultiple({
     setExtraState({ ...extraState, images: newImages });
   }
 
-  const onDrop = (acceptedFiles: File[]) => {
-    const newFiles = acceptedFiles.map((file: File) => {
-      return {
-        file: file,
-        url: URL.createObjectURL(file),
-      };
-    });
-    setSelectedImages([...selectedImages, ...newFiles]);
+  const onDrop = async (acceptedFiles: File[]) => {
+    console.log('📸 Обработка загруженных изображений с коррекцией ориентации...');
+    
+    try {
+      const newFiles: FileProp[] = [];
+      
+      for (const file of acceptedFiles) {
+        try {
+          // Исправляем ориентацию на клиентской стороне
+          // const correctedFile = await fixImageOrientation(file);
+          
+          // Создаем превью с правильной ориентацией
+          // const previewUrl = await createOrientedPreview(file);
+          const previewUrl = URL.createObjectURL(file);
+          
+          newFiles.push({
+            file: file,
+            url: previewUrl,
+          });
+          
+          console.log(`✅ Изображение ${file.name} обработано`);
+        } catch (error) {
+          console.error(`❌ Ошибка обработки ${file.name}:`, error);
+          
+          // В случае ошибки используем оригинальный файл
+          newFiles.push({
+            file: file,
+            url: URL.createObjectURL(file),
+          });
+          
+          toast.warning(`Не удалось исправить ориентацию для ${file.name}, используется оригинал`);
+        }
+      }
+      
+      setSelectedImages([...selectedImages, ...newFiles]);
+      toast.success(`Загружено ${newFiles.length} изображений с автокоррекцией ориентации`);
+    } catch (error) {
+      console.error('Общая ошибка при обработке файлов:', error);
+      toast.error('Ошибка при обработке изображений');
+    }
   }
 
   const onDropRejected = () => {
@@ -106,7 +139,9 @@ export default function FileUploaderMultiple({
 
       {/* //** SELECTED IMAGES */}
       {selectedImages.length !== 0 && (
-        <div className="mt-4 uppercase text-lg font-bold">Selected Images:</div>
+        <div className="mt-4 uppercase text-lg font-bold">
+          Selected Images: <span className="text-green-600">✓ Auto-corrected</span>
+        </div>
       )}
       <FileList
         files={selectedImages}

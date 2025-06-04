@@ -2,7 +2,7 @@ import { Locale } from "i18n-config";
 import { config } from "dotenv";
 config();
 
-export async function makeApiCall<T>(locale: Locale, endpoint: string, options?: RequestInit): Promise<T> {
+export async function makeApiCall<T>(locale: Locale, endpoint: string, options?: RequestInit & { params?: Record<string, string> }): Promise<T> {
     endpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`
     
     // Get base URL - use environment variable if set, otherwise determine automatically
@@ -21,13 +21,27 @@ export async function makeApiCall<T>(locale: Locale, endpoint: string, options?:
         }
     }
 
+    // Add query parameters if provided
+    if (options?.params) {
+        // Фильтруем undefined и null значения, сохраняя false
+        const filteredParams = Object.fromEntries(
+            Object.entries(options.params).filter(([_, value]) => 
+                value !== undefined && value !== null
+            )
+        );
+        const queryString = Object.entries(filteredParams)
+            .map(([key, value]) => `${key}=${value}`)
+            .join('&');
+        endpoint += `?${queryString}`;
+    }
+
     console.log(`[makeApiCall] :: URL :`, `${url}${endpoint}`);
     const result = await fetch(`${url}${endpoint}`, {
         ...options,
         headers: {
             ...(options?.headers || {}),
             "x-locale": locale
-        }
+        },
     })
 
     return await result.json() as T;
