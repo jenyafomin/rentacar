@@ -57,7 +57,7 @@ const servicesDetails = [
             </g>
         </svg>,
         title: "Trusted & Top-Rated",
-        description: "Our customers love us! We’re proud to be a top-rated Dubai rental service (as our 5-star reviews prove), so you can book with confidence.",
+        description: "Our customers love us! We’re proud to be a top-rated Dubai rental service, so you can book with confidence.",
     },
     {
         icon: <svg className="gradient" enableBackground="new 0 0 300 300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">

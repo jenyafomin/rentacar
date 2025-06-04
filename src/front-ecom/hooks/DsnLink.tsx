@@ -28,11 +28,10 @@ function DsnLink({children, className, href, linkref, transitionPage = true, sty
     linkref = useRef<HTMLAnchorElement>(null);
     const locale = useLocale();
     const router = useRouter();
-    const path = usePathname;
-
+    const currentPath = usePathname();
 
     useEffect(() => {
-        if (!transitionPage || !href || path === href)
+        if (!transitionPage || !href || currentPath === href)
             return;
 
         const localeHref = convertToLocaleUrl(locale, href as string);
@@ -40,11 +39,22 @@ function DsnLink({children, className, href, linkref, transitionPage = true, sty
         const handleClick = handleTransitionToUrl({href: localeHref, router, transitionPage})
         
         const currentLink = linkref.current;
-        currentLink.addEventListener("click", handleClick);
-        return () => {
-            currentLink.removeEventListener("click", handleClick);
+        if (currentLink) {
+            // Предзагружаем страницу при наведении для ускорения
+            const handleMouseEnter = () => {
+                console.log('🖱️ Preloading on hover:', localeHref);
+                router.prefetch(localeHref);
+            };
+            
+            currentLink.addEventListener("click", handleClick);
+            currentLink.addEventListener("mouseenter", handleMouseEnter, { once: true });
+            
+            return () => {
+                currentLink.removeEventListener("click", handleClick);
+                currentLink.removeEventListener("mouseenter", handleMouseEnter);
+            }
         }
-    }, [transitionPage, router, href]);
+    }, [transitionPage, router, href, currentPath, locale]);
 
     if(!href) {
         // console.log("DSN LINK HREF EMPTY:", href);
@@ -53,7 +63,10 @@ function DsnLink({children, className, href, linkref, transitionPage = true, sty
         // return <>Children:{children}</>
         return <></>
     }
-    return <Link href={href} style={style} className={className} {...restProps} ref={linkref} >{children}</Link>;
+
+    const localeHref = convertToLocaleUrl(locale, href as string);
+    
+    return <Link href={localeHref} style={style} className={className} {...restProps} ref={linkref} >{children}</Link>;
 
 }
 
