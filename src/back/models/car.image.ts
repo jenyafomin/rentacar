@@ -11,8 +11,8 @@ export async function saveCarImages(formData: FormData, namePrefix: string) {
     // Обработка ошибок при загрузке нескольких файлов
     const uploadErrors: string[] = [];
     
-    // Максимальный размер файла (50 МБ)
-    const MAX_FILE_SIZE = 50 * 1024 * 1024;
+    // Максимальный размер файла (10 МБ)
+    const MAX_FILE_SIZE = 10 * 1024 * 1024;
     
     for (const fileStream of filesStreams) {
         try {
@@ -25,7 +25,7 @@ export async function saveCarImages(formData: FormData, namePrefix: string) {
                 
                 // Проверка размера файла
                 if (fileStream.size > MAX_FILE_SIZE) {
-                    uploadErrors.push(`Файл ${fileStream.name} слишком большой (${Math.round(fileStream.size / 1024 / 1024)}MB). Максимальный размер: 50MB`);
+                    uploadErrors.push(`Файл ${fileStream.name} слишком большой (${Math.round(fileStream.size / 1024 / 1024)}MB). Максимальный размер: 10MB`);
                     continue;
                 }
                 

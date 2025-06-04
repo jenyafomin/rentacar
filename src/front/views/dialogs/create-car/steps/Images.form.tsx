@@ -102,7 +102,7 @@ export default function FileUploaderMultiple({
   return (
     <>
       {/* //## ## UPLOAD FILES */}
-      <UploadForm onDrop={onDrop} onDropRejected={onDropRejected} maxSize={50000000} />
+      <UploadForm onDrop={onDrop} onDropRejected={onDropRejected} maxSize={10000000} />
 
       {/* //** SELECTED IMAGES */}
       {selectedImages.length !== 0 && (

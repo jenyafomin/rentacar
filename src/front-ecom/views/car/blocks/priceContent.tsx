@@ -28,7 +28,7 @@ function PriceItem({
         </div>
       </div>
       <div className={`discount container-bg ${discount !== "0" && "active"} `}>
-        {discount}%
+        -{discount}%
       </div>
     </div>
   );
@@ -47,7 +47,13 @@ export default function CarPriceContent({
     if (car.priceMonthly) {
       return car.priceMonthly / 30;
     } else return 0;
-  }, []);
+  }, [car.priceMonthly]);
+
+  const discount = useMemo(() => {
+    if (car.priceDaily && priceMonthly) {
+      return (1 - priceMonthly / car.priceDaily) * 100;
+    } else return 0;
+  }, [car.priceDaily, priceMonthly]);
 
   const onClickPrice = (_priceType: "daily" | "monthly") => () =>
     setPriceType(_priceType);
@@ -65,7 +71,7 @@ export default function CarPriceContent({
         priceType="MONTHLY"
         amount={priceMonthly.toFixed(0)}
         isActive={priceType === "monthly"}
-        discount="-25"
+        discount={discount.toFixed(0)}
         onClick={onClickPrice("monthly")}
       />
 
