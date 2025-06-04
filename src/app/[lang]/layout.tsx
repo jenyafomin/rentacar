@@ -5,9 +5,9 @@ import { Locale } from "i18n-config"
 import { SessionProvider } from "next-auth/react"
 
 export const metadata = {
-  title: 'GA Dashboard',
+  title: 'GA Rent a Car',
   description:
-    'Admin Dashboard for proffesional usage'
+    'GA Rent a Car'
 }
 
 // This is needed to avoid error - Layout "src/app/[lang]/layout.tsx" has an invalid "default" export:

@@ -8,10 +8,6 @@ export const menuContent = [
         href: "/cars",
     },
     {
-        name: "Contacts",
-        href: "/contacts"
-    },
-    {
         name: "FAQ",
         href: "/faq"
     },

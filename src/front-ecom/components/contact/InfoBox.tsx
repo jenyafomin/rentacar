@@ -8,26 +8,40 @@ function InfoBox({className}) {
             <ul>
                 <li>
                     <h5 className="title-block mb-15">Contact</h5>
-                    <p className="text-p ">+1 (800) 990 8877</p>
+                    <p className="text-p ">+971 (58) 911 3388</p>
                     <div className="over-hidden mt-5">
-                        <a className="link-hover" data-hover-text="info@example.com"
-                           href="#">info@example.com</a>
+                        <a className="link-hover" data-hover-text="rentgreenage@gmail.com"
+                           href="mailto:rentgreenage@gmail.com">rentgreenage@gmail.com</a>
                     </div>
 
                 </li>
                 <li>
+                    <h5 className="title-block mb-15">Social Contacts</h5>
+                    <div className="over-hidden mt-5">
+                        <a className="link-hover" data-hover-text="whatsapp"
+                        target="_blank"
+                           href="https://wa.me/971589113388">whatsapp</a>
+                    </div>
+                    <div className="over-hidden mt-5">
+                        <a className="link-hover" data-hover-text="telegram"
+                        target="_blank"
+                           href="https://t.me/GreenAgeDubai">telegram</a>
+                    </div>
+                </li>
+                <li>
                     <h5 className="title-block mb-15">Address</h5>
-                    <p className="text-p">United Kingdom <br /> 33—35 Southernhay East</p>
+                    {/* <p className="text-p">United Arab Emirates <br />  44 Street, Near Century Mall Al Mamzar, Dubai</p> */}
+                    <p className="text-p">United Arab Emirates <br />  AG Auto Al Mamzar Branch, Dubai</p>
                 </li>
                 <li>
                     <h5 className="title-block mb-15">Follow Us</h5>
                     <div className="social-item over-hidden">
-                        <a className="link-hover" data-hover-text="Instagram." href="#"
-                           target="_blank" rel="nofollow">Instagram.</a>
+                        <a className="link-hover" data-hover-text="TikTok." href="https://www.tiktok.com/@greenage.rentcar"
+                           target="_blank" rel="nofollow">TikTok.</a>
                     </div>
                     <div className="social-item over-hidden">
-                        <a className="link-hover" data-hover-text="Facebook." href="#"
-                           target="_blank" rel="nofollow">Facebook.</a>
+                        <a className="link-hover" data-hover-text="Instagram." href="https://www.instagram.com/greenage.rentcar"
+                           target="_blank" rel="nofollow">Instagram.</a>
                     </div>
                 </li>
             </ul>

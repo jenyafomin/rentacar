@@ -49,10 +49,10 @@ export default function About() {
       {/*========== End Header Normal ==========*/}
       {/*Start Map*/}
       <Map
-        mapKey="AIzaSyDMyAS2jdzj-vdgBIFaIStYOWJtSlghndg"
+        mapKey="AIzaSyDgyg11Ksv-zvMyHnOgsqkQ9dj5Pst1jew"
         zoom={13}
         height="80vh"
-        defaultCenter={{ lat: 25.2048, lng: 55.2708 }}
+        defaultCenter={{ lat: 25.288759432142175, lng: 55.34900818713498 }}
       />
 
       {/*========== Start Next Page Section ==========*/}

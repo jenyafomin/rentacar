@@ -3,10 +3,10 @@ import {dsnCN} from "../../hooks/helper";
 
 function MenuContent({className}) {
     const socialData = [
-        {link: "#0", name: "Dribbble."},
-        {link: "#0", name: "Behance."},
-        {link: "#0", name: "Linkedin."},
-        {link: "#0", name: "Twitter."}
+        {link: "https://www.instagram.com/greenage.rentcar", name: "Instagram."},
+        {link: "https://www.tiktok.com/@greenage.rentcar", name: "TikTok."},
+        {link: "https://t.me/GreenAgeDubai", name: "Telegram."},
+        {link: "https://wa.me/971589113388", name: "WhatsApp."}
     ];
     return (
         <div className={dsnCN('container-content  d-flex flex-column justify-content-center', className)}>
@@ -14,20 +14,20 @@ function MenuContent({className}) {
                 <div className="nav-content">
                     <h5 className="sm-title-block mb-10">Studio</h5>
                     <p>
-                        26-30 New Damietta <br/> El-Mahalla El-Kubra, SK1 66LM
+                        AG Auto Al Mamzar Branch, Dubai
                     </p>
 
                 </div>
                 <div className="nav-content mt-30">
                     <h5 className="sm-title-block mb-10">Contact</h5>
                     <p className="links over-hidden mb-1">
-                        <a className="link-hover" href="tel:+00 (2)012 3321" data-hover-text="+00 (2)012 3321">
-                            +00 (2)012 3321
+                        <a className="link-hover" href="tel:+971589113388" data-hover-text="+971 (58) 911 3388">
+                            +971 (58) 911 3388
                         </a>
                     </p>
                     <p className="links over-hidden">
-                        <a className="link-hover" href="mailto:info@dsngrid.com"
-                           data-hover-text="info@dsngrid.com">info@dsngrid.com</a>
+                        <a className="link-hover" href="mailto:rentgreenage@gmail.com"
+                           data-hover-text="rentgreenage@gmail.com">rentgreenage@gmail.com</a>
                     </p>
                 </div>
             </div>
