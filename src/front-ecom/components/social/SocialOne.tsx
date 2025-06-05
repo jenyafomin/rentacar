@@ -1,14 +1,14 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShareAlt} from "@fortawesome/free-solid-svg-icons/faShareAlt";
-import {faFacebookF, faTwitter, faInstagram, faDribbble} from '@fortawesome/free-brands-svg-icons';
+import {faFacebookF, faTwitter, faInstagram, faDribbble, faTiktok, faWhatsapp, faTelegram} from '@fortawesome/free-brands-svg-icons';
 import {dsnCN} from "../../hooks/helper";
 
 
 const socialData = [
-    {link: "#0", icon: faDribbble, name: "Db"},
-    {link: "#0", icon: faFacebookF, name: "Fb"},
-    {link: "#0", icon: faTwitter, name: "Tw"},
-    {link: "#0", icon: faInstagram, name: "In"},
+    {link: "https://www.tiktok.com/@greenage.rentcar", icon: faTiktok, name: "Tt"},
+    {link: "https://www.instagram.com/greenage.rentcar", icon: faInstagram, name: "In"},
+    {link: "https://wa.me/971589113388", icon: faWhatsapp, name: "Wp"},
+    {link: "https://t.me/GreenAgeDubai", icon: faTelegram, name: "Tg"},
 ];
 
 

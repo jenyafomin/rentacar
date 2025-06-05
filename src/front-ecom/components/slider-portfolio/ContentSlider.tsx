@@ -41,7 +41,7 @@ function ContentSlider({
 
                 {data.map((item: ISliderItemProps, key) =>{
 
-                    console.log("[ContentSlider] INDEX: ", key, "ITEM", item);
+                    // console.log("[ContentSlider] INDEX: ", key, "ITEM", item);
                     const btn = item.btn
                     // const handleButtonClick = handleTransitionToUrl({router, href: btn?.href!, transitionPage: btn?.pageTransition})
                     const isBtnDefined = (item.btn && item.btn.title && (item.btn.href || item.btn?.method)) || false;

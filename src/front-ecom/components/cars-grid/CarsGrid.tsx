@@ -10,12 +10,14 @@ interface CarsGridProps {
   cars: ICar[];
   className?: string;
   title?: string;
+  description?: string;
 }
 
 export default function CarsGrid({ 
   cars,
   className,
-  title = "Our Cars"
+  title = "Our Cars",
+  description
 }: CarsGridProps) {
   const locale = useLocale();
 
@@ -24,6 +26,7 @@ export default function CarsGrid({
       <div className="container">
         <div className="section-title mb-70">
           <MoveTrigger from={{ y: 0 }} to={{ y: -30 }} mobile={false}>
+          {description && <p className="sub-heading mb-20 text-center">{description}</p>}
             <h2 className="title-section text-center">{title}</h2>
           </MoveTrigger>
         </div>

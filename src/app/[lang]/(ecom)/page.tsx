@@ -21,7 +21,7 @@ import CarsGrid from "@/front-ecom/components/cars-grid/CarsGrid";
 export default async function About() {
     const locale = getServerLocale()
     const featuredCars = await makeApiCall<Array<ICar>>(locale!, `/api/cars?method=${Methods_Get_Cars.FEATURED}`)
-    const allCars = await makeApiCall<Array<ICar>>(locale!, `/api/cars`)
+    const allCars = await makeApiCall<Array<ICar>>(locale!, `/api/cars?available=true`)
     const sliderData = getPortfolioData()
     const videoTestimonials = getVideoTestimonialsData();
     
@@ -84,10 +84,17 @@ export default async function About() {
                 </CarsSwiper>
             </div>}
 
+            {/* <TitleSection
+                    className="container align-items-center text-center"
+                    description={"Cars"}
+                >
+                    Available Now
+                </TitleSection> */}
             <CarsGrid 
-                cars={allCars.slice(0, 4)} 
+                cars={allCars.slice(0, 10)} 
                 className="section-margin"
-                title="Popular Cars"
+                title="Available Now"
+                description="Cars"
             />
             {/*End Portfolio*/}
 

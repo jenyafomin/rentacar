@@ -15,12 +15,13 @@ export function handleTransitionToUrl({transitionPage ,href, router}: {transitio
   return (e: any, dinamicHref?: string) => {
     if(e?.preventDefault) e.preventDefault();
     if(dinamicHref) href = dinamicHref;
+    console.log("HANDLE TRANSITION TO URL:", href);
 
     if (domTransition.current === null && domTransition.tl === null) {
       [domTransition.current, domTransition.tl] = tdStart(transitionPage);
       
       domTransition.tl.call(() => {
-        router.push(href);
+        router.push(href, { scroll: false });
         // @ts-ignore
         domTransition.tl.kill();
         domTransition.tl = null;

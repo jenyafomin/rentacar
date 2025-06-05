@@ -28,9 +28,9 @@ const data: Array<ISliderItemProps> = [
         id: 1,
         title: "Dubai Rent a Car",
         slug: 'maybe-speaker',
-        category: ['from 49 AED', 'all types'],
+        category: ['from 49 AED', 'No Hidden Fees'],
         href: "/cars",
-        description: 'Best Rent a Car in UAE.',
+        description: 'From city lights to desert nights, drive Dubai your way.',
         src: '/img/AI/dub-cars-2.jpg',
         // src: '/img/3D/mobile/bmw-9-16.webp',
         srcMobile: '/img/3D/mobile/bmw-9-16.webp',
@@ -45,39 +45,41 @@ const data: Array<ISliderItemProps> = [
     },
     {
         id: 2,
-        title: "Yaren Collection",
+        title: "Choose Your Ride",
         slug: 'yaren-collection',
         src: '/img/AI/dub-cars-1.jpg',
-        href: "/cars",
+        href: "/cars?available=true",
 
-        category: ['pen'],
-        description: 'symbols through which express themselves.',
+        category: ['Luxury & Economy', 'Best Rate Guarantee'],
+        description: 'Arrive as a tourist, drive like a local.',
         overlay: 10,
+
         btn: {
-            method: "modal-contacts",
-            // href: "/cars",
-            // pageTransition: {title: "All Cars"},
-            title: "Night shift",
-            color: EColors.YELLOW
+            href: "/cars?available=true",
+            pageTransition: {title: "Available Cars"},
+            title: "Available Cars",
+            color: EColors.YELLOW,
+
         }
 
     },
     {
         id: 3,
-        title: "Huggle Power Pack",
+        title: "Drive Today",
         slug: 'huggl-power-pack',
         src: '/img/AI/kia-k5.webp',
         href: "/cars",
 
-        category: ['induction'],
-        description: 'Huggl is an induction charging.',
+        category: ['24/7 Support', 'Free Cancellation'],
+        description: 'Fast wheels, faster bookings – welcome to Dubai.”',
         overlay: 6,
 
         btn: {
-            href: "/cars",
-            pageTransition: {title: "All Cars"},
-            title: "CONTACT US",
-            color: EColors.YELLOW
+            method: "modal-contacts",
+            // href: "/cars",
+            // pageTransition: {title: "All Cars"},
+            title: "Make a Booking",
+            color: EColors.BLUE
         }
     },
 ]

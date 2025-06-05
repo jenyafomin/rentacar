@@ -36,6 +36,7 @@ function DsnLink({children, className, href, linkref, transitionPage = true, sty
             return;
 
         const localeHref = convertToLocaleUrl(locale, href as string);
+        // console.log("LOCALE HREF:", localeHref);
         
         const handleClick = handleTransitionToUrl({href: localeHref, router, transitionPage})
         
