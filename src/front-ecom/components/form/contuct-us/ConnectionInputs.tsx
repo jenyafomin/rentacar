@@ -1,12 +1,14 @@
 import { EConType, EConTypeId } from "types/enum/ERequest";
 import CustomInput from "../CustomInput";
+import { CSSProperties } from "react";
 
 interface IProps {
     connectionType: EConType;
     state: any;
-    handleChange: (name: string) => (value: any) => any
+    handleChange: (name: string) => (value: any) => any;
+    style?: Partial<CSSProperties>;
 }
-export default function ConnectionInput({connectionType, state, handleChange}: IProps) {
+export default function ConnectionInput({connectionType, state, handleChange, style}: IProps) {
     // return useMemo(() => {
       let label: string = "";
       let placeholder: string = "";
@@ -14,7 +16,7 @@ export default function ConnectionInput({connectionType, state, handleChange}: I
 
       switch (connectionType) {
         case EConType.TELEGRAM:
-          label = "Telegram ID";
+          label = "Telegram username";
           placeholder = "@GreenAgeAuto";
           break;
         case EConType.WHATSAPP:
@@ -37,7 +39,13 @@ export default function ConnectionInput({connectionType, state, handleChange}: I
 
       if (label && name) {
         return (
-            <CustomInput label={label} placeholder={placeholder} value={state[name] || ""} onChange={handleChange(name)} />
+            <CustomInput 
+              label={label} 
+              placeholder={placeholder} 
+              value={state[name] || ""} 
+              onChange={handleChange(name)}
+              style={style}
+            />
         );
       }
       return <></>;

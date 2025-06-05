@@ -63,6 +63,14 @@ $gradient-bg-rainbow: linear-gradient(
   &.animate-60 {
     animation: gradient-60 1.4s infinite ease;
   }
+
+  &.animate-120 {
+    animation: gradient-120 1.4s infinite ease;
+  }
+  &.animate-180 {
+    animation: gradient-180 1.4s infinite ease;
+  }
+
   &.rounded {
     border-radius: 50%;
     &::before,
