@@ -19,7 +19,7 @@ export default function DialogWrapper({children, open, setOpen, className}: IPro
     <div className="dialog-content-wrapper">
       <div className="neon-bg"/>
       <div className="dialog-content">
-        <a className="close-btn background-section" onClick={()=> {
+        <a style={{zIndex: 10}} className="close-btn background-section" onClick={()=> {
           setOpen(false)
         }}/>
         <div className="dialog-body ">
