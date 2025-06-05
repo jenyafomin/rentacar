@@ -17,6 +17,7 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import StarIcon from "@mui/icons-material/Star";
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
@@ -79,20 +80,31 @@ export default function CarCard({ car }: CarCardProps) {
             alt={`${car.make} ${car.model}`}
           />
           {/* Если машина Featured, выводим иконку */}
-          {car.isFeatured && (
-            <Box
-              sx={{
-                position: "absolute",
-                top: 8,
-                left: 8,
-                backgroundColor: "rgba(255,255,255,0.7)",
-                borderRadius: "50%",
-                p: 0.5,
-              }}
-            >
-              <StarIcon color="warning" />
-            </Box>
-          )}
+          <div className="absolute top-1 left-1 bg-black/10">
+            {car.isFeatured && (
+              <Box
+                sx={{
+                  position: "relative",
+                  // borderRadius: "50%",
+                  p: 0.5,
+                }}
+              >
+                <StarIcon color="warning" />
+              </Box>
+            )}
+            {car.isAvailable && (
+              <Box
+                sx={{
+                  position: "relative",
+                  borderRadius: "50%",
+                  p: 0.5,
+                }}
+              >
+                <EventAvailableIcon color="success"  />
+              </Box>
+            )}
+          
+          </div>
           {/* Кнопки Edit/Delete в правом верхнем */}
           <Box
             sx={{

@@ -44,7 +44,7 @@ export default function FileList({
                 background: "#fff1",
                 backdropFilter: "blur(8px)",
                 padding: "2px",
-                color: "#AAA",
+                color: "#000",
                 border: "1px solid #AAA3",
               }}
             >
@@ -61,7 +61,7 @@ export default function FileList({
                 position: "absolute",
                 left: "8px",
                 top: "8px",
-                background: "#fff1",
+                background: "#fff3",
                 backdropFilter: "blur(8px)",
                 padding: "2px",
                 color: "#AAA",
@@ -73,6 +73,7 @@ export default function FileList({
                   fontSize: "12px",
                   fontWeight: "bold",
                   mixBlendMode: "exclusion",
+                  color: "#000",
                 }}
               >
                 {i+1}

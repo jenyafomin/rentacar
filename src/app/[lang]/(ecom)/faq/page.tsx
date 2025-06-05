@@ -46,8 +46,8 @@ export default function FaqPage() {
       <div className="container section-margin">
         <div className="row">
           <div className="col-lg-12">
-            {faqData.categories.map((category, index) => (
-              <div key={index} className="faq-category mb-50">
+            {faqData.categories.map((category, categoryIndex) => (
+              <div key={categoryIndex} className="faq-category mb-50">
                 <h3 className={`faq-category-title mb-30 ${poppins.className}`}>
                   {category.title}
                 </h3>

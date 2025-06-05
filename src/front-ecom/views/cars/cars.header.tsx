@@ -14,8 +14,10 @@ export default function CarsHeader() {
         </h1>
 
         <p className={roboto.className}>
-          Lorem 11 ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu
-          ligula non orci semper rhoncus.
+          Scroll to discover why we’re confident you’ll find exactly what you’re looking for. 
+          Our vehicles range from economy car hires to luxury car rentals. 
+          {/* All cars are model year 2018 or newer, with low mileage and clean interiors. 
+          We detail and inspect each car before handover – so as you browse these listings, know that whichever you choose, you’re in for a smooth ride with GreenAge Rent. */}
         </p>
       </div>
     </div>
