@@ -57,7 +57,7 @@ function CarsSwiperItem({
   
   return (
     <div className={dsnCN("portfolio-item work-item", className)} ref={ref}>
-      <div className="inner-img box-img" {...parallaxImage}>
+      <div className="inner-img box-img" {...parallaxImage} style={{height: "100%", aspectRatio: "16/9"}}>
         <DsnLink
           href={carUrl}
           className="w-100 h-100 link-item"
