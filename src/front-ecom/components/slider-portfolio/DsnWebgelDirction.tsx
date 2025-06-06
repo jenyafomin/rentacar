@@ -430,7 +430,7 @@ function DsnWebgelDirction(props: DsnWebgelDirctionParams) {
 
 
                 $this.manager.onLoad = () => {
-                    parent.current.classList.remove("three-js-loader");
+                    parent?.current?.classList.remove("three-js-loader");
 
 
                     if ($this.destroyed) {
