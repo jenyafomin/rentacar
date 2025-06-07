@@ -146,6 +146,7 @@ export default function RootLayout({ children, session, ...pageProps }: any) {
               <HeaderActions />
 
               <Layout
+                activeScrollbar={false}
                 modelRight={{
                   children: <ModalContact />,
                   propsModal: { textBtn: "Contact" },
